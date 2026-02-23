@@ -1,497 +1,417 @@
-"""
-fixture_generator.py  ·  v8.0 — MODELO DE DOS FASES
-=====================================================
+"""Generador de fixture con restricciones de localía (round-robin + CP-SAT)."""
 
-POR QUÉ LOS MODELOS ANTERIORES ERAN LENTOS
---------------------------------------------
-v5-v7 tenían ~18,000 variables: una por cada combinación (fecha × partido).
-El solver intentaba decidir SIMULTÁNEAMENTE en qué fecha va cada partido
-Y quién juega de local. El espacio de búsqueda era imposible de recorrer.
+from __future__ import annotations
 
-SOLUCIÓN: DOS FASES
---------------------
-FASE 1 (Python puro, instantánea):
-  Asignar cada partido a una fecha usando el algoritmo canónico de round-robin.
-  Con n equipos: ronda r = fecha r (vuelta 1), fecha n-1+r (vuelta 2).
-  Resultado: 706 partidos con fecha fija.
-
-FASE 2 (CP-SAT, solo 706 variables):
-  Para cada partido ya asignado, decidir la LOCALÍA:
-    local[p] = 1  →  equipo A es local
-    local[p] = 0  →  equipo B es local
-  El solver solo necesita satisfacer las restricciones de cruce/co-local
-  sobre estos 706 bits binarios. El modelo es 26x más pequeño.
-"""
-
-import json, os, sys
+import json
+import os
+import sys
+from collections import defaultdict
 from itertools import combinations
-from ortools.sat.python import cp_model
-
-# ══════════════════════════════════════════════════════════════════════════════
-# 1. DATOS
-# ══════════════════════════════════════════════════════════════════════════════
-SCRIPT_DIR   = os.path.dirname(os.path.abspath(__file__))
-EQUIPOS_JSON = os.path.join(SCRIPT_DIR, "equipos.json")
 
 try:
-    with open(EQUIPOS_JSON, "r", encoding="utf-8") as fh:
-        data = json.load(fh)
-except FileNotFoundError:
-    sys.exit(f"❌ No se encontró '{EQUIPOS_JSON}'.")
+    from ortools.sat.python import cp_model
+except ModuleNotFoundError:
+    cp_model = None
 
-equipos_data = data["equipos"]
-estadio_de   = {e["nombre"]: e.get("estadioLocal", "A confirmar") for e in equipos_data}
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+EQUIPOS_JSON = os.path.join(SCRIPT_DIR, "equipos.json")
+OUTPUT_JSON = os.path.join(SCRIPT_DIR, "fixture_output.json")
+NUM_FECHAS = 26
 
-def tiene_cat(e, cat):
-    return e.get("categorias", {}).get(cat, False) is True
-
-# ══════════════════════════════════════════════════════════════════════════════
-# 2. COMPETENCIAS
-# ══════════════════════════════════════════════════════════════════════════════
-INF_CATS = ["quinta","sexta","septima","octava","novena","decima","undecima"]
-FEM_CATS = ["femenino_primera","femenino_sub16","femenino_sub14","femenino_sub12"]
+INF_CATS = ["quinta", "sexta", "septima", "octava", "novena", "decima", "undecima"]
+FEM_CATS = ["femenino_primera", "femenino_sub16", "femenino_sub14", "femenino_sub12"]
 
 COMP_DEFS = [
     ("PRIMERA_A", ["primera"], "A"),
     ("PRIMERA_B", ["primera"], "B"),
-    ("INF_A",     INF_CATS,    "A"),
-    ("INF_B",     INF_CATS,    "B"),
-    ("INF_C",     INF_CATS,    "C"),
-    ("FEMENINO",  FEM_CATS,    None),
+    ("INF_A", INF_CATS, "A"),
+    ("INF_B", INF_CATS, "B"),
+    ("INF_C", INF_CATS, "C"),
+    ("FEMENINO", FEM_CATS, None),
 ]
 
-COMPETITIONS = {}
-for ck, cats, div in COMP_DEFS:
-    parts = sorted({
-        e["nombre"] for e in equipos_data
-        if any(tiene_cat(e, c) for c in cats)
-        and (div is None or e.get("divisionMayor") == div)
-    })
-    if len(parts) >= 2:
-        COMPETITIONS[ck] = {"entities": parts}
 
-NUM_FECHAS = 26
-all_entities = sorted({n for c in COMPETITIONS.values() for n in c["entities"]})
+def tiene_cat(equipo: dict, cat: str) -> bool:
+    return equipo.get("categorias", {}).get(cat, False) is True
 
-print("=== COMPETENCIAS ===")
-for ck, comp in COMPETITIONS.items():
-    n = len(comp["entities"])
-    print(f"  {ck:12s}: {n:2d} equipos · {n-1:2d} locales/equipo · {(n-1)*2:2d} rondas")
 
-# ══════════════════════════════════════════════════════════════════════════════
-# 3. FASE 1 — ASIGNACIÓN DE FECHAS (round-robin canónico)
-# ══════════════════════════════════════════════════════════════════════════════
+def round_robin_rounds(teams: list[str]) -> list[list[tuple[str, str]]]:
+    """Algoritmo canónico de rotación para todos contra todos (1 vuelta)."""
+    pool = list(teams)
+    if len(pool) % 2 == 1:
+        pool.append("BYE")
 
-def round_robin_rounds(teams):
-    """Algoritmo de rotación. Retorna lista de rondas [(t1,t2), ...]."""
-    t = list(teams)
-    if len(t) % 2 == 1:
-        t.append("BYE")
-    n = len(t)
-    fixed, rotating = t[0], t[1:]
-    rounds = []
+    n = len(pool)
+    fixed = pool[0]
+    rotating = pool[1:]
+    rounds: list[list[tuple[str, str]]] = []
+
     for _ in range(n - 1):
         circle = [fixed] + rotating
-        pairs = [(circle[i], circle[n-1-i])
-                 for i in range(n//2)
-                 if circle[i] != "BYE" and circle[n-1-i] != "BYE"]
+        pairs = []
+        for i in range(n // 2):
+            a = circle[i]
+            b = circle[n - 1 - i]
+            if a != "BYE" and b != "BYE":
+                pairs.append((a, b))
         rounds.append(pairs)
         rotating = [rotating[-1]] + rotating[:-1]
+
     return rounds
 
-# Generar todos los partidos con fecha asignada
-# all_games[p] = (fecha, ck, A, B)  — solver decide si A o B es local
-all_games = []
 
-for ck, comp in COMPETITIONS.items():
-    rounds = round_robin_rounds(comp["entities"])
-    nr = len(rounds)
-    # Vuelta 1: fechas 1..nr
-    for r, ronda in enumerate(rounds):
-        for t1, t2 in ronda:
-            all_games.append((r + 1, ck, t1, t2))
-    # Vuelta 2: fechas nr+1..2*nr
-    for r, ronda in enumerate(rounds):
-        for t1, t2 in ronda:
-            all_games.append((nr + r + 1, ck, t1, t2))
-
-P = len(all_games)
-print(f"\nFase 1 completada: {P} partidos con fechas fijas")
-
-# Índices de partidos por (fecha, equipo) para lookup rápido
-from collections import defaultdict
-games_by_date_team = defaultdict(list)  # (fecha, equipo) -> [idx_partido]
-games_by_date_comp = defaultdict(list)  # (fecha, ck) -> [idx_partido]
-
-for idx, (fecha, ck, A, B) in enumerate(all_games):
-    games_by_date_team[(fecha, A)].append(idx)
-    games_by_date_team[(fecha, B)].append(idx)
-    games_by_date_comp[(fecha, ck)].append(idx)
-
-# ══════════════════════════════════════════════════════════════════════════════
-# 4. FASE 2 — MODELO CP-SAT: solo localía
-# ══════════════════════════════════════════════════════════════════════════════
-model = cp_model.CpModel()
-
-# local[p] = 1 → all_games[p][2] (equipo A) es local
-# local[p] = 0 → all_games[p][3] (equipo B) es local
-local = [model.NewBoolVar(f"loc_{p}") for p in range(P)]
-
-def is_local(p, team):
-    """Expresión lineal: 1 si team es local en partido p."""
-    _, _, A, B = all_games[p]
-    if team == A: return local[p]
-    if team == B: return local[p].Not()
-    raise ValueError(f"{team} no juega en partido {p}")
-
-def is_visitor(p, team):
-    _, _, A, B = all_games[p]
-    if team == A: return local[p].Not()
-    if team == B: return local[p]
-    raise ValueError(f"{team} no juega en partido {p}")
-
-def home_vars(fecha, ck, team):
-    """Lista de vars 'team es local' en (fecha, ck)."""
-    return [is_local(p, team)
-            for p in games_by_date_comp[(fecha, ck)]
-            if all_games[p][2] == team or all_games[p][3] == team]
-
-def away_vars(fecha, ck, team):
-    return [is_visitor(p, team)
-            for p in games_by_date_comp[(fecha, ck)]
-            if all_games[p][2] == team or all_games[p][3] == team]
-
-def home_vars_global(fecha, team):
-    """Lista de vars 'team es local' en cualquier comp en fecha dada."""
-    return [is_local(p, team) for p in games_by_date_team[(fecha, team)]]
-
-def away_vars_global(fecha, team):
-    return [is_visitor(p, team) for p in games_by_date_team[(fecha, team)]]
-
-# ── Restricción base: no puede ser local Y visitante el mismo día ─────────────
-# (Ya está implícito porque cada equipo juega máx 1 partido/fecha/comp,
-#  pero un equipo en 2 comps podría jugar 2 partidos el mismo día en comps distintas.
-#  Eso está OK, pero no puede ser local en una y visitante en la otra si hay
-#  restricción de co_local. La base es: un equipo puede tener max 1 partido/fecha
-#  POR COMPETENCIA. Entre competencias distintas pueden coincidir.)
-
-# ── Rachas: helper ────────────────────────────────────────────────────────────
-# Para rachas necesitamos saber si el equipo tiene partido en esa fecha
-def has_game(fecha, team):
-    return len(games_by_date_team[(fecha, team)]) > 0
-
-# ══════════════════════════════════════════════════════════════════════════════
-# 5. RESTRICCIONES DE LOCALÍA
-# ══════════════════════════════════════════════════════════════════════════════
-
-# ── Helpers para restricciones cruzadas ──────────────────────────────────────
-
-def co_local(ck_A, A, B):
-    """
-    Cuando A es local en ck_A → B no puede ser visitante (en ninguna comp).
-    Bidireccional: B local (global) → A no puede ser visitante en ck_A.
-    
-    Formulación directa sin vars auxiliares:
-      sum(home_vars(ck_A,A)) + sum(away_vars_global(B)) <= 1
-      sum(home_vars_global(B)) + sum(away_vars(ck_A,A)) <= 1
-    
-    Nota: estos términos son al máximo 1 cada uno (un equipo juega max
-    1 partido/fecha/comp), así que la constraint es entre dos vars 0/1.
-    """
-    if A not in all_entities or B not in all_entities: return
-    if A not in COMPETITIONS.get(ck_A,{}).get("entities",[]): return
-
-    for fecha in range(1, NUM_FECHAS+1):
-        hA = home_vars(fecha, ck_A, A)
-        vA = away_vars(fecha, ck_A, A)
-        hB = home_vars_global(fecha, B)
-        vB = away_vars_global(fecha, B)
-
-        # Si no hay partidos ese día, no hay restricción
-        if not hA and not vA: continue
-
-        # Si A y B se enfrentan directamente ese día → H2H bypass
-        is_h2h = any(
-            (all_games[p][2] in (A,B) and all_games[p][3] in (A,B))
-            for p in games_by_date_team[(fecha, A)]
-            if p in games_by_date_team[(fecha, B)]
-               # más estricto: mismo partido
+def build_competitions(equipos_data: list[dict]) -> dict[str, dict[str, list[str]]]:
+    competitions: dict[str, dict[str, list[str]]] = {}
+    for ck, cats, division in COMP_DEFS:
+        entities = sorted(
+            {
+                e["nombre"]
+                for e in equipos_data
+                if any(tiene_cat(e, c) for c in cats)
+                and (division is None or e.get("divisionMayor") == division)
+            }
         )
-        # Verificación correcta de H2H
-        h2h_idx = [p for p in games_by_date_team[(fecha, A)]
-                   if p in games_by_date_team[(fecha, B)]
-                   and {all_games[p][2], all_games[p][3]} == {A, B}]
-        
-        if h2h_idx:
-            # Solo hay un partido directo. En ese partido no aplicamos co_local.
-            # Aplicamos co_local solo en partidos de ck_A donde A NO juega vs B.
-            hA_no_h2h = [v for p, v in zip(
-                [pp for pp in games_by_date_comp[(fecha, ck_A)]
-                 if all_games[pp][2]==A or all_games[pp][3]==A],
-                hA) if p not in h2h_idx]
-            # Simplificación: si el partido de A en ck_A ES el H2H, no hay restricción
-            # Si el partido de A en ck_A NO es el H2H, aplicar normalmente
-            for v_hA in hA_no_h2h:
-                for v_vB in vB:
-                    model.Add(v_hA + v_vB <= 1)
-            vA_no_h2h = [v for p, v in zip(
-                [pp for pp in games_by_date_comp[(fecha, ck_A)]
-                 if all_games[pp][2]==A or all_games[pp][3]==A],
-                vA) if p not in h2h_idx]
-            for v_vA in vA_no_h2h:
-                for v_hB in hB:
-                    model.Add(v_vA + v_hB <= 1)
+        if len(entities) >= 2:
+            competitions[ck] = {"entities": entities}
+    return competitions
+
+
+def main() -> int:
+    if cp_model is None:
+        print("❌ Falta dependencia: ortools. Instalar con `python -m pip install ortools`.")
+        return 1
+
+    if not os.path.exists(EQUIPOS_JSON):
+        print(f"❌ No existe {EQUIPOS_JSON}")
+        return 1
+
+    with open(EQUIPOS_JSON, "r", encoding="utf-8") as fh:
+        data = json.load(fh)
+
+    equipos_data: list[dict] = data["equipos"]
+    estadio_de = {e["nombre"]: e.get("estadioLocal", "A confirmar") for e in equipos_data}
+    competitions = build_competitions(equipos_data)
+    all_entities = sorted({t for c in competitions.values() for t in c["entities"]})
+
+    print("=== COMPETENCIAS ===")
+    for ck, comp in competitions.items():
+        n = len(comp["entities"])
+        print(f"  {ck:12s}: {n:2d} equipos · {(n - 1) * 2:2d} rondas")
+
+    all_games: list[tuple[int, str, str, str]] = []
+    for ck, comp in competitions.items():
+        rounds = round_robin_rounds(comp["entities"])
+        nr = len(rounds)
+        for r, matches in enumerate(rounds, start=1):
+            for a, b in matches:
+                all_games.append((r, ck, a, b))
+        for r, matches in enumerate(rounds, start=1):
+            for a, b in matches:
+                all_games.append((nr + r, ck, a, b))
+
+    total_games = len(all_games)
+    print(f"\nFase 1 completada: {total_games} partidos con fecha fija")
+
+    games_by_date_team: defaultdict[tuple[int, str], list[int]] = defaultdict(list)
+    games_by_date_comp: defaultdict[tuple[int, str], list[int]] = defaultdict(list)
+
+    for idx, (fecha, ck, a, b) in enumerate(all_games):
+        games_by_date_team[(fecha, a)].append(idx)
+        games_by_date_team[(fecha, b)].append(idx)
+        games_by_date_comp[(fecha, ck)].append(idx)
+
+    model = cp_model.CpModel()
+    local = [model.NewBoolVar(f"loc_{i}") for i in range(total_games)]
+
+    def is_local(game_idx: int, team: str):
+        _, _, a, b = all_games[game_idx]
+        if team == a:
+            return local[game_idx]
+        if team == b:
+            return local[game_idx].Not()
+        raise ValueError(f"{team} no juega partido {game_idx}")
+
+    def is_away(game_idx: int, team: str):
+        _, _, a, b = all_games[game_idx]
+        if team == a:
+            return local[game_idx].Not()
+        if team == b:
+            return local[game_idx]
+        raise ValueError(f"{team} no juega partido {game_idx}")
+
+    def vars_team_global(fecha: int, team: str, home: bool):
+        f = is_local if home else is_away
+        return [f(g, team) for g in games_by_date_team[(fecha, team)]]
+
+    def vars_team_comp(fecha: int, ck: str, team: str, home: bool):
+        f = is_local if home else is_away
+        return [
+            f(g, team)
+            for g in games_by_date_comp[(fecha, ck)]
+            if team in (all_games[g][2], all_games[g][3])
+        ]
+
+    def co_local(ck_a: str, a: str, b: str):
+        if a not in all_entities or b not in all_entities:
+            return
+        if a not in competitions.get(ck_a, {}).get("entities", []):
+            return
+        for fecha in range(1, NUM_FECHAS + 1):
+            h_a = vars_team_comp(fecha, ck_a, a, home=True)
+            v_a = vars_team_comp(fecha, ck_a, a, home=False)
+            h_b = vars_team_global(fecha, b, home=True)
+            v_b = vars_team_global(fecha, b, home=False)
+            for xa in h_a:
+                for yb in v_b:
+                    model.Add(xa + yb <= 1)
+            for xa in v_a:
+                for yb in h_b:
+                    model.Add(xa + yb <= 1)
+
+    def cross(ck_a: str, a: str, ck_b: str | None, b: str):
+        if a not in all_entities or b not in all_entities:
+            return
+        if a not in competitions.get(ck_a, {}).get("entities", []):
+            return
+        for fecha in range(1, NUM_FECHAS + 1):
+            h_a = vars_team_comp(fecha, ck_a, a, home=True)
+            v_a = vars_team_comp(fecha, ck_a, a, home=False)
+            if ck_b and b in competitions.get(ck_b, {}).get("entities", []):
+                h_b = vars_team_comp(fecha, ck_b, b, home=True)
+                v_b = vars_team_comp(fecha, ck_b, b, home=False)
+            else:
+                h_b = vars_team_global(fecha, b, home=True)
+                v_b = vars_team_global(fecha, b, home=False)
+            for xa in h_a:
+                for yb in h_b:
+                    model.Add(xa + yb <= 1)
+            for xa in v_a:
+                for yb in v_b:
+                    model.Add(xa + yb <= 1)
+
+    def cross_global(a: str, b: str):
+        if a not in all_entities or b not in all_entities:
+            return
+        for fecha in range(1, NUM_FECHAS + 1):
+            h_a = vars_team_global(fecha, a, home=True)
+            v_a = vars_team_global(fecha, a, home=False)
+            h_b = vars_team_global(fecha, b, home=True)
+            v_b = vars_team_global(fecha, b, home=False)
+            for xa in h_a:
+                for yb in h_b:
+                    model.Add(xa + yb <= 1)
+            for xa in v_a:
+                for yb in v_b:
+                    model.Add(xa + yb <= 1)
+
+    print("\nAplicando restricciones de localía...")
+
+    co_local("PRIMERA_B", "Loma Negra", "Loma Negra Inferiores")
+    co_local("PRIMERA_B", "Loma Negra", "Loma Negra Femenino")
+
+    cross("PRIMERA_A", "Independiente", None, "Independiente Femenino")
+    cross("INF_B", "Independiente (rojo)", "PRIMERA_A", "Independiente")
+    co_local("INF_B", "Independiente (rojo)", "Independiente Femenino")
+
+    co_local("PRIMERA_B", "BOTAFOGO F.C.", "BOTAFOGO F.C. Inferiores")
+
+    cross("PRIMERA_A", "Ferrocarril Sud", None, "Ferrocarril Sud Femenino")
+    cross("INF_B", "Ferro Azul", "PRIMERA_A", "Ferrocarril Sud")
+    co_local("INF_B", "Ferro Azul", "Ferrocarril Sud Femenino")
+
+    co_local("PRIMERA_A", "DEFENSORES DE AYACUCHO", "DEFENSORES DE AYACUCHO Inferiores")
+    co_local("PRIMERA_A", "Velense", "Velense Inferiores")
+    co_local("PRIMERA_B", "Argentino", "Argentino Inferiores")
+
+    co_local("PRIMERA_B", "San José", "San José Inferiores")
+    cross("PRIMERA_B", "San José", "PRIMERA_B", "Excursionistas")
+    cross_global("San José", "Excursionistas Femenino")
+    co_local("PRIMERA_B", "Excursionistas", "Excursionistas Femenino")
+
+    co_local("PRIMERA_B", "Alumni", "Alumni Inferiores")
+    cross("PRIMERA_B", "Alumni", "PRIMERA_A", "Juarense")
+
+    co_local("PRIMERA_A", "Deportivo Tandil", "Deportivo Tandil Inferiores")
+    cross("PRIMERA_A", "Deportivo Tandil", None, "Juventud Unida Fem (Blanco)")
+    cross("PRIMERA_A", "Deportivo Tandil", "PRIMERA_B", "Defensores del Cerro")
+
+    co_local("PRIMERA_B", "Defensores del Cerro", "Defensores del Cerro Inferiores")
+    co_local("PRIMERA_B", "Defensores del Cerro", "Juventud Unida Fem (Blanco)")
+
+    cross("PRIMERA_A", "Juarense", None, "Juarense Femenino")
+
+    co_local("PRIMERA_A", "UNICEN", "UNICEN")
+    co_local("PRIMERA_B", "Grupo Universitario", "Grupo Universitario")
+    cross("PRIMERA_A", "UNICEN", "PRIMERA_B", "Grupo Universitario")
+
+    co_local("PRIMERA_A", "ATLETICO AYACUCHO", "ATLETICO AYACUCHO Inferiores")
+    cross("PRIMERA_A", "ATLETICO AYACUCHO", None, "ATLETICO AYACUCHO Femenino")
+
+    co_local("PRIMERA_A", "SARMIENTO (AYACUCHO)", "SARMIENTO (AYACUCHO) Inferiores")
+    co_local("PRIMERA_B", "ATENEO ESTRADA", "ATENEO ESTRADA Inferiores")
+    cross("PRIMERA_A", "SARMIENTO (AYACUCHO)", "PRIMERA_B", "ATENEO ESTRADA")
+
+    co_local("PRIMERA_B", "DEPORTIVO RAUCH", "DEPORTIVO RAUCH Inferiores")
+
+    co_local("PRIMERA_A", "Santamarina", "Santamarina")
+    cross("PRIMERA_A", "Santamarina", None, "Santamarina Femenino")
+    cross("PRIMERA_A", "Santamarina", "PRIMERA_B", "Oficina")
+    co_local("PRIMERA_B", "Oficina", "Santamarina Femenino")
+
+    co_local("PRIMERA_A", "Gimnasia y Esgrima", "Gimnasia y Esgrima")
+    cross("PRIMERA_A", "Gimnasia y Esgrima", None, "Gimnasia y Esgrima Femenino")
+
+    co_local("PRIMERA_A", "Juventud Unida", "Juventud Unida Infantiles")
+    cross("PRIMERA_A", "Juventud Unida", "PRIMERA_B", "Unión y Progreso")
+    co_local("PRIMERA_A", "Juventud Unida", "San José Femenino")
+    co_local("PRIMERA_A", "Juventud Unida", "Juventud Unida Fem (Negro)")
+    cross("PRIMERA_B", "Unión y Progreso", None, "San José Femenino")
+    cross("PRIMERA_B", "Unión y Progreso", None, "Juventud Unida Fem (Negro)")
+
+    co_local("PRIMERA_B", "SAN LORENZO (RAUCH)", "SAN LORENZO (RAUCH) Inferiores")
+    co_local("PRIMERA_B", "SAN LORENZO (RAUCH)", "SAN LORENZO (RAUCH) Femenino")
+
+    # Regla general: clubes que comparten estadio se cruzan, salvo excepciones explícitas.
+    exceptions = {
+        frozenset(("Loma Negra", "Loma Negra Inferiores")),
+        frozenset(("Loma Negra", "Loma Negra Femenino")),
+        frozenset(("Independiente (rojo)", "Independiente Femenino")),
+        frozenset(("BOTAFOGO F.C.", "BOTAFOGO F.C. Inferiores")),
+        frozenset(("Ferro Azul", "Ferrocarril Sud Femenino")),
+        frozenset(("DEFENSORES DE AYACUCHO", "DEFENSORES DE AYACUCHO Inferiores")),
+        frozenset(("Velense", "Velense Inferiores")),
+        frozenset(("Argentino", "Argentino Inferiores")),
+        frozenset(("San José", "San José Inferiores")),
+        frozenset(("Excursionistas", "Excursionistas Femenino")),
+        frozenset(("Alumni", "Alumni Inferiores")),
+        frozenset(("Deportivo Tandil", "Deportivo Tandil Inferiores")),
+        frozenset(("Defensores del Cerro", "Defensores del Cerro Inferiores")),
+        frozenset(("Defensores del Cerro", "Juventud Unida Fem (Blanco)")),
+        frozenset(("ATLETICO AYACUCHO", "ATLETICO AYACUCHO Inferiores")),
+        frozenset(("SARMIENTO (AYACUCHO)", "SARMIENTO (AYACUCHO) Inferiores")),
+        frozenset(("ATENEO ESTRADA", "ATENEO ESTRADA Inferiores")),
+        frozenset(("DEPORTIVO RAUCH", "DEPORTIVO RAUCH Inferiores")),
+        frozenset(("Oficina", "Santamarina Femenino")),
+        frozenset(("Juventud Unida", "Juventud Unida Fem (Negro)")),
+        frozenset(("SAN LORENZO (RAUCH)", "SAN LORENZO (RAUCH) Inferiores")),
+        frozenset(("SAN LORENZO (RAUCH)", "SAN LORENZO (RAUCH) Femenino")),
+    }
+
+    estadio_grupos: defaultdict[str, list[str]] = defaultdict(list)
+    for team, stadium in estadio_de.items():
+        estadio_grupos[stadium].append(team)
+
+    for teams in estadio_grupos.values():
+        if len(teams) < 2:
+            continue
+        for a, b in combinations(sorted(set(teams)), 2):
+            if frozenset((a, b)) not in exceptions:
+                cross_global(a, b)
+
+    # Ayacucho: máximo 2 locales simultáneos.
+    ayacucho_teams = [
+        t
+        for t in ["DEFENSORES DE AYACUCHO", "ATLETICO AYACUCHO", "SARMIENTO (AYACUCHO)", "ATENEO ESTRADA"]
+        if t in all_entities
+    ]
+    for fecha in range(1, NUM_FECHAS + 1):
+        vars_home = [v for t in ayacucho_teams for v in vars_team_global(fecha, t, home=True)]
+        if len(vars_home) >= 3:
+            model.Add(sum(vars_home) <= 2)
+
+    # Alternancia: no 4 locales ni 4 visitas en ventanas de 4.
+    penalties = []
+    run3_flags = {}
+
+    for team in all_entities:
+        home_f = {}
+        away_f = {}
+        team_penalties = []
+
+        for fecha in range(1, NUM_FECHAS + 1):
+            hv = vars_team_global(fecha, team, home=True)
+            av = vars_team_global(fecha, team, home=False)
+            home_f[fecha] = hv[0] if len(hv) == 1 else (sum(hv) if hv else 0)
+            away_f[fecha] = av[0] if len(av) == 1 else (sum(av) if av else 0)
+
+        for d in range(1, NUM_FECHAS - 2):
+            w_home = [home_f[d + k] for k in range(4)]
+            w_away = [away_f[d + k] for k in range(4)]
+            if any(not isinstance(x, int) for x in w_home):
+                model.Add(sum(w_home) <= 3)
+            if any(not isinstance(x, int) for x in w_away):
+                model.Add(sum(w_away) <= 3)
+
+        for d in range(1, NUM_FECHAS - 1):
+            w3h = [home_f[d + k] for k in range(3)]
+            if any(not isinstance(x, int) for x in w3h):
+                ph = model.NewBoolVar(f"p3h_{team}_{d}")
+                model.Add(sum(w3h) == 3).OnlyEnforceIf(ph)
+                model.Add(sum(w3h) <= 2).OnlyEnforceIf(ph.Not())
+                team_penalties.append(ph)
+                penalties.append(ph)
+
+            w3a = [away_f[d + k] for k in range(3)]
+            if any(not isinstance(x, int) for x in w3a):
+                pa = model.NewBoolVar(f"p3a_{team}_{d}")
+                model.Add(sum(w3a) == 3).OnlyEnforceIf(pa)
+                model.Add(sum(w3a) <= 2).OnlyEnforceIf(pa.Not())
+                team_penalties.append(pa)
+                penalties.append(pa)
+
+        run3 = model.NewBoolVar(f"run3_{team}")
+        if team_penalties:
+            model.AddMaxEquality(run3, team_penalties)
         else:
-            for v_hA in hA:
-                for v_vB in vB:
-                    model.Add(v_hA + v_vB <= 1)
-            for v_vA in vA:
-                for v_hB in hB:
-                    model.Add(v_vA + v_hB <= 1)
+            model.Add(run3 == 0)
+        run3_flags[team] = run3
 
+    if run3_flags:
+        model.AddMinEquality(model.NewIntVar(0, 1, "run3_min"), list(run3_flags.values()))
+        model.AddMaxEquality(model.NewIntVar(0, 1, "run3_max"), list(run3_flags.values()))
+        run_vals = list(run3_flags.values())
+        for i in range(1, len(run_vals)):
+            model.Add(run_vals[i] == run_vals[0])
 
-def cross(ck_A, A, ck_B_or_None, B):
-    """
-    Cruce: A y B siempre con condiciones OPUESTAS en sus torneos.
-    A local en ck_A → B no local en ck_B (o global si ck_B=None).
-    A visit en ck_A → B no visit.
-    """
-    if A not in all_entities or B not in all_entities: return
-    if A not in COMPETITIONS.get(ck_A,{}).get("entities",[]): return
+    model.Minimize(sum(penalties) if penalties else 0)
 
-    for fecha in range(1, NUM_FECHAS+1):
-        hA = home_vars(fecha, ck_A, A)
-        vA = away_vars(fecha, ck_A, A)
-        if ck_B_or_None and B in COMPETITIONS.get(ck_B_or_None,{}).get("entities",[]):
-            hB = home_vars(fecha, ck_B_or_None, B)
-            vB = away_vars(fecha, ck_B_or_None, B)
-        else:
-            hB = home_vars_global(fecha, B)
-            vB = away_vars_global(fecha, B)
+    print(f"\n🔄 Resolviendo: {total_games} vars de localía")
+    solver = cp_model.CpSolver()
+    solver.parameters.max_time_in_seconds = 300.0
+    solver.parameters.num_search_workers = 8
 
-        for v_hA in hA:
-            for v_hB in hB:
-                model.Add(v_hA + v_hB <= 1)
-        for v_vA in vA:
-            for v_vB in vB:
-                model.Add(v_vA + v_vB <= 1)
+    status = solver.Solve(model)
+    status_txt = {
+        cp_model.OPTIMAL: "✅ ÓPTIMO",
+        cp_model.FEASIBLE: "⚡ FACTIBLE",
+        cp_model.INFEASIBLE: "❌ INFACTIBLE",
+        cp_model.UNKNOWN: "❓ DESCONOCIDO",
+    }
+    print(f"Estado: {status_txt.get(status, status)}")
 
-# ══════════════════════════════════════════════════════════════════════════════
-# 6. APLICAR REGLAS
-# ══════════════════════════════════════════════════════════════════════════════
-print("\nAplicando restricciones de localía...")
+    if status not in (cp_model.OPTIMAL, cp_model.FEASIBLE):
+        return 1
 
-# ── Independiente (azul, A) ────────────────────────────────────────────────────
-cross("PRIMERA_A", "Independiente",       None,       "Independiente Femenino")
-# ── Independiente Rojo (INF_B) ────────────────────────────────────────────────
-cross("INF_B",     "Independiente (rojo)", "PRIMERA_A","Independiente")
-# Rojo y Femenino van JUNTOS: cuando Azul es visitante, ambos son locales
-co_local("INF_B",  "Independiente (rojo)", "Independiente Femenino")
-# ── BOTAFOGO ──────────────────────────────────────────────────────────────────
-co_local("PRIMERA_B", "BOTAFOGO F.C.",    "BOTAFOGO F.C. Inferiores")
-# ── Ferrocarril Sud (A) ───────────────────────────────────────────────────────
-cross("PRIMERA_A", "Ferrocarril Sud",     None,       "Ferrocarril Sud Femenino")
-# ── Ferro Azul (INF_B) ────────────────────────────────────────────────────────
-cross("INF_B",     "Ferro Azul",          "PRIMERA_A","Ferrocarril Sud")
-# Azul y Femenino van JUNTOS: cuando Sud es visitante, ambos son locales
-co_local("INF_B",  "Ferro Azul",           "Ferrocarril Sud Femenino")
-# ── Defensores Ayacucho ───────────────────────────────────────────────────────
-co_local("PRIMERA_A", "DEFENSORES DE AYACUCHO", "DEFENSORES DE AYACUCHO Inferiores")
-# ── Velense ───────────────────────────────────────────────────────────────────
-co_local("PRIMERA_A", "Velense",          "Velense Inferiores")
-# ── Argentino ─────────────────────────────────────────────────────────────────
-co_local("PRIMERA_B", "Argentino",        "Argentino Inferiores")
-# ── San José ──────────────────────────────────────────────────────────────────
-co_local("PRIMERA_B", "San José",         "San José Inferiores")
-# San José siempre opuesto a Excursionistas masculino
-cross("PRIMERA_B",    "San José",         "PRIMERA_B","Excursionistas")
-# NO cross directo San José-ExcFem: triángulo imposible con Exc-ExcFem (same)
-# La relación es transitiva: SJ cross Exc + Exc co_local ExcFem => SJ opp ExcFem
-# ── Excursionistas ────────────────────────────────────────────────────────────
-# Exc y ExcFem van JUNTOS (cuando SJ es local, Exc+ExcFem son visitantes)
-co_local("PRIMERA_B", "Excursionistas",   "Excursionistas Femenino")
-# ── Alumni ────────────────────────────────────────────────────────────────────
-co_local("PRIMERA_B", "Alumni",           "Alumni Inferiores")
-cross("PRIMERA_B",    "Alumni",           "PRIMERA_A","Juarense")
-# ── Deportivo Tandil ──────────────────────────────────────────────────────────
-co_local("PRIMERA_A", "Deportivo Tandil", "Deportivo Tandil Inferiores")
-cross("PRIMERA_A",    "Deportivo Tandil", None,       "Juventud Unida Fem (Blanco)")
-cross("PRIMERA_A",    "Deportivo Tandil", "PRIMERA_B","Defensores del Cerro")
-# ── Defensores del Cerro ──────────────────────────────────────────────────────
-co_local("PRIMERA_B", "Defensores del Cerro", "Defensores del Cerro Inferiores")
-co_local("PRIMERA_B", "Defensores del Cerro", "Juventud Unida Fem (Blanco)")
-# ── Loma Negra — EXCEPCIÓN: femenino co-local ─────────────────────────────────
-co_local("PRIMERA_B", "Loma Negra",       "Loma Negra Inferiores")
-co_local("PRIMERA_B", "Loma Negra",       "Loma Negra Femenino")
-# ── Juarense ──────────────────────────────────────────────────────────────────
-cross("PRIMERA_A",    "Juarense",         None,       "Juarense Femenino")
-# ── UNICEN ────────────────────────────────────────────────────────────────────
-cross("PRIMERA_A",    "UNICEN",           "PRIMERA_B","Grupo Universitario")
-# ── Atlético Ayacucho ─────────────────────────────────────────────────────────
-co_local("PRIMERA_A", "ATLETICO AYACUCHO","ATLETICO AYACUCHO Inferiores")
-cross("PRIMERA_A",    "ATLETICO AYACUCHO",None,       "ATLETICO AYACUCHO Femenino")
-# ── Sarmiento Ayacucho ────────────────────────────────────────────────────────
-co_local("PRIMERA_A", "SARMIENTO (AYACUCHO)", "SARMIENTO (AYACUCHO) Inferiores")
-cross("PRIMERA_A",    "SARMIENTO (AYACUCHO)","PRIMERA_B","ATENEO ESTRADA")
-# ── Ateneo Estrada ────────────────────────────────────────────────────────────
-co_local("PRIMERA_B", "ATENEO ESTRADA",   "ATENEO ESTRADA Inferiores")
-# ── Deportivo Rauch ───────────────────────────────────────────────────────────
-co_local("PRIMERA_B", "DEPORTIVO RAUCH",  "DEPORTIVO RAUCH Inferiores")
-# ── Santamarina ───────────────────────────────────────────────────────────────
-cross("PRIMERA_A",    "Santamarina",      None,       "Santamarina Femenino")
-cross("PRIMERA_A",    "Santamarina",      "PRIMERA_B","Oficina")
-# ── Gimnasia ──────────────────────────────────────────────────────────────────
-cross("PRIMERA_A",    "Gimnasia y Esgrima",None,      "Gimnasia y Esgrima Femenino")
-# ── Oficina ───────────────────────────────────────────────────────────────────
-co_local("PRIMERA_B", "Oficina",          "Santamarina Femenino")
-# ── Juventud Unida ────────────────────────────────────────────────────────────
-co_local("PRIMERA_A", "Juventud Unida",   "Juventud Unida Infantiles")
-cross("PRIMERA_A",    "Juventud Unida",   "PRIMERA_B","Unión y Progreso")
-co_local("PRIMERA_A", "Juventud Unida",   "San José Femenino")
-co_local("PRIMERA_A", "Juventud Unida",   "Juventud Unida Fem (Negro)")
-# ── Unión y Progreso ──────────────────────────────────────────────────────────
-cross("PRIMERA_B",    "Unión y Progreso", None,       "San José Femenino")
-cross("PRIMERA_B",    "Unión y Progreso", None,       "Juventud Unida Fem (Negro)")
-# ── San Lorenzo Rauch — femenino co-local (sub16, sin conflicto de cancha) ────
-co_local("PRIMERA_B", "SAN LORENZO (RAUCH)", "SAN LORENZO (RAUCH) Inferiores")
-co_local("PRIMERA_B", "SAN LORENZO (RAUCH)", "SAN LORENZO (RAUCH) Femenino")
-
-# ══════════════════════════════════════════════════════════════════════════════
-# 7. AYACUCHO: ≤ 2 LOCALES SIMULTÁNEOS
-# ══════════════════════════════════════════════════════════════════════════════
-ayacucho = [n for n in ["DEFENSORES DE AYACUCHO","ATLETICO AYACUCHO",
-                         "SARMIENTO (AYACUCHO)","ATENEO ESTRADA"] if n in all_entities]
-
-for fecha in range(1, NUM_FECHAS+1):
-    aya_home = [v for n in ayacucho for v in home_vars_global(fecha, n)]
-    if len(aya_home) >= 3:
-        model.Add(sum(aya_home) <= 2)
-
-# ══════════════════════════════════════════════════════════════════════════════
-# 8. ALTERNANCIA: MÁXIMO 3 CONSECUTIVOS + SOFT PENALTY
-# ══════════════════════════════════════════════════════════════════════════════
-penalties = []
-
-for n in all_entities:
-    # Construir secuencia de condición por fecha: 1=local, -1=visit, 0=libre
-    # Para rachas usamos vars booleanas por fecha
-    home_f  = {}  # fecha -> var o constante
-    away_f  = {}
-
-    for fecha in range(1, NUM_FECHAS+1):
-        hv = home_vars_global(fecha, n)
-        av = away_vars_global(fecha, n)
-        home_f[fecha] = hv[0] if len(hv) == 1 else (sum(hv) if hv else 0)
-        away_f[fecha] = av[0] if len(av) == 1 else (sum(av) if av else 0)
-
-    # Máximo 3 locales consecutivos (duro)
-    for d in range(1, NUM_FECHAS - 2):
-        window = [home_f[d+k] for k in range(4) if d+k <= NUM_FECHAS]
-        if len(window) == 4 and any(not isinstance(w, int) for w in window):
-            model.Add(sum(window) <= 3)
-
-    # Máximo 3 visitantes consecutivos (duro)
-    for d in range(1, NUM_FECHAS - 2):
-        window = [away_f[d+k] for k in range(4) if d+k <= NUM_FECHAS]
-        if len(window) == 4 and any(not isinstance(w, int) for w in window):
-            model.Add(sum(window) <= 3)
-
-    # Soft: penalizar ventanas de exactamente 3 locales/visitantes seguidos
-    for d in range(1, NUM_FECHAS - 1):
-        w3h = [home_f[d+k] for k in range(3) if d+k <= NUM_FECHAS]
-        if len(w3h) == 3 and any(not isinstance(w, int) for w in w3h):
-            pl = model.NewBoolVar(f"pl_{n}_{d}")
-            model.Add(sum(w3h) == 3).OnlyEnforceIf(pl)
-            model.Add(sum(w3h) <= 2).OnlyEnforceIf(pl.Not())
-            penalties.append(pl)
-
-        w3a = [away_f[d+k] for k in range(3) if d+k <= NUM_FECHAS]
-        if len(w3a) == 3 and any(not isinstance(w, int) for w in w3a):
-            pv = model.NewBoolVar(f"pv_{n}_{d}")
-            model.Add(sum(w3a) == 3).OnlyEnforceIf(pv)
-            model.Add(sum(w3a) <= 2).OnlyEnforceIf(pv.Not())
-            penalties.append(pv)
-
-model.Minimize(sum(penalties))
-
-# ══════════════════════════════════════════════════════════════════════════════
-# 9. RESOLUCIÓN
-# ══════════════════════════════════════════════════════════════════════════════
-print(f"\n🔄 Resolviendo v8 — {P} vars de localía + {len(penalties)} penalty vars")
-solver = cp_model.CpSolver()
-solver.parameters.max_time_in_seconds = 300.0
-solver.parameters.num_search_workers  = 8
-solver.parameters.log_search_progress = True
-
-status = solver.Solve(model)
-
-STATUS_TXT = {
-    cp_model.OPTIMAL:    "✅ ÓPTIMO",
-    cp_model.FEASIBLE:   "⚡ FACTIBLE (tiempo agotado antes del óptimo)",
-    cp_model.INFEASIBLE: "❌ INFACTIBLE",
-    cp_model.UNKNOWN:    "❓ DESCONOCIDO",
-}
-print(f"\nEstado: {STATUS_TXT.get(status, str(status))}")
-
-if status in (cp_model.OPTIMAL, cp_model.FEASIBLE):
     fixture = []
-    for p, (fecha, ck, A, B) in enumerate(all_games):
-        if solver.Value(local[p]) == 1:
-            loc, vis = A, B
-        else:
-            loc, vis = B, A
-        fixture.append({
-            "competencia": ck,
-            "fecha":  fecha,
-            "local":  loc,
-            "visitante": vis,
-            "estadio": estadio_de.get(loc, "A confirmar"),
-        })
+    for i, (fecha, ck, a, b) in enumerate(all_games):
+        home, away = (a, b) if solver.Value(local[i]) else (b, a)
+        fixture.append(
+            {
+                "competencia": ck,
+                "fecha": fecha,
+                "local": home,
+                "visitante": away,
+                "estadio": estadio_de.get(home, "A confirmar"),
+            }
+        )
 
     fixture.sort(key=lambda x: (x["competencia"], x["fecha"], x["local"]))
+    with open(OUTPUT_JSON, "w", encoding="utf-8") as fh:
+        json.dump(fixture, fh, indent=2, ensure_ascii=False)
 
-    out = os.path.join(SCRIPT_DIR, "fixture_output.json")
-    with open(out, "w", encoding="utf-8") as fh:
-        json.dump(fixture, fh, indent=4, ensure_ascii=False)
+    print(f"✅ Fixture generado: {len(fixture)} partidos en {OUTPUT_JSON}")
+    return 0
 
-    print(f"✅ {len(fixture)} partidos → {out}")
-    print(f"   Penalización rachas de 3: {int(solver.ObjectiveValue())}")
 
-    from collections import Counter, defaultdict
-    cnt = Counter(p["competencia"] for p in fixture)
-    print("\n=== RESUMEN ===")
-    for ck in sorted(cnt):
-        n   = len(COMPETITIONS[ck]["entities"])
-        exp = n * (n - 1)
-        print(f"  {'✓' if cnt[ck]==exp else '⚠'} {ck:12s}: {cnt[ck]:4d}/{exp:4d}")
-
-    # Verificación femenino/masculino
-    cond = defaultdict(lambda: 'libre')
-    for p in fixture:
-        cond[(p['fecha'], p['local'])]     = 'local'
-        cond[(p['fecha'], p['visitante'])] = 'visitante'
-
-    print("\n=== VERIFICACIÓN FEMENINO/MASCULINO ===")
-    checks = [
-        ("cross", "Independiente",       "Independiente Femenino"),
-        ("cross", "Ferrocarril Sud",      "Ferrocarril Sud Femenino"),
-        ("cross", "Excursionistas",       "Excursionistas Femenino"),
-        ("cross", "Gimnasia y Esgrima",   "Gimnasia y Esgrima Femenino"),
-        ("cross", "Santamarina",          "Santamarina Femenino"),
-        ("cross", "Juarense",             "Juarense Femenino"),
-        ("cross", "ATLETICO AYACUCHO",    "ATLETICO AYACUCHO Femenino"),
-        ("coloc", "Loma Negra",           "Loma Negra Femenino"),
-        ("coloc", "SAN LORENZO (RAUCH)",  "SAN LORENZO (RAUCH) Femenino"),
-    ]
-    for tipo, M, F in checks:
-        v = sum(1 for f in range(1, NUM_FECHAS+1)
-                if cond[(f,M)] != 'libre' and cond[(f,F)] != 'libre'
-                and (cond[(f,M)] == cond[(f,F)] if tipo=="cross"
-                     else (cond[(f,M)]=='local' and cond[(f,F)]=='visitante')))
-        print(f"  {'✅' if v==0 else f'❌ {v}':<6} {tipo.upper()} {M} ↔ {F}")
-
-elif status == cp_model.INFEASIBLE:
-    print("\n❌ INFACTIBLE — hay un conflicto lógico entre restricciones.")
-    print("   Ejecutar con solo el bloque 5 (sin rachas) para confirmar.")
-else:
-    print("\n❓ Sin solución en 300s. Probar con 600s o revisar restricciones.")
+if __name__ == "__main__":
+    raise SystemExit(main())
