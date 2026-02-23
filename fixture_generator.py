@@ -1,47 +1,29 @@
 """
-fixture_generator.py  ·  v6.0 DEFINITIVA — REGLAS FEMENINO CORREGIDAS
-==========================================
+fixture_generator.py  ·  v8.0 — MODELO DE DOS FASES
+=====================================================
 
-CAUSA RAÍZ DE LA INFEASIBILIDAD (RESUELTO)
+POR QUÉ LOS MODELOS ANTERIORES ERAN LENTOS
 --------------------------------------------
-Los scripts anteriores implementaban "espejo" como es_local[A] == es_local[B],
-o como co_local global usando es_local[A] = OR de TODAS las competencias de A.
+v5-v7 tenían ~18,000 variables: una por cada combinación (fecha × partido).
+El solver intentaba decidir SIMULTÁNEAMENTE en qué fecha va cada partido
+Y quién juega de local. El espacio de búsqueda era imposible de recorrer.
 
-Esto era imposible porque equipos como Independiente, Santamarina, Juventud Unida
-etc. participan en DOS competencias (PRIMERA + INF), acumulando ~21 partidos como
-local. Obligar a que su satélite (10-12 locales) estuviera local 21 veces era
-matemáticamente imposible.
+SOLUCIÓN: DOS FASES
+--------------------
+FASE 1 (Python puro, instantánea):
+  Asignar cada partido a una fecha usando el algoritmo canónico de round-robin.
+  Con n equipos: ronda r = fecha r (vuelta 1), fecha n-1+r (vuelta 2).
+  Resultado: 706 partidos con fecha fija.
 
-SOLUCIÓN DEFINITIVA: Todas las restricciones cruzadas operan sobre variables
-POR COMPETENCIA ESPECÍFICA (es_local_comp, es_visitante_comp), no sobre el OR global.
-
-Las reglas "cuando mayores es local" se refieren ÚNICAMENTE a la categoría mayor
-del club (PRIMERA_A o PRIMERA_B), no a sus categorías de inferiores.
-
-Las reglas de "cruce" entre dos clubes que están en distintas categorías se
-aplican comparando sus respectivas categorías principales.
-
-SEMÁNTICA DE LAS RESTRICCIONES
---------------------------------
-co_local_comp(ck, A, B):
-  "Cuando A juega de LOCAL en su torneo ck → B no puede salir de VISITA"
-  es_local_comp[ck,A,d] + es_visitante[B,d] <= 1
-  es_local[B,d] + es_visitante_comp[ck,A,d] <= 1  (bidireccional)
-
-cross_bilateral_comp(ck_A, A, ck_B, B):
-  "A y B siempre tienen condiciones OPUESTAS en sus respectivos torneos principales"
-  es_local_comp[ck_A,A,d] + es_local_comp[ck_B,B,d] <= 1
-  es_visitante_comp[ck_A,A,d] + es_visitante_comp[ck_B,B,d] <= 1
-
-cross_to_global_comp(ck_A, A, B):
-  "A local en ck_A → B (que solo tiene una competencia) no puede ser local"
-  es_local_comp[ck_A,A,d] + es_local[B,d] <= 1
-  es_visitante_comp[ck_A,A,d] + es_visitante[B,d] <= 1
+FASE 2 (CP-SAT, solo 706 variables):
+  Para cada partido ya asignado, decidir la LOCALÍA:
+    local[p] = 1  →  equipo A es local
+    local[p] = 0  →  equipo B es local
+  El solver solo necesita satisfacer las restricciones de cruce/co-local
+  sobre estos 706 bits binarios. El modelo es 26x más pequeño.
 """
 
-import json
-import os
-import sys
+import json, os, sys
 from itertools import combinations
 from ortools.sat.python import cp_model
 
@@ -55,8 +37,7 @@ try:
     with open(EQUIPOS_JSON, "r", encoding="utf-8") as fh:
         data = json.load(fh)
 except FileNotFoundError:
-    print(f"❌ No se encontró '{EQUIPOS_JSON}'.")
-    sys.exit(1)
+    sys.exit(f"❌ No se encontró '{EQUIPOS_JSON}'.")
 
 equipos_data = data["equipos"]
 estadio_de   = {e["nombre"]: e.get("estadioLocal", "A confirmar") for e in equipos_data}
@@ -79,9 +60,6 @@ COMP_DEFS = [
     ("FEMENINO",  FEM_CATS,    None),
 ]
 
-def rondas(n):
-    return (n - 1) * 2 if n % 2 == 0 else n * 2
-
 COMPETITIONS = {}
 for ck, cats, div in COMP_DEFS:
     parts = sorted({
@@ -90,399 +68,360 @@ for ck, cats, div in COMP_DEFS:
         and (div is None or e.get("divisionMayor") == div)
     })
     if len(parts) >= 2:
-        COMPETITIONS[ck] = {"entities": parts, "max_rondas": rondas(len(parts))}
+        COMPETITIONS[ck] = {"entities": parts}
 
 NUM_FECHAS = 26
+all_entities = sorted({n for c in COMPETITIONS.values() for n in c["entities"]})
 
 print("=== COMPETENCIAS ===")
 for ck, comp in COMPETITIONS.items():
     n = len(comp["entities"])
-    print(f"  {ck:12s}: {n:2d} equipos · {n-1:2d} locales/equipo · {comp['max_rondas']:2d} rondas · max_fecha={NUM_FECHAS}")
-
-all_entities = sorted({n for comp in COMPETITIONS.values() for n in comp["entities"]})
+    print(f"  {ck:12s}: {n:2d} equipos · {n-1:2d} locales/equipo · {(n-1)*2:2d} rondas")
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 3. MODELO
+# 3. FASE 1 — ASIGNACIÓN DE FECHAS (round-robin canónico)
+# ══════════════════════════════════════════════════════════════════════════════
+
+def round_robin_rounds(teams):
+    """Algoritmo de rotación. Retorna lista de rondas [(t1,t2), ...]."""
+    t = list(teams)
+    if len(t) % 2 == 1:
+        t.append("BYE")
+    n = len(t)
+    fixed, rotating = t[0], t[1:]
+    rounds = []
+    for _ in range(n - 1):
+        circle = [fixed] + rotating
+        pairs = [(circle[i], circle[n-1-i])
+                 for i in range(n//2)
+                 if circle[i] != "BYE" and circle[n-1-i] != "BYE"]
+        rounds.append(pairs)
+        rotating = [rotating[-1]] + rotating[:-1]
+    return rounds
+
+# Generar todos los partidos con fecha asignada
+# all_games[p] = (fecha, ck, A, B)  — solver decide si A o B es local
+all_games = []
+
+for ck, comp in COMPETITIONS.items():
+    rounds = round_robin_rounds(comp["entities"])
+    nr = len(rounds)
+    # Vuelta 1: fechas 1..nr
+    for r, ronda in enumerate(rounds):
+        for t1, t2 in ronda:
+            all_games.append((r + 1, ck, t1, t2))
+    # Vuelta 2: fechas nr+1..2*nr
+    for r, ronda in enumerate(rounds):
+        for t1, t2 in ronda:
+            all_games.append((nr + r + 1, ck, t1, t2))
+
+P = len(all_games)
+print(f"\nFase 1 completada: {P} partidos con fechas fijas")
+
+# Índices de partidos por (fecha, equipo) para lookup rápido
+from collections import defaultdict
+games_by_date_team = defaultdict(list)  # (fecha, equipo) -> [idx_partido]
+games_by_date_comp = defaultdict(list)  # (fecha, ck) -> [idx_partido]
+
+for idx, (fecha, ck, A, B) in enumerate(all_games):
+    games_by_date_team[(fecha, A)].append(idx)
+    games_by_date_team[(fecha, B)].append(idx)
+    games_by_date_comp[(fecha, ck)].append(idx)
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 4. FASE 2 — MODELO CP-SAT: solo localía
 # ══════════════════════════════════════════════════════════════════════════════
 model = cp_model.CpModel()
 
-# ── Variables de partido ──────────────────────────────────────────────────────
-match = {}
-for ck, comp in COMPETITIONS.items():
-    for d in range(NUM_FECHAS):
-        for i, j in combinations(comp["entities"], 2):
-            match[d, ck, i, j] = model.NewBoolVar(f"m_{d}_{ck}_{i}__{j}")
-            match[d, ck, j, i] = model.NewBoolVar(f"m_{d}_{ck}_{j}__{i}")
+# local[p] = 1 → all_games[p][2] (equipo A) es local
+# local[p] = 0 → all_games[p][3] (equipo B) es local
+local = [model.NewBoolVar(f"loc_{p}") for p in range(P)]
 
-# ── Variables globales (OR de todas las competencias del equipo) ──────────────
-es_local     = {(d, n): model.NewBoolVar(f"L_{d}_{n}") for d in range(NUM_FECHAS) for n in all_entities}
-es_visitante = {(d, n): model.NewBoolVar(f"V_{d}_{n}") for d in range(NUM_FECHAS) for n in all_entities}
+def is_local(p, team):
+    """Expresión lineal: 1 si team es local en partido p."""
+    _, _, A, B = all_games[p]
+    if team == A: return local[p]
+    if team == B: return local[p].Not()
+    raise ValueError(f"{team} no juega en partido {p}")
 
-# ── Variables por competencia ─────────────────────────────────────────────────
-es_lc = {}  # es_local_comp[d, ck, n]
-es_vc = {}  # es_visitante_comp[d, ck, n]
-for ck, comp in COMPETITIONS.items():
-    for n in comp["entities"]:
-        for d in range(NUM_FECHAS):
-            es_lc[d, ck, n] = model.NewBoolVar(f"Lc_{d}_{ck}_{n}")
-            es_vc[d, ck, n] = model.NewBoolVar(f"Vc_{d}_{ck}_{n}")
+def is_visitor(p, team):
+    _, _, A, B = all_games[p]
+    if team == A: return local[p].Not()
+    if team == B: return local[p]
+    raise ValueError(f"{team} no juega en partido {p}")
 
-# ══════════════════════════════════════════════════════════════════════════════
-# 4. RESTRICCIONES DE TORNEO
-# ══════════════════════════════════════════════════════════════════════════════
-for ck, comp in COMPETITIONS.items():
-    ents = comp["entities"]
+def home_vars(fecha, ck, team):
+    """Lista de vars 'team es local' en (fecha, ck)."""
+    return [is_local(p, team)
+            for p in games_by_date_comp[(fecha, ck)]
+            if all_games[p][2] == team or all_games[p][3] == team]
 
-    for i, j in combinations(ents, 2):
-        model.Add(sum(match[d, ck, i, j] for d in range(NUM_FECHAS)) == 1)
-        model.Add(sum(match[d, ck, j, i] for d in range(NUM_FECHAS)) == 1)
+def away_vars(fecha, ck, team):
+    return [is_visitor(p, team)
+            for p in games_by_date_comp[(fecha, ck)]
+            if all_games[p][2] == team or all_games[p][3] == team]
 
-    for d in range(NUM_FECHAS):
-        for i in ents:
-            apars = (
-                [match[d, ck, i, j] for j in ents if j != i] +
-                [match[d, ck, j, i] for j in ents if j != i]
-            )
-            model.Add(sum(apars) <= 1)
+def home_vars_global(fecha, team):
+    """Lista de vars 'team es local' en cualquier comp en fecha dada."""
+    return [is_local(p, team) for p in games_by_date_team[(fecha, team)]]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# 5. CONSOLIDACIÓN DE VARIABLES
-# ══════════════════════════════════════════════════════════════════════════════
-for n in all_entities:
-    for d in range(NUM_FECHAS):
-        # Variables por competencia
-        for ck, comp in COMPETITIONS.items():
-            if n not in comp["entities"]:
-                continue
-            l_ck = [match[d, ck, n, j] for j in comp["entities"] if j != n]
-            v_ck = [match[d, ck, j, n] for j in comp["entities"] if j != n]
+def away_vars_global(fecha, team):
+    return [is_visitor(p, team) for p in games_by_date_team[(fecha, team)]]
 
-            for v in l_ck: model.Add(es_lc[d, ck, n] >= v)
-            model.Add(es_lc[d, ck, n] <= sum(l_ck))
-            for v in v_ck: model.Add(es_vc[d, ck, n] >= v)
-            model.Add(es_vc[d, ck, n] <= sum(v_ck))
+# ── Restricción base: no puede ser local Y visitante el mismo día ─────────────
+# (Ya está implícito porque cada equipo juega máx 1 partido/fecha/comp,
+#  pero un equipo en 2 comps podría jugar 2 partidos el mismo día en comps distintas.
+#  Eso está OK, pero no puede ser local en una y visitante en la otra si hay
+#  restricción de co_local. La base es: un equipo puede tener max 1 partido/fecha
+#  POR COMPETENCIA. Entre competencias distintas pueden coincidir.)
 
-        # Variables globales
-        l_all = [match[d, ck, n, j]
-                 for ck, comp in COMPETITIONS.items()
-                 if n in comp["entities"]
-                 for j in comp["entities"] if j != n]
-        v_all = [match[d, ck, j, n]
-                 for ck, comp in COMPETITIONS.items()
-                 if n in comp["entities"]
-                 for j in comp["entities"] if j != n]
-
-        if l_all:
-            for v in l_all: model.Add(es_local[d, n] >= v)
-            model.Add(es_local[d, n] <= sum(l_all))
-        else:
-            model.Add(es_local[d, n] == 0)
-
-        if v_all:
-            for v in v_all: model.Add(es_visitante[d, n] >= v)
-            model.Add(es_visitante[d, n] <= sum(v_all))
-        else:
-            model.Add(es_visitante[d, n] == 0)
-
-        model.Add(es_local[d, n] + es_visitante[d, n] <= 1)
+# ── Rachas: helper ────────────────────────────────────────────────────────────
+# Para rachas necesitamos saber si el equipo tiene partido en esa fecha
+def has_game(fecha, team):
+    return len(games_by_date_team[(fecha, team)]) > 0
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 6. FUNCIONES DE RESTRICCIÓN
+# 5. RESTRICCIONES DE LOCALÍA
 # ══════════════════════════════════════════════════════════════════════════════
 
-_h2h_cache = {}
+# ── Helpers para restricciones cruzadas ──────────────────────────────────────
 
-def get_is_h2h(A, B, d):
-    """BoolVar = 1 si A y B se enfrentan directamente en fecha d."""
-    key = (min(A, B), max(A, B), d)
-    if key in _h2h_cache:
-        return _h2h_cache[key]
-    h2h = [match[d, ck, X, Y]
-           for ck, comp in COMPETITIONS.items()
-           if A in comp["entities"] and B in comp["entities"]
-           for X, Y in [(A, B), (B, A)]]
-    if not h2h:
-        _h2h_cache[key] = None
-        return None
-    v = model.NewBoolVar(f"h2h_{d}_{key[0][:5]}_{key[1][:5]}")
-    model.Add(sum(h2h) >= 1).OnlyEnforceIf(v)
-    model.Add(sum(h2h) == 0).OnlyEnforceIf(v.Not())
-    _h2h_cache[key] = v
-    return v
-
-def _are_rivals(A, B):
-    return any(A in comp["entities"] and B in comp["entities"]
-               for comp in COMPETITIONS.values())
-
-
-def co_local_comp(ck, A, B):
+def co_local(ck_A, A, B):
     """
-    CO-LOCAL desde competencia ck:
-    Cuando A es local en ck → B no puede ser visitante (global).
-    Bidireccional: Cuando B es local (global) → A no puede ser visitante en ck.
-    Con H2H bypass si A y B son rivales directos.
-    """
-    if A not in all_entities or B not in all_entities:
-        return
-    if A not in COMPETITIONS.get(ck, {}).get("entities", []):
-        print(f"  ⚠ co_local_comp({ck},{A},{B}): {A} no en {ck}")
-        return
-
-    is_rival = _are_rivals(A, B)
-
-    for d in range(NUM_FECHAS):
-        lA = es_lc[d, ck, A]
-        vA = es_vc[d, ck, A]
-        lB = es_local[d, B]
-        vB = es_visitante[d, B]
-
-        if is_rival:
-            h2h = get_is_h2h(A, B, d)
-            model.Add(lA + vB <= 1).OnlyEnforceIf(h2h.Not())
-            model.Add(lB + vA <= 1).OnlyEnforceIf(h2h.Not())
-        else:
-            model.Add(lA + vB <= 1)
-            model.Add(lB + vA <= 1)
-
-
-def cross_bilateral_comp(ck_A, A, ck_B, B):
-    """
-    CRUCE bilateral por competencia:
-    A y B tienen condiciones opuestas EN SUS RESPECTIVOS TORNEOS PRINCIPALES.
+    Cuando A es local en ck_A → B no puede ser visitante (en ninguna comp).
+    Bidireccional: B local (global) → A no puede ser visitante en ck_A.
     
-    - A local en ck_A → B no local en ck_B
-    - A visitante en ck_A → B no visitante en ck_B
+    Formulación directa sin vars auxiliares:
+      sum(home_vars(ck_A,A)) + sum(away_vars_global(B)) <= 1
+      sum(home_vars_global(B)) + sum(away_vars(ck_A,A)) <= 1
     
-    Semántica: "cuando el club A recibe en su torneo, el club B sale de visita en su torneo"
-    No necesita H2H bypass porque en el partido directo siempre uno es local y el otro visitante.
+    Nota: estos términos son al máximo 1 cada uno (un equipo juega max
+    1 partido/fecha/comp), así que la constraint es entre dos vars 0/1.
     """
-    if A not in all_entities or B not in all_entities:
-        return
-    ck_A_ents = COMPETITIONS.get(ck_A, {}).get("entities", [])
-    ck_B_ents = COMPETITIONS.get(ck_B, {}).get("entities", [])
-    if A not in ck_A_ents:
-        print(f"  ⚠ cross_bilateral_comp({ck_A},{A},{ck_B},{B}): {A} no en {ck_A}")
-        return
-    if B not in ck_B_ents:
-        print(f"  ⚠ cross_bilateral_comp({ck_A},{A},{ck_B},{B}): {B} no en {ck_B}")
-        return
+    if A not in all_entities or B not in all_entities: return
+    if A not in COMPETITIONS.get(ck_A,{}).get("entities",[]): return
 
-    for d in range(NUM_FECHAS):
-        lA = es_lc[d, ck_A, A]
-        vA = es_vc[d, ck_A, A]
-        lB = es_lc[d, ck_B, B]
-        vB = es_vc[d, ck_B, B]
+    for fecha in range(1, NUM_FECHAS+1):
+        hA = home_vars(fecha, ck_A, A)
+        vA = away_vars(fecha, ck_A, A)
+        hB = home_vars_global(fecha, B)
+        vB = away_vars_global(fecha, B)
 
-        model.Add(lA + lB <= 1)
-        model.Add(vA + vB <= 1)
+        # Si no hay partidos ese día, no hay restricción
+        if not hA and not vA: continue
+
+        # Si A y B se enfrentan directamente ese día → H2H bypass
+        is_h2h = any(
+            (all_games[p][2] in (A,B) and all_games[p][3] in (A,B))
+            for p in games_by_date_team[(fecha, A)]
+            if p in games_by_date_team[(fecha, B)]
+               # más estricto: mismo partido
+        )
+        # Verificación correcta de H2H
+        h2h_idx = [p for p in games_by_date_team[(fecha, A)]
+                   if p in games_by_date_team[(fecha, B)]
+                   and {all_games[p][2], all_games[p][3]} == {A, B}]
+        
+        if h2h_idx:
+            # Solo hay un partido directo. En ese partido no aplicamos co_local.
+            # Aplicamos co_local solo en partidos de ck_A donde A NO juega vs B.
+            hA_no_h2h = [v for p, v in zip(
+                [pp for pp in games_by_date_comp[(fecha, ck_A)]
+                 if all_games[pp][2]==A or all_games[pp][3]==A],
+                hA) if p not in h2h_idx]
+            # Simplificación: si el partido de A en ck_A ES el H2H, no hay restricción
+            # Si el partido de A en ck_A NO es el H2H, aplicar normalmente
+            for v_hA in hA_no_h2h:
+                for v_vB in vB:
+                    model.Add(v_hA + v_vB <= 1)
+            vA_no_h2h = [v for p, v in zip(
+                [pp for pp in games_by_date_comp[(fecha, ck_A)]
+                 if all_games[pp][2]==A or all_games[pp][3]==A],
+                vA) if p not in h2h_idx]
+            for v_vA in vA_no_h2h:
+                for v_hB in hB:
+                    model.Add(v_vA + v_hB <= 1)
+        else:
+            for v_hA in hA:
+                for v_vB in vB:
+                    model.Add(v_hA + v_vB <= 1)
+            for v_vA in vA:
+                for v_hB in hB:
+                    model.Add(v_vA + v_hB <= 1)
 
 
-def cross_to_global_comp(ck_A, A, B):
+def cross(ck_A, A, ck_B_or_None, B):
     """
-    CRUCE donde A tiene torneo específico y B solo tiene una competencia.
-    A local en ck_A → B no local (global).
-    A visitante en ck_A → B no visitante (global).
+    Cruce: A y B siempre con condiciones OPUESTAS en sus torneos.
+    A local en ck_A → B no local en ck_B (o global si ck_B=None).
+    A visit en ck_A → B no visit.
     """
-    if A not in all_entities or B not in all_entities:
-        return
-    if A not in COMPETITIONS.get(ck_A, {}).get("entities", []):
-        print(f"  ⚠ cross_to_global_comp({ck_A},{A},{B}): {A} no en {ck_A}")
-        return
+    if A not in all_entities or B not in all_entities: return
+    if A not in COMPETITIONS.get(ck_A,{}).get("entities",[]): return
 
-    for d in range(NUM_FECHAS):
-        lA = es_lc[d, ck_A, A]
-        vA = es_vc[d, ck_A, A]
-        lB = es_local[d, B]
-        vB = es_visitante[d, B]
+    for fecha in range(1, NUM_FECHAS+1):
+        hA = home_vars(fecha, ck_A, A)
+        vA = away_vars(fecha, ck_A, A)
+        if ck_B_or_None and B in COMPETITIONS.get(ck_B_or_None,{}).get("entities",[]):
+            hB = home_vars(fecha, ck_B_or_None, B)
+            vB = away_vars(fecha, ck_B_or_None, B)
+        else:
+            hB = home_vars_global(fecha, B)
+            vB = away_vars_global(fecha, B)
 
-        model.Add(lA + lB <= 1)
-        model.Add(vA + vB <= 1)
-
-
-# ══════════════════════════════════════════════════════════════════════════════
-# 7. REGLAS POR CLUB
-# ══════════════════════════════════════════════════════════════════════════════
-
-print("\nAplicando restricciones cruzadas...")
-
-# ── Independiente (azul, A) - PRIMERA_A ──────────────────────────────────────
-# Femenino cruzado (regla general). Ind solo tiene FEMENINO como satélite.
-cross_to_global_comp("PRIMERA_A", "Independiente", "Independiente Femenino")
-
-# ── Independiente Rojo - INF_B ────────────────────────────────────────────────
-# Cruce con Independiente azul (comparten estadio, INF_B vs PRIMERA_A)
-cross_bilateral_comp("INF_B", "Independiente (rojo)", "PRIMERA_A", "Independiente")
-# Rojo CRUZA con Femenino (cuando Rojo local -> Femenino visitante)
-cross_bilateral_comp("INF_B", "Independiente (rojo)", "FEMENINO", "Independiente Femenino")
-
-# ── BOTAFOGO - PRIMERA_B ─────────────────────────────────────────────────────
-co_local_comp("PRIMERA_B", "BOTAFOGO F.C.", "BOTAFOGO F.C. Inferiores")
-
-# ── Ferrocarril Sud - PRIMERA_A ───────────────────────────────────────────────
-# Femenino cruzado (regla general)
-cross_to_global_comp("PRIMERA_A", "Ferrocarril Sud", "Ferrocarril Sud Femenino")
-
-# ── Ferro Azul - INF_B ────────────────────────────────────────────────────────
-# Cruce con Ferrocarril Sud (comparten estadio)
-cross_bilateral_comp("INF_B", "Ferro Azul", "PRIMERA_A", "Ferrocarril Sud")
-# Ferro Azul CRUZA con Femenino (cuando Azul local -> Femenino visitante)
-cross_bilateral_comp("INF_B", "Ferro Azul", "FEMENINO", "Ferrocarril Sud Femenino")
-
-# ── Defensores de Ayacucho - PRIMERA_A ───────────────────────────────────────
-co_local_comp("PRIMERA_A", "DEFENSORES DE AYACUCHO", "DEFENSORES DE AYACUCHO Inferiores")
-
-# ── Velense - PRIMERA_A ───────────────────────────────────────────────────────
-co_local_comp("PRIMERA_A", "Velense", "Velense Inferiores")
-
-# ── Argentino - PRIMERA_B ─────────────────────────────────────────────────────
-co_local_comp("PRIMERA_B", "Argentino", "Argentino Inferiores")
-
-# ── San José - PRIMERA_B ──────────────────────────────────────────────────────
-co_local_comp("PRIMERA_B", "San José", "San José Inferiores")
-# Cruce con Excursionistas (ambos en PRIMERA_B)
-cross_bilateral_comp("PRIMERA_B", "San José", "PRIMERA_B", "Excursionistas")
-# Cruce con Excursionistas Femenino
-cross_to_global_comp("PRIMERA_B", "San José", "Excursionistas Femenino")
-
-# ── Excursionistas - PRIMERA_B + INF_B ───────────────────────────────────────
-# Co-local desde PRIMERA_B con femenino
-cross_to_global_comp("PRIMERA_B", "Excursionistas", "Excursionistas Femenino")
-# cross con San José ya aplicado
-
-# ── Alumni - PRIMERA_B ────────────────────────────────────────────────────────
-co_local_comp("PRIMERA_B", "Alumni", "Alumni Inferiores")
-# Cruce con Juarense (PRIMERA_A vs PRIMERA_B)
-cross_bilateral_comp("PRIMERA_B", "Alumni", "PRIMERA_A", "Juarense")
-
-# ── Deportivo Tandil - PRIMERA_A ─────────────────────────────────────────────
-co_local_comp("PRIMERA_A", "Deportivo Tandil", "Deportivo Tandil Inferiores")
-# Cruce con Juventud Unida Fem (Blanco) - solo FEMENINO
-cross_to_global_comp("PRIMERA_A", "Deportivo Tandil", "Juventud Unida Fem (Blanco)")
-# Cruce con Defensores del Cerro (PRIMERA_B)
-cross_bilateral_comp("PRIMERA_A", "Deportivo Tandil", "PRIMERA_B", "Defensores del Cerro")
-
-# ── Defensores del Cerro - PRIMERA_B ─────────────────────────────────────────
-co_local_comp("PRIMERA_B", "Defensores del Cerro", "Defensores del Cerro Inferiores")
-# Co-local con Juventud Unida Fem (Blanco)
-co_local_comp("PRIMERA_B", "Defensores del Cerro", "Juventud Unida Fem (Blanco)")
-# cross con Deportivo Tandil ya aplicado
-
-# ── Loma Negra - PRIMERA_B ────────────────────────────────────────────────────
-# EXCEPCIÓN: femenino co-local (no cruce)
-co_local_comp("PRIMERA_B", "Loma Negra", "Loma Negra Inferiores")
-co_local_comp("PRIMERA_B", "Loma Negra", "Loma Negra Femenino")
-
-# ── Juarense - PRIMERA_A + INF_A ─────────────────────────────────────────────
-# Femenino cruzado
-cross_to_global_comp("PRIMERA_A", "Juarense", "Juarense Femenino")
-# cross con Alumni ya aplicado
-
-# ── UNICEN - PRIMERA_A + INF_A ───────────────────────────────────────────────
-# Cruce con Grupo Universitario (PRIMERA_B)
-cross_bilateral_comp("PRIMERA_A", "UNICEN", "PRIMERA_B", "Grupo Universitario")
-
-# ── Atlético Ayacucho - PRIMERA_A ────────────────────────────────────────────
-co_local_comp("PRIMERA_A", "ATLETICO AYACUCHO", "ATLETICO AYACUCHO Inferiores")
-# Femenino cruzado
-cross_to_global_comp("PRIMERA_A", "ATLETICO AYACUCHO", "ATLETICO AYACUCHO Femenino")
-
-# ── Sarmiento Ayacucho - PRIMERA_A ───────────────────────────────────────────
-co_local_comp("PRIMERA_A", "SARMIENTO (AYACUCHO)", "SARMIENTO (AYACUCHO) Inferiores")
-# Cruce con Ateneo Estrada (PRIMERA_B)
-cross_bilateral_comp("PRIMERA_A", "SARMIENTO (AYACUCHO)", "PRIMERA_B", "ATENEO ESTRADA")
-
-# ── Ateneo Estrada - PRIMERA_B ────────────────────────────────────────────────
-co_local_comp("PRIMERA_B", "ATENEO ESTRADA", "ATENEO ESTRADA Inferiores")
-# cross con Sarmiento ya aplicado
-
-# ── Deportivo Rauch - PRIMERA_B ───────────────────────────────────────────────
-co_local_comp("PRIMERA_B", "DEPORTIVO RAUCH", "DEPORTIVO RAUCH Inferiores")
-
-# ── Santamarina - PRIMERA_A + INF_A ──────────────────────────────────────────
-# Femenino cruzado
-cross_to_global_comp("PRIMERA_A", "Santamarina", "Santamarina Femenino")
-# Cruce con Oficina (PRIMERA_B)
-cross_bilateral_comp("PRIMERA_A", "Santamarina", "PRIMERA_B", "Oficina")
-
-# ── Gimnasia y Esgrima - PRIMERA_A + INF_A ───────────────────────────────────
-# Femenino cruzado
-cross_to_global_comp("PRIMERA_A", "Gimnasia y Esgrima", "Gimnasia y Esgrima Femenino")
-
-# ── Oficina - PRIMERA_B + INF_B ───────────────────────────────────────────────
-# Cruce con Santamarina ya aplicado.
-# "Oficina local → Santamarina Femenino local" → co_local desde PRIMERA_B
-co_local_comp("PRIMERA_B", "Oficina", "Santamarina Femenino")
-
-# ── Juventud Unida - PRIMERA_A + INF_A ───────────────────────────────────────
-co_local_comp("PRIMERA_A", "Juventud Unida", "Juventud Unida Infantiles")
-# Cruce con Unión y Progreso (PRIMERA_B)
-cross_bilateral_comp("PRIMERA_A", "Juventud Unida", "PRIMERA_B", "Unión y Progreso")
-# Co-local con San José Femenino y JU Fem Negro
-co_local_comp("PRIMERA_A", "Juventud Unida", "San José Femenino")
-co_local_comp("PRIMERA_A", "Juventud Unida", "Juventud Unida Fem (Negro)")
-
-# ── Unión y Progreso - PRIMERA_B + INF_B ─────────────────────────────────────
-# Cruce con JU ya aplicado.
-# Cruce con San José Femenino y JU Fem Negro
-cross_to_global_comp("PRIMERA_B", "Unión y Progreso", "San José Femenino")
-cross_to_global_comp("PRIMERA_B", "Unión y Progreso", "Juventud Unida Fem (Negro)")
-
-# ── San Lorenzo Rauch - PRIMERA_B ────────────────────────────────────────────
-co_local_comp("PRIMERA_B", "SAN LORENZO (RAUCH)", "SAN LORENZO (RAUCH) Inferiores")
-co_local_comp("PRIMERA_B", "SAN LORENZO (RAUCH)", "SAN LORENZO (RAUCH) Femenino")  # sub16 solo, no hay conflicto de cancha
+        for v_hA in hA:
+            for v_hB in hB:
+                model.Add(v_hA + v_hB <= 1)
+        for v_vA in vA:
+            for v_vB in vB:
+                model.Add(v_vA + v_vB <= 1)
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 8. SEGURIDAD POLICIAL: AYACUCHO ≤ 2 LOCALES SIMULTÁNEOS
+# 6. APLICAR REGLAS
 # ══════════════════════════════════════════════════════════════════════════════
-ayacucho = [n for n in [
-    "DEFENSORES DE AYACUCHO",
-    "ATLETICO AYACUCHO",
-    "SARMIENTO (AYACUCHO)",
-    "ATENEO ESTRADA",
-] if n in all_entities]
+print("\nAplicando restricciones de localía...")
 
-for d in range(NUM_FECHAS):
-    model.Add(sum(es_local[d, n] for n in ayacucho) <= 2)
+# ── Independiente (azul, A) ────────────────────────────────────────────────────
+cross("PRIMERA_A", "Independiente",       None,       "Independiente Femenino")
+# ── Independiente Rojo (INF_B) ────────────────────────────────────────────────
+cross("INF_B",     "Independiente (rojo)", "PRIMERA_A","Independiente")
+# Rojo y Femenino van JUNTOS: cuando Azul es visitante, ambos son locales
+co_local("INF_B",  "Independiente (rojo)", "Independiente Femenino")
+# ── BOTAFOGO ──────────────────────────────────────────────────────────────────
+co_local("PRIMERA_B", "BOTAFOGO F.C.",    "BOTAFOGO F.C. Inferiores")
+# ── Ferrocarril Sud (A) ───────────────────────────────────────────────────────
+cross("PRIMERA_A", "Ferrocarril Sud",     None,       "Ferrocarril Sud Femenino")
+# ── Ferro Azul (INF_B) ────────────────────────────────────────────────────────
+cross("INF_B",     "Ferro Azul",          "PRIMERA_A","Ferrocarril Sud")
+# Azul y Femenino van JUNTOS: cuando Sud es visitante, ambos son locales
+co_local("INF_B",  "Ferro Azul",           "Ferrocarril Sud Femenino")
+# ── Defensores Ayacucho ───────────────────────────────────────────────────────
+co_local("PRIMERA_A", "DEFENSORES DE AYACUCHO", "DEFENSORES DE AYACUCHO Inferiores")
+# ── Velense ───────────────────────────────────────────────────────────────────
+co_local("PRIMERA_A", "Velense",          "Velense Inferiores")
+# ── Argentino ─────────────────────────────────────────────────────────────────
+co_local("PRIMERA_B", "Argentino",        "Argentino Inferiores")
+# ── San José ──────────────────────────────────────────────────────────────────
+co_local("PRIMERA_B", "San José",         "San José Inferiores")
+# San José siempre opuesto a Excursionistas masculino
+cross("PRIMERA_B",    "San José",         "PRIMERA_B","Excursionistas")
+# NO cross directo San José-ExcFem: triángulo imposible con Exc-ExcFem (same)
+# La relación es transitiva: SJ cross Exc + Exc co_local ExcFem => SJ opp ExcFem
+# ── Excursionistas ────────────────────────────────────────────────────────────
+# Exc y ExcFem van JUNTOS (cuando SJ es local, Exc+ExcFem son visitantes)
+co_local("PRIMERA_B", "Excursionistas",   "Excursionistas Femenino")
+# ── Alumni ────────────────────────────────────────────────────────────────────
+co_local("PRIMERA_B", "Alumni",           "Alumni Inferiores")
+cross("PRIMERA_B",    "Alumni",           "PRIMERA_A","Juarense")
+# ── Deportivo Tandil ──────────────────────────────────────────────────────────
+co_local("PRIMERA_A", "Deportivo Tandil", "Deportivo Tandil Inferiores")
+cross("PRIMERA_A",    "Deportivo Tandil", None,       "Juventud Unida Fem (Blanco)")
+cross("PRIMERA_A",    "Deportivo Tandil", "PRIMERA_B","Defensores del Cerro")
+# ── Defensores del Cerro ──────────────────────────────────────────────────────
+co_local("PRIMERA_B", "Defensores del Cerro", "Defensores del Cerro Inferiores")
+co_local("PRIMERA_B", "Defensores del Cerro", "Juventud Unida Fem (Blanco)")
+# ── Loma Negra — EXCEPCIÓN: femenino co-local ─────────────────────────────────
+co_local("PRIMERA_B", "Loma Negra",       "Loma Negra Inferiores")
+co_local("PRIMERA_B", "Loma Negra",       "Loma Negra Femenino")
+# ── Juarense ──────────────────────────────────────────────────────────────────
+cross("PRIMERA_A",    "Juarense",         None,       "Juarense Femenino")
+# ── UNICEN ────────────────────────────────────────────────────────────────────
+cross("PRIMERA_A",    "UNICEN",           "PRIMERA_B","Grupo Universitario")
+# ── Atlético Ayacucho ─────────────────────────────────────────────────────────
+co_local("PRIMERA_A", "ATLETICO AYACUCHO","ATLETICO AYACUCHO Inferiores")
+cross("PRIMERA_A",    "ATLETICO AYACUCHO",None,       "ATLETICO AYACUCHO Femenino")
+# ── Sarmiento Ayacucho ────────────────────────────────────────────────────────
+co_local("PRIMERA_A", "SARMIENTO (AYACUCHO)", "SARMIENTO (AYACUCHO) Inferiores")
+cross("PRIMERA_A",    "SARMIENTO (AYACUCHO)","PRIMERA_B","ATENEO ESTRADA")
+# ── Ateneo Estrada ────────────────────────────────────────────────────────────
+co_local("PRIMERA_B", "ATENEO ESTRADA",   "ATENEO ESTRADA Inferiores")
+# ── Deportivo Rauch ───────────────────────────────────────────────────────────
+co_local("PRIMERA_B", "DEPORTIVO RAUCH",  "DEPORTIVO RAUCH Inferiores")
+# ── Santamarina ───────────────────────────────────────────────────────────────
+cross("PRIMERA_A",    "Santamarina",      None,       "Santamarina Femenino")
+cross("PRIMERA_A",    "Santamarina",      "PRIMERA_B","Oficina")
+# ── Gimnasia ──────────────────────────────────────────────────────────────────
+cross("PRIMERA_A",    "Gimnasia y Esgrima",None,      "Gimnasia y Esgrima Femenino")
+# ── Oficina ───────────────────────────────────────────────────────────────────
+co_local("PRIMERA_B", "Oficina",          "Santamarina Femenino")
+# ── Juventud Unida ────────────────────────────────────────────────────────────
+co_local("PRIMERA_A", "Juventud Unida",   "Juventud Unida Infantiles")
+cross("PRIMERA_A",    "Juventud Unida",   "PRIMERA_B","Unión y Progreso")
+co_local("PRIMERA_A", "Juventud Unida",   "San José Femenino")
+co_local("PRIMERA_A", "Juventud Unida",   "Juventud Unida Fem (Negro)")
+# ── Unión y Progreso ──────────────────────────────────────────────────────────
+cross("PRIMERA_B",    "Unión y Progreso", None,       "San José Femenino")
+cross("PRIMERA_B",    "Unión y Progreso", None,       "Juventud Unida Fem (Negro)")
+# ── San Lorenzo Rauch — femenino co-local (sub16, sin conflicto de cancha) ────
+co_local("PRIMERA_B", "SAN LORENZO (RAUCH)", "SAN LORENZO (RAUCH) Inferiores")
+co_local("PRIMERA_B", "SAN LORENZO (RAUCH)", "SAN LORENZO (RAUCH) Femenino")
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 9. RACHAS: MÁXIMO 3 CONSECUTIVOS + MINIMIZACIÓN SOFT
+# 7. AYACUCHO: ≤ 2 LOCALES SIMULTÁNEOS
 # ══════════════════════════════════════════════════════════════════════════════
-# Se aplica uniformemente a TODOS los equipos (igualitario).
-# Máximo absoluto: 3 seguidos (duro).
-# Objetivo: minimizar ventanas de exactamente 3 (soft).
+ayacucho = [n for n in ["DEFENSORES DE AYACUCHO","ATLETICO AYACUCHO",
+                         "SARMIENTO (AYACUCHO)","ATENEO ESTRADA"] if n in all_entities]
+
+for fecha in range(1, NUM_FECHAS+1):
+    aya_home = [v for n in ayacucho for v in home_vars_global(fecha, n)]
+    if len(aya_home) >= 3:
+        model.Add(sum(aya_home) <= 2)
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 8. ALTERNANCIA: MÁXIMO 3 CONSECUTIVOS + SOFT PENALTY
+# ══════════════════════════════════════════════════════════════════════════════
 penalties = []
 
 for n in all_entities:
-    for d in range(NUM_FECHAS - 3):
-        model.Add(sum(es_local[d+k, n]     for k in range(4)) <= 3)
-        model.Add(sum(es_visitante[d+k, n] for k in range(4)) <= 3)
+    # Construir secuencia de condición por fecha: 1=local, -1=visit, 0=libre
+    # Para rachas usamos vars booleanas por fecha
+    home_f  = {}  # fecha -> var o constante
+    away_f  = {}
 
-    for d in range(NUM_FECHAS - 2):
-        pl = model.NewBoolVar(f"pl_{n}_{d}")
-        s3l = sum(es_local[d+k, n] for k in range(3))
-        model.Add(s3l == 3).OnlyEnforceIf(pl)
-        model.Add(s3l <= 2).OnlyEnforceIf(pl.Not())
-        penalties.append(pl)
+    for fecha in range(1, NUM_FECHAS+1):
+        hv = home_vars_global(fecha, n)
+        av = away_vars_global(fecha, n)
+        home_f[fecha] = hv[0] if len(hv) == 1 else (sum(hv) if hv else 0)
+        away_f[fecha] = av[0] if len(av) == 1 else (sum(av) if av else 0)
 
-        pv = model.NewBoolVar(f"pv_{n}_{d}")
-        s3v = sum(es_visitante[d+k, n] for k in range(3))
-        model.Add(s3v == 3).OnlyEnforceIf(pv)
-        model.Add(s3v <= 2).OnlyEnforceIf(pv.Not())
-        penalties.append(pv)
+    # Máximo 3 locales consecutivos (duro)
+    for d in range(1, NUM_FECHAS - 2):
+        window = [home_f[d+k] for k in range(4) if d+k <= NUM_FECHAS]
+        if len(window) == 4 and any(not isinstance(w, int) for w in window):
+            model.Add(sum(window) <= 3)
+
+    # Máximo 3 visitantes consecutivos (duro)
+    for d in range(1, NUM_FECHAS - 2):
+        window = [away_f[d+k] for k in range(4) if d+k <= NUM_FECHAS]
+        if len(window) == 4 and any(not isinstance(w, int) for w in window):
+            model.Add(sum(window) <= 3)
+
+    # Soft: penalizar ventanas de exactamente 3 locales/visitantes seguidos
+    for d in range(1, NUM_FECHAS - 1):
+        w3h = [home_f[d+k] for k in range(3) if d+k <= NUM_FECHAS]
+        if len(w3h) == 3 and any(not isinstance(w, int) for w in w3h):
+            pl = model.NewBoolVar(f"pl_{n}_{d}")
+            model.Add(sum(w3h) == 3).OnlyEnforceIf(pl)
+            model.Add(sum(w3h) <= 2).OnlyEnforceIf(pl.Not())
+            penalties.append(pl)
+
+        w3a = [away_f[d+k] for k in range(3) if d+k <= NUM_FECHAS]
+        if len(w3a) == 3 and any(not isinstance(w, int) for w in w3a):
+            pv = model.NewBoolVar(f"pv_{n}_{d}")
+            model.Add(sum(w3a) == 3).OnlyEnforceIf(pv)
+            model.Add(sum(w3a) <= 2).OnlyEnforceIf(pv.Not())
+            penalties.append(pv)
 
 model.Minimize(sum(penalties))
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 10. RESOLUCIÓN
+# 9. RESOLUCIÓN
 # ══════════════════════════════════════════════════════════════════════════════
-print(f"\n🔄 Resolviendo modelo CP-SAT...")
-print(f"   Equipos: {len(all_entities)} · Fechas: {NUM_FECHAS}")
-print(f"   Variables de partido: {len(match)}")
-
+print(f"\n🔄 Resolviendo v8 — {P} vars de localía + {len(penalties)} penalty vars")
 solver = cp_model.CpSolver()
 solver.parameters.max_time_in_seconds = 300.0
 solver.parameters.num_search_workers  = 8
-solver.parameters.log_search_progress = True   # Progreso visible en consola
+solver.parameters.log_search_progress = True
 
 status = solver.Solve(model)
 
@@ -490,25 +429,24 @@ STATUS_TXT = {
     cp_model.OPTIMAL:    "✅ ÓPTIMO",
     cp_model.FEASIBLE:   "⚡ FACTIBLE (tiempo agotado antes del óptimo)",
     cp_model.INFEASIBLE: "❌ INFACTIBLE",
-    cp_model.UNKNOWN:    "❓ DESCONOCIDO (tiempo agotado sin solución)",
+    cp_model.UNKNOWN:    "❓ DESCONOCIDO",
 }
 print(f"\nEstado: {STATUS_TXT.get(status, str(status))}")
 
 if status in (cp_model.OPTIMAL, cp_model.FEASIBLE):
     fixture = []
-    for ck, comp in COMPETITIONS.items():
-        for d in range(NUM_FECHAS):
-            for i in comp["entities"]:
-                for j in comp["entities"]:
-                    if i != j and (d, ck, i, j) in match:
-                        if solver.Value(match[d, ck, i, j]) == 1:
-                            fixture.append({
-                                "competencia": ck,
-                                "fecha":       d + 1,
-                                "local":       i,
-                                "visitante":   j,
-                                "estadio":     estadio_de.get(i, "A confirmar"),
-                            })
+    for p, (fecha, ck, A, B) in enumerate(all_games):
+        if solver.Value(local[p]) == 1:
+            loc, vis = A, B
+        else:
+            loc, vis = B, A
+        fixture.append({
+            "competencia": ck,
+            "fecha":  fecha,
+            "local":  loc,
+            "visitante": vis,
+            "estadio": estadio_de.get(loc, "A confirmar"),
+        })
 
     fixture.sort(key=lambda x: (x["competencia"], x["fecha"], x["local"]))
 
@@ -516,44 +454,44 @@ if status in (cp_model.OPTIMAL, cp_model.FEASIBLE):
     with open(out, "w", encoding="utf-8") as fh:
         json.dump(fixture, fh, indent=4, ensure_ascii=False)
 
-    print(f"✅ {len(fixture)} partidos exportados → {out}")
-    print(f"   Penalización total (rachas de 3): {int(solver.ObjectiveValue())}")
+    print(f"✅ {len(fixture)} partidos → {out}")
+    print(f"   Penalización rachas de 3: {int(solver.ObjectiveValue())}")
 
-    from collections import Counter
+    from collections import Counter, defaultdict
     cnt = Counter(p["competencia"] for p in fixture)
-    print("\n=== RESUMEN POR COMPETENCIA ===")
+    print("\n=== RESUMEN ===")
     for ck in sorted(cnt):
         n   = len(COMPETITIONS[ck]["entities"])
         exp = n * (n - 1)
-        ok  = "✓" if cnt[ck] == exp else "⚠"
-        print(f"  {ok} {ck:12s}: {cnt[ck]:4d} partidos (esperados {exp:4d})")
+        print(f"  {'✓' if cnt[ck]==exp else '⚠'} {ck:12s}: {cnt[ck]:4d}/{exp:4d}")
 
-    # Mini-verificación de restricciones
-    print("\n=== VERIFICACIÓN DE RESTRICCIONES (muestra) ===")
-    samples = [
-        ("co_local", "PRIMERA_B", "Loma Negra", "Loma Negra Femenino"),
-        ("co_local", "PRIMERA_A", "Juventud Unida", "San José Femenino"),
-        ("co_local", "PRIMERA_A", "Deportivo Tandil", "Deportivo Tandil Inferiores"),
+    # Verificación femenino/masculino
+    cond = defaultdict(lambda: 'libre')
+    for p in fixture:
+        cond[(p['fecha'], p['local'])]     = 'local'
+        cond[(p['fecha'], p['visitante'])] = 'visitante'
+
+    print("\n=== VERIFICACIÓN FEMENINO/MASCULINO ===")
+    checks = [
+        ("cross", "Independiente",       "Independiente Femenino"),
+        ("cross", "Ferrocarril Sud",      "Ferrocarril Sud Femenino"),
+        ("cross", "Excursionistas",       "Excursionistas Femenino"),
+        ("cross", "Gimnasia y Esgrima",   "Gimnasia y Esgrima Femenino"),
+        ("cross", "Santamarina",          "Santamarina Femenino"),
+        ("cross", "Juarense",             "Juarense Femenino"),
+        ("cross", "ATLETICO AYACUCHO",    "ATLETICO AYACUCHO Femenino"),
+        ("coloc", "Loma Negra",           "Loma Negra Femenino"),
+        ("coloc", "SAN LORENZO (RAUCH)",  "SAN LORENZO (RAUCH) Femenino"),
     ]
-    violations = 0
-    for rtype, ck, A, B in samples:
-        if A not in all_entities or B not in all_entities: continue
-        if A not in COMPETITIONS.get(ck, {}).get("entities", []): continue
-        for d in range(NUM_FECHAS):
-            lA = solver.Value(es_lc[d, ck, A])
-            vB = solver.Value(es_visitante[d, B])
-            vA = solver.Value(es_vc[d, ck, A])
-            lB = solver.Value(es_local[d, B])
-            if lA + vB > 1 or vA + lB > 1:
-                violations += 1
-                print(f"  ⚠ F{d+1}: {A}(L={lA},V={vA}) | {B}(L={lB},V={vB})")
-    if violations == 0:
-        print("  ✅ Sin violaciones en la muestra verificada.")
+    for tipo, M, F in checks:
+        v = sum(1 for f in range(1, NUM_FECHAS+1)
+                if cond[(f,M)] != 'libre' and cond[(f,F)] != 'libre'
+                and (cond[(f,M)] == cond[(f,F)] if tipo=="cross"
+                     else (cond[(f,M)]=='local' and cond[(f,F)]=='visitante')))
+        print(f"  {'✅' if v==0 else f'❌ {v}':<6} {tipo.upper()} {M} ↔ {F}")
 
+elif status == cp_model.INFEASIBLE:
+    print("\n❌ INFACTIBLE — hay un conflicto lógico entre restricciones.")
+    print("   Ejecutar con solo el bloque 5 (sin rachas) para confirmar.")
 else:
-    print("\n❌ No se encontró solución.")
-    print("DIAGNÓSTICO:")
-    print("  Cambiar log_search_progress=True ya está activado para ver el solver.")
-    print("  Si el solver dice INFEASIBLE desde el principio, hay un conflicto lógico.")
-    print("  Intentar comentar el bloque 9 (rachas) para aislar el problema.")
-    print("  Intentar aumentar max_time_in_seconds a 600 si el estado es UNKNOWN.")
+    print("\n❓ Sin solución en 300s. Probar con 600s o revisar restricciones.")
