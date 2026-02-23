@@ -1,0 +1,831 @@
+{
+  "equipos": [
+    {
+      "nombre": "Loma Negra",
+      "localidad": "Villa Cacique",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Filadelfio Mondellio",
+      "jerarquia": 1
+    },
+    {
+      "nombre": "Loma Negra Inferiores",
+      "divisionMayor": "A",
+      "clubPadre": "Loma Negra",
+      "categorias": {
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": false,
+        "novena": false,
+        "decima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Filadelfio Mondellio",
+      "jerarquia": 1
+    },
+    {
+      "nombre": "Loma Negra Femenino",
+      "divisionMayor": "A",
+      "clubPadre": "Loma Negra",
+      "categorias": {
+        "femenino_primera": true,
+        "femenino_sub16": false,
+        "femenino_sub14": false,
+        "femenino_sub12": false
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Filadelfio Mondellio",
+      "jerarquia": 1
+    },
+    {
+      "nombre": "Independiente",
+      "localidad": "Tandil",
+      "divisionMayor": "A",
+      "categorias": {
+        "primera": true,
+        "reserva": true,
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Agustin F Berroeta",
+      "jerarquia": 2
+    },
+    {
+      "nombre": "Independiente Femenino",
+      "divisionMayor": "A",
+      "clubPadre": "Independiente",
+      "categorias": {
+        "femenino_primera": true,
+        "femenino_sub16": true,
+        "femenino_sub14": true,
+        "femenino_sub12": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Agustin F Berroeta",
+      "jerarquia": 2
+    },
+    {
+      "nombre": "Juventud Unida",
+      "localidad": "Tandil",
+      "divisionMayor": "A",
+      "categorias": {
+        "primera": true,
+        "reserva": true,
+        "quinta": true,
+        "sexta": false,
+        "septima": true,
+        "octava": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Quinta La Florida",
+      "jerarquia": 8
+    },
+    {
+      "nombre": "Juventud Unida Fem (Blanco)",
+      "localidad": "Tandil",
+      "divisionMayor": "A",
+      "categorias": {
+        "femenino_primera": true,
+        "femenino_sub16": true,
+        "femenino_sub14": true,
+        "femenino_sub12": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Figueroa",
+      "jerarquia": 8
+    },
+    {
+      "nombre": "Juventud Unida Fem (Negro)",
+      "divisionMayor": "A",
+      "clubPadre": "Juventud Unida",
+      "categorias": {
+        "femenino_sub14": true,
+        "femenino_sub12": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Quinta La Florida",
+      "jerarquia": 8
+    },
+    {
+      "nombre": "Juventud Unida Infantiles",
+      "localidad": "Tandil",
+      "divisionMayor": "A",
+      "categorias": {
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Juve Stadium",
+      "jerarquia": 8
+    },
+    {
+      "nombre": "Santamarina",
+      "localidad": "Tandil",
+      "divisionMayor": "A",
+      "categorias": {
+        "primera": true,
+        "reserva": true,
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Predio Centenario",
+      "jerarquia": 7
+    },
+    {
+      "nombre": "Santamarina Femenino",
+      "divisionMayor": "A",
+      "clubPadre": "Santamarina",
+      "categorias": {
+        "femenino_primera": true,
+        "femenino_sub16": true,
+        "femenino_sub14": true,
+        "femenino_sub12": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Predio Centenario",
+      "jerarquia": 7
+    },
+    {
+      "nombre": "Argentino",
+      "localidad": "Benito Juarez",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Doce de Noviembre",
+      "jerarquia": 3
+    },
+    {
+      "nombre": "Argentino Inferiores",
+      "divisionMayor": "A",
+      "clubPadre": "Argentino",
+      "categorias": {
+        "quinta": true,
+        "sexta": true,
+        "septima": false,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Doce de Noviembre",
+      "jerarquia": 3
+    },
+    {
+      "nombre": "UNICEN",
+      "localidad": "Tandil",
+      "divisionMayor": "A",
+      "categorias": {
+        "primera": true,
+        "reserva": true,
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "La Movediza",
+      "jerarquia": 4
+    },
+    {
+      "nombre": "San José",
+      "localidad": "Tandil",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Excursionistas",
+      "jerarquia": 9
+    },
+    {
+      "nombre": "San José Inferiores",
+      "divisionMayor": "A",
+      "clubPadre": "San José",
+      "categorias": {
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Excursionistas",
+      "jerarquia": 9
+    },
+    {
+      "nombre": "San José Femenino",
+      "localidad": "Tandil",
+      "divisionMayor": "A",
+      "categorias": {
+        "femenino_primera": true,
+        "femenino_sub16": true,
+        "femenino_sub14": true,
+        "femenino_sub12": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Quinta La Florida",
+      "jerarquia": 9
+    },
+    {
+      "nombre": "Ferrocarril Sud",
+      "localidad": "Tandil",
+      "divisionMayor": "A",
+      "categorias": {
+        "primera": true,
+        "reserva": true,
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Damaso Latasa",
+      "jerarquia": 10
+    },
+    {
+      "nombre": "Ferrocarril Sud Femenino",
+      "divisionMayor": "A",
+      "clubPadre": "Ferrocarril Sud",
+      "categorias": {
+        "femenino_primera": true,
+        "femenino_sub16": true,
+        "femenino_sub14": true,
+        "femenino_sub12": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Damaso Latasa",
+      "jerarquia": 10
+    },
+    {
+      "nombre": "Gimnasia y Esgrima",
+      "localidad": "Tandil",
+      "divisionMayor": "A",
+      "categorias": {
+        "primera": true,
+        "reserva": true,
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Predio Jorge Ibañes",
+      "jerarquia": 6
+    },
+    {
+      "nombre": "Gimnasia y Esgrima Femenino",
+      "divisionMayor": "A",
+      "clubPadre": "Gimnasia y Esgrima",
+      "categorias": {
+        "femenino_primera": true,
+        "femenino_sub16": true,
+        "femenino_sub14": true,
+        "femenino_sub12": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Predio Jorge Ibañes",
+      "jerarquia": 6
+    },
+    {
+      "nombre": "Juarense",
+      "localidad": "Benito Juarez",
+      "divisionMayor": "A",
+      "categorias": {
+        "primera": true,
+        "reserva": true,
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Gaston Lafon",
+      "jerarquia": 11
+    },
+    {
+      "nombre": "Juarense Femenino",
+      "divisionMayor": "A",
+      "clubPadre": "Juarense",
+      "categorias": {
+        "femenino_primera": true,
+        "femenino_sub16": true,
+        "femenino_sub14": true,
+        "femenino_sub12": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Gaston Lafon",
+      "jerarquia": 11
+    },
+    {
+      "nombre": "Excursionistas",
+      "localidad": "Tandil",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": true,
+        "reserva": true,
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Excursionistas",
+      "jerarquia": 5
+    },
+    {
+      "nombre": "Excursionistas Femenino",
+      "divisionMayor": "A",
+      "clubPadre": "Excursionistas",
+      "categorias": {
+        "femenino_primera": true,
+        "femenino_sub16": false,
+        "femenino_sub14": true,
+        "femenino_sub12": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Excursionistas",
+      "jerarquia": 5
+    },
+    {
+      "nombre": "Deportivo Tandil",
+      "localidad": "Tandil",
+      "divisionMayor": "A",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Figueroa",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "Deportivo Tandil Inferiores",
+      "divisionMayor": "B",
+      "clubPadre": "Deportivo Tandil",
+      "categorias": {
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Figueroa",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "Velense",
+      "localidad": "Vela",
+      "divisionMayor": "A",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Doc Miguel Ochoa",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "Velense Inferiores",
+      "divisionMayor": "B",
+      "clubPadre": "Velense",
+      "categorias": {
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": false,
+        "novena": true,
+        "decima": false,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Doc Miguel Ochoa",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "Independiente (rojo)",
+      "localidad": "Tandil",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": false,
+        "reserva": true,
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Agustin F Berroeta",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "Unión y Progreso",
+      "localidad": "Tandil",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": true,
+        "reserva": true,
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Quinta La Florida",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "Oficina",
+      "localidad": "Tandil",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": true,
+        "reserva": true,
+        "quinta": false,
+        "sexta": false,
+        "septima": false,
+        "octava": false,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Predio Centenario",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "Defensores del Cerro",
+      "localidad": "Tandil",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Figueroa",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "Alumni",
+      "localidad": "Benito Juarez",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Ferroviarios",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "Alumni/Defensores del Cerro Inferiores",
+      "divisionMayor": "B",
+      "clubPadre": "Alumni",
+      "categorias": {
+        "quinta": true,
+        "sexta": false,
+        "septima": false,
+        "octava": false,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Ferroviarios",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "Grupo Universitario",
+      "localidad": "Tandil",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": true,
+        "reserva": true,
+        "quinta": true,
+        "sexta": false,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "La Movediza",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "SARMIENTO (AYACUCHO)",
+      "localidad": "Ayacucho",
+      "divisionMayor": "A",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Municipal Ayacucho",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "SARMIENTO (AYACUCHO) Inferiores",
+      "divisionMayor": "C",
+      "clubPadre": "SARMIENTO (AYACUCHO)",
+      "categorias": {
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": false,
+        "decima": true,
+        "undecima": false
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Municipal Ayacucho",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "DEFENSORES DE AYACUCHO",
+      "localidad": "Ayacucho",
+      "divisionMayor": "A",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Defensores",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "DEFENSORES DE AYACUCHO Inferiores",
+      "divisionMayor": "C",
+      "clubPadre": "DEFENSORES DE AYACUCHO",
+      "categorias": {
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Defensores",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "DEPORTIVO RAUCH",
+      "localidad": "Rauch",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Municipal rauch",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "ATENEO ESTRADA",
+      "localidad": "Ayacucho",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Municipal Ayacucho",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "ATENEO ESTRADA/Deportivo Rauch Inferiores",
+      "divisionMayor": "C",
+      "clubPadre": "ATENEO ESTRADA",
+      "categorias": {
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": false,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Municipal Ayacucho",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "ATLETICO AYACUCHO",
+      "localidad": "Ayacucho",
+      "divisionMayor": "A",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Luciano Ceverio",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "ATLETICO AYACUCHO Inferiores",
+      "divisionMayor": "C",
+      "clubPadre": "ATLETICO AYACUCHO",
+      "categorias": {
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Luciano Ceverio",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "ATLETICO AYACUCHO Femenino",
+      "divisionMayor": "A",
+      "clubPadre": "ATLETICO AYACUCHO",
+      "categorias": {
+        "femenino_primera": true,
+        "femenino_sub16": true,
+        "femenino_sub14": true,
+        "femenino_sub12": false
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Luciano Ceverio",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "SAN LORENZO (RAUCH)",
+      "localidad": "Rauch",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "SAN LORENZO Stadium",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "SAN LORENZO (RAUCH) Inferiores",
+      "divisionMayor": "C",
+      "clubPadre": "SAN LORENZO (RAUCH)",
+      "categorias": {
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "SAN LORENZO Stadium",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "SAN LORENZO (RAUCH) Femenino",
+      "divisionMayor": "A",
+      "clubPadre": "SAN LORENZO (RAUCH)",
+      "categorias": {
+        "femenino_primera": false,
+        "femenino_sub16": true,
+        "femenino_sub14": false,
+        "femenino_sub12": false
+      },
+      "estadioPropio": true,
+      "estadioLocal": "SAN LORENZO Stadium",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "BOTAFOGO F.C.",
+      "localidad": "Rauch",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": true,
+        "reserva": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "BOTAFOGO F.C Stadium",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "BOTAFOGO F.C. Inferiores",
+      "divisionMayor": "C",
+      "clubPadre": "BOTAFOGO F.C.",
+      "categorias": {
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": false,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "BOTAFOGO F.C Stadium",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "Ferro Azul",
+      "localidad": "Tandil",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": false,
+        "reserva": false,
+        "quinta": true,
+        "sexta": true,
+        "septima": true,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Damaso Latasa",
+      "jerarquia": 12
+    },
+    {
+      "nombre": "El Potrero",
+      "localidad": "Tandil",
+      "divisionMayor": "A",
+      "categorias": {
+        "femenino_primera": true,
+        "femenino_sub16": true,
+        "femenino_sub14": true,
+        "femenino_sub12": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Boca de la Base",
+      "jerarquia": 2
+    },
+    {
+      "nombre": "Herederos",
+      "localidad": "Tandil",
+      "divisionMayor": "B",
+      "categorias": {
+        "primera": false,
+        "reserva": false,
+        "quinta": false,
+        "sexta": true,
+        "septima": false,
+        "octava": true,
+        "novena": true,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": false,
+      "estadioLocal": "Herederos Stadium",
+      "jerarquia": 0
+    }
+  ]
+}

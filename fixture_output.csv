@@ -1,0 +1,1835 @@
+competencia,fecha,local,visitante
+PRIMERA A,1,DEFENSORES DE AYACUCHO,Gimnasia y Esgrima
+PRIMERA A,1,Deportivo Tandil,Ferrocarril Sud
+PRIMERA A,1,Independiente,Santamarina
+PRIMERA A,1,Juventud Unida,UNICEN
+PRIMERA A,1,SARMIENTO (AYACUCHO),Juarense
+PRIMERA A,1,Velense,ATLETICO AYACUCHO
+PRIMERA A,2,DEFENSORES DE AYACUCHO,Juventud Unida
+PRIMERA A,2,Deportivo Tandil,Gimnasia y Esgrima
+PRIMERA A,2,Ferrocarril Sud,Independiente
+PRIMERA A,2,Juarense,ATLETICO AYACUCHO
+PRIMERA A,2,UNICEN,SARMIENTO (AYACUCHO)
+PRIMERA A,2,Velense,Santamarina
+PRIMERA A,3,ATLETICO AYACUCHO,Juventud Unida
+PRIMERA A,3,Ferrocarril Sud,Gimnasia y Esgrima
+PRIMERA A,3,Juarense,Independiente
+PRIMERA A,3,Santamarina,SARMIENTO (AYACUCHO)
+PRIMERA A,3,UNICEN,Deportivo Tandil
+PRIMERA A,3,Velense,DEFENSORES DE AYACUCHO
+PRIMERA A,4,Gimnasia y Esgrima,ATLETICO AYACUCHO
+PRIMERA A,4,Independiente,Ferrocarril Sud
+PRIMERA A,4,Juarense,Velense
+PRIMERA A,4,SARMIENTO (AYACUCHO),Deportivo Tandil
+PRIMERA A,4,Santamarina,DEFENSORES DE AYACUCHO
+PRIMERA A,4,UNICEN,Juventud Unida
+PRIMERA A,5,ATLETICO AYACUCHO,Ferrocarril Sud
+PRIMERA A,5,Deportivo Tandil,Juventud Unida
+PRIMERA A,5,Gimnasia y Esgrima,UNICEN
+PRIMERA A,5,Independiente,Juarense
+PRIMERA A,5,SARMIENTO (AYACUCHO),DEFENSORES DE AYACUCHO
+PRIMERA A,5,Santamarina,Velense
+PRIMERA A,6,Deportivo Tandil,Independiente
+PRIMERA A,6,Ferrocarril Sud,UNICEN
+PRIMERA A,6,Gimnasia y Esgrima,DEFENSORES DE AYACUCHO
+PRIMERA A,6,SARMIENTO (AYACUCHO),ATLETICO AYACUCHO
+PRIMERA A,6,Santamarina,Juventud Unida
+PRIMERA A,6,Velense,Juarense
+PRIMERA A,7,ATLETICO AYACUCHO,Gimnasia y Esgrima
+PRIMERA A,7,Deportivo Tandil,DEFENSORES DE AYACUCHO
+PRIMERA A,7,Ferrocarril Sud,Velense
+PRIMERA A,7,Independiente,SARMIENTO (AYACUCHO)
+PRIMERA A,7,Juventud Unida,Santamarina
+PRIMERA A,7,UNICEN,Juarense
+PRIMERA A,8,DEFENSORES DE AYACUCHO,Juarense
+PRIMERA A,8,Deportivo Tandil,UNICEN
+PRIMERA A,8,Ferrocarril Sud,ATLETICO AYACUCHO
+PRIMERA A,8,SARMIENTO (AYACUCHO),Independiente
+PRIMERA A,8,Santamarina,Gimnasia y Esgrima
+PRIMERA A,8,Velense,Juventud Unida
+PRIMERA A,9,ATLETICO AYACUCHO,Deportivo Tandil
+PRIMERA A,9,Gimnasia y Esgrima,Juarense
+PRIMERA A,9,Independiente,Juventud Unida
+PRIMERA A,9,SARMIENTO (AYACUCHO),Velense
+PRIMERA A,9,Santamarina,Ferrocarril Sud
+PRIMERA A,9,UNICEN,DEFENSORES DE AYACUCHO
+PRIMERA A,10,ATLETICO AYACUCHO,UNICEN
+PRIMERA A,10,DEFENSORES DE AYACUCHO,Ferrocarril Sud
+PRIMERA A,10,Gimnasia y Esgrima,Santamarina
+PRIMERA A,10,Independiente,Velense
+PRIMERA A,10,Juarense,Deportivo Tandil
+PRIMERA A,10,SARMIENTO (AYACUCHO),Juventud Unida
+PRIMERA A,11,ATLETICO AYACUCHO,SARMIENTO (AYACUCHO)
+PRIMERA A,11,DEFENSORES DE AYACUCHO,Velense
+PRIMERA A,11,Deportivo Tandil,Santamarina
+PRIMERA A,11,Ferrocarril Sud,Juarense
+PRIMERA A,11,Juventud Unida,Gimnasia y Esgrima
+PRIMERA A,11,UNICEN,Independiente
+PRIMERA A,12,Ferrocarril Sud,Deportivo Tandil
+PRIMERA A,12,Gimnasia y Esgrima,Independiente
+PRIMERA A,12,Juarense,SARMIENTO (AYACUCHO)
+PRIMERA A,12,Juventud Unida,DEFENSORES DE AYACUCHO
+PRIMERA A,12,Santamarina,ATLETICO AYACUCHO
+PRIMERA A,12,UNICEN,Velense
+PRIMERA A,13,ATLETICO AYACUCHO,Independiente
+PRIMERA A,13,Ferrocarril Sud,Santamarina
+PRIMERA A,13,Juarense,DEFENSORES DE AYACUCHO
+PRIMERA A,13,Juventud Unida,Deportivo Tandil
+PRIMERA A,13,UNICEN,Gimnasia y Esgrima
+PRIMERA A,13,Velense,SARMIENTO (AYACUCHO)
+PRIMERA A,14,ATLETICO AYACUCHO,Santamarina
+PRIMERA A,14,DEFENSORES DE AYACUCHO,SARMIENTO (AYACUCHO)
+PRIMERA A,14,Deportivo Tandil,Velense
+PRIMERA A,14,Ferrocarril Sud,Juventud Unida
+PRIMERA A,14,Independiente,Gimnasia y Esgrima
+PRIMERA A,14,Juarense,UNICEN
+PRIMERA A,15,ATLETICO AYACUCHO,DEFENSORES DE AYACUCHO
+PRIMERA A,15,Ferrocarril Sud,SARMIENTO (AYACUCHO)
+PRIMERA A,15,Gimnasia y Esgrima,Juventud Unida
+PRIMERA A,15,Independiente,UNICEN
+PRIMERA A,15,Juarense,Santamarina
+PRIMERA A,15,Velense,Deportivo Tandil
+PRIMERA A,16,DEFENSORES DE AYACUCHO,Deportivo Tandil
+PRIMERA A,16,Gimnasia y Esgrima,SARMIENTO (AYACUCHO)
+PRIMERA A,16,Juarense,Ferrocarril Sud
+PRIMERA A,16,Juventud Unida,ATLETICO AYACUCHO
+PRIMERA A,16,UNICEN,Santamarina
+PRIMERA A,16,Velense,Independiente
+PRIMERA A,17,Deportivo Tandil,Juarense
+PRIMERA A,17,Ferrocarril Sud,DEFENSORES DE AYACUCHO
+PRIMERA A,17,Juventud Unida,Velense
+PRIMERA A,17,SARMIENTO (AYACUCHO),Gimnasia y Esgrima
+PRIMERA A,17,Santamarina,Independiente
+PRIMERA A,17,UNICEN,ATLETICO AYACUCHO
+PRIMERA A,18,ATLETICO AYACUCHO,Juarense
+PRIMERA A,18,DEFENSORES DE AYACUCHO,UNICEN
+PRIMERA A,18,Gimnasia y Esgrima,Deportivo Tandil
+PRIMERA A,18,Juventud Unida,Independiente
+PRIMERA A,18,SARMIENTO (AYACUCHO),Santamarina
+PRIMERA A,18,Velense,Ferrocarril Sud
+PRIMERA A,19,DEFENSORES DE AYACUCHO,Santamarina
+PRIMERA A,19,Deportivo Tandil,SARMIENTO (AYACUCHO)
+PRIMERA A,19,Gimnasia y Esgrima,Ferrocarril Sud
+PRIMERA A,19,Independiente,ATLETICO AYACUCHO
+PRIMERA A,19,Juventud Unida,Juarense
+PRIMERA A,19,Velense,UNICEN
+PRIMERA A,20,DEFENSORES DE AYACUCHO,Independiente
+PRIMERA A,20,Deportivo Tandil,ATLETICO AYACUCHO
+PRIMERA A,20,Gimnasia y Esgrima,Velense
+PRIMERA A,20,Juventud Unida,Ferrocarril Sud
+PRIMERA A,20,SARMIENTO (AYACUCHO),UNICEN
+PRIMERA A,20,Santamarina,Juarense
+PRIMERA A,21,DEFENSORES DE AYACUCHO,ATLETICO AYACUCHO
+PRIMERA A,21,Independiente,Deportivo Tandil
+PRIMERA A,21,Juarense,Juventud Unida
+PRIMERA A,21,SARMIENTO (AYACUCHO),Ferrocarril Sud
+PRIMERA A,21,Santamarina,UNICEN
+PRIMERA A,21,Velense,Gimnasia y Esgrima
+PRIMERA A,22,ATLETICO AYACUCHO,Velense
+PRIMERA A,22,Independiente,DEFENSORES DE AYACUCHO
+PRIMERA A,22,Juarense,Gimnasia y Esgrima
+PRIMERA A,22,Juventud Unida,SARMIENTO (AYACUCHO)
+PRIMERA A,22,Santamarina,Deportivo Tandil
+PRIMERA A,22,UNICEN,Ferrocarril Sud
+PRIMERA B,1,ATENEO ESTRADA,Alumni
+PRIMERA B,1,Argentino,Excursionistas
+PRIMERA B,1,Grupo Universitario,Loma Negra
+PRIMERA B,1,Oficina,BOTAFOGO F.C.
+PRIMERA B,1,SAN LORENZO (RAUCH),San José
+PRIMERA B,1,Unión y Progreso,Defensores del Cerro
+PRIMERA B,2,ATENEO ESTRADA,Oficina
+PRIMERA B,2,BOTAFOGO F.C.,DEPORTIVO RAUCH
+PRIMERA B,2,Defensores del Cerro,Excursionistas
+PRIMERA B,2,Loma Negra,Argentino
+PRIMERA B,2,SAN LORENZO (RAUCH),Alumni
+PRIMERA B,2,San José,Unión y Progreso
+PRIMERA B,3,ATENEO ESTRADA,Unión y Progreso
+PRIMERA B,3,Alumni,SAN LORENZO (RAUCH)
+PRIMERA B,3,Defensores del Cerro,San José
+PRIMERA B,3,Excursionistas,Grupo Universitario
+PRIMERA B,3,Loma Negra,BOTAFOGO F.C.
+PRIMERA B,3,Oficina,Argentino
+PRIMERA B,4,Argentino,Alumni
+PRIMERA B,4,DEPORTIVO RAUCH,ATENEO ESTRADA
+PRIMERA B,4,Excursionistas,Defensores del Cerro
+PRIMERA B,4,Grupo Universitario,SAN LORENZO (RAUCH)
+PRIMERA B,4,Loma Negra,Unión y Progreso
+PRIMERA B,4,San José,BOTAFOGO F.C.
+PRIMERA B,5,ATENEO ESTRADA,BOTAFOGO F.C.
+PRIMERA B,5,Defensores del Cerro,Argentino
+PRIMERA B,5,Loma Negra,Excursionistas
+PRIMERA B,5,Oficina,Grupo Universitario
+PRIMERA B,5,San José,SAN LORENZO (RAUCH)
+PRIMERA B,5,Unión y Progreso,DEPORTIVO RAUCH
+PRIMERA B,6,Alumni,Loma Negra
+PRIMERA B,6,BOTAFOGO F.C.,ATENEO ESTRADA
+PRIMERA B,6,Defensores del Cerro,DEPORTIVO RAUCH
+PRIMERA B,6,Excursionistas,SAN LORENZO (RAUCH)
+PRIMERA B,6,Oficina,Unión y Progreso
+PRIMERA B,6,San José,Grupo Universitario
+PRIMERA B,7,Alumni,San José
+PRIMERA B,7,Argentino,Grupo Universitario
+PRIMERA B,7,DEPORTIVO RAUCH,Defensores del Cerro
+PRIMERA B,7,Excursionistas,Loma Negra
+PRIMERA B,7,SAN LORENZO (RAUCH),BOTAFOGO F.C.
+PRIMERA B,7,Unión y Progreso,Oficina
+PRIMERA B,8,ATENEO ESTRADA,San José
+PRIMERA B,8,Alumni,Argentino
+PRIMERA B,8,DEPORTIVO RAUCH,Unión y Progreso
+PRIMERA B,8,Excursionistas,BOTAFOGO F.C.
+PRIMERA B,8,Grupo Universitario,Oficina
+PRIMERA B,8,SAN LORENZO (RAUCH),Defensores del Cerro
+PRIMERA B,9,ATENEO ESTRADA,Defensores del Cerro
+PRIMERA B,9,Alumni,Unión y Progreso
+PRIMERA B,9,BOTAFOGO F.C.,Loma Negra
+PRIMERA B,9,Grupo Universitario,Argentino
+PRIMERA B,9,Oficina,SAN LORENZO (RAUCH)
+PRIMERA B,9,San José,DEPORTIVO RAUCH
+PRIMERA B,10,Argentino,ATENEO ESTRADA
+PRIMERA B,10,DEPORTIVO RAUCH,Alumni
+PRIMERA B,10,Defensores del Cerro,Loma Negra
+PRIMERA B,10,Excursionistas,San José
+PRIMERA B,10,Grupo Universitario,BOTAFOGO F.C.
+PRIMERA B,10,Unión y Progreso,SAN LORENZO (RAUCH)
+PRIMERA B,11,ATENEO ESTRADA,Argentino
+PRIMERA B,11,Alumni,Oficina
+PRIMERA B,11,DEPORTIVO RAUCH,Loma Negra
+PRIMERA B,11,SAN LORENZO (RAUCH),Grupo Universitario
+PRIMERA B,11,San José,Defensores del Cerro
+PRIMERA B,11,Unión y Progreso,Excursionistas
+PRIMERA B,12,Alumni,Grupo Universitario
+PRIMERA B,12,Argentino,San José
+PRIMERA B,12,Excursionistas,Oficina
+PRIMERA B,12,Loma Negra,DEPORTIVO RAUCH
+PRIMERA B,12,SAN LORENZO (RAUCH),ATENEO ESTRADA
+PRIMERA B,12,Unión y Progreso,BOTAFOGO F.C.
+PRIMERA B,13,BOTAFOGO F.C.,Defensores del Cerro
+PRIMERA B,13,DEPORTIVO RAUCH,SAN LORENZO (RAUCH)
+PRIMERA B,13,Excursionistas,Alumni
+PRIMERA B,13,Grupo Universitario,Unión y Progreso
+PRIMERA B,13,Loma Negra,Oficina
+PRIMERA B,13,San José,Argentino
+PRIMERA B,14,ATENEO ESTRADA,Excursionistas
+PRIMERA B,14,BOTAFOGO F.C.,Alumni
+PRIMERA B,14,Defensores del Cerro,Oficina
+PRIMERA B,14,Loma Negra,Grupo Universitario
+PRIMERA B,14,SAN LORENZO (RAUCH),DEPORTIVO RAUCH
+PRIMERA B,14,Unión y Progreso,San José
+PRIMERA B,15,Argentino,SAN LORENZO (RAUCH)
+PRIMERA B,15,Defensores del Cerro,BOTAFOGO F.C.
+PRIMERA B,15,Loma Negra,Alumni
+PRIMERA B,15,Oficina,DEPORTIVO RAUCH
+PRIMERA B,15,San José,ATENEO ESTRADA
+PRIMERA B,15,Unión y Progreso,Grupo Universitario
+PRIMERA B,16,ATENEO ESTRADA,Grupo Universitario
+PRIMERA B,16,BOTAFOGO F.C.,Argentino
+PRIMERA B,16,Defensores del Cerro,Alumni
+PRIMERA B,16,Excursionistas,DEPORTIVO RAUCH
+PRIMERA B,16,SAN LORENZO (RAUCH),Oficina
+PRIMERA B,16,San José,Loma Negra
+PRIMERA B,17,Alumni,DEPORTIVO RAUCH
+PRIMERA B,17,BOTAFOGO F.C.,SAN LORENZO (RAUCH)
+PRIMERA B,17,Loma Negra,ATENEO ESTRADA
+PRIMERA B,17,Oficina,Defensores del Cerro
+PRIMERA B,17,San José,Excursionistas
+PRIMERA B,17,Unión y Progreso,Argentino
+PRIMERA B,18,BOTAFOGO F.C.,Grupo Universitario
+PRIMERA B,18,DEPORTIVO RAUCH,Argentino
+PRIMERA B,18,Defensores del Cerro,ATENEO ESTRADA
+PRIMERA B,18,Oficina,Alumni
+PRIMERA B,18,SAN LORENZO (RAUCH),Excursionistas
+PRIMERA B,18,Unión y Progreso,Loma Negra
+PRIMERA B,19,Argentino,DEPORTIVO RAUCH
+PRIMERA B,19,BOTAFOGO F.C.,Oficina
+PRIMERA B,19,Defensores del Cerro,Grupo Universitario
+PRIMERA B,19,Excursionistas,ATENEO ESTRADA
+PRIMERA B,19,SAN LORENZO (RAUCH),Loma Negra
+PRIMERA B,19,Unión y Progreso,Alumni
+PRIMERA B,20,ATENEO ESTRADA,SAN LORENZO (RAUCH)
+PRIMERA B,20,Alumni,Defensores del Cerro
+PRIMERA B,20,Argentino,Oficina
+PRIMERA B,20,DEPORTIVO RAUCH,Grupo Universitario
+PRIMERA B,20,Excursionistas,Unión y Progreso
+PRIMERA B,20,Loma Negra,San José
+PRIMERA B,21,Alumni,Excursionistas
+PRIMERA B,21,Argentino,Loma Negra
+PRIMERA B,21,BOTAFOGO F.C.,San José
+PRIMERA B,21,Grupo Universitario,DEPORTIVO RAUCH
+PRIMERA B,21,Oficina,ATENEO ESTRADA
+PRIMERA B,21,SAN LORENZO (RAUCH),Unión y Progreso
+PRIMERA B,22,ATENEO ESTRADA,Loma Negra
+PRIMERA B,22,Alumni,BOTAFOGO F.C.
+PRIMERA B,22,DEPORTIVO RAUCH,San José
+PRIMERA B,22,Grupo Universitario,Defensores del Cerro
+PRIMERA B,22,Oficina,Excursionistas
+PRIMERA B,22,SAN LORENZO (RAUCH),Argentino
+PRIMERA B,23,ATENEO ESTRADA,DEPORTIVO RAUCH
+PRIMERA B,23,Argentino,Defensores del Cerro
+PRIMERA B,23,BOTAFOGO F.C.,Unión y Progreso
+PRIMERA B,23,Grupo Universitario,Excursionistas
+PRIMERA B,23,Oficina,Loma Negra
+PRIMERA B,23,San José,Alumni
+PRIMERA B,24,Argentino,BOTAFOGO F.C.
+PRIMERA B,24,DEPORTIVO RAUCH,Excursionistas
+PRIMERA B,24,Grupo Universitario,Alumni
+PRIMERA B,24,Loma Negra,Defensores del Cerro
+PRIMERA B,24,San José,Oficina
+PRIMERA B,24,Unión y Progreso,ATENEO ESTRADA
+PRIMERA B,25,DEPORTIVO RAUCH,BOTAFOGO F.C.
+PRIMERA B,25,Defensores del Cerro,Unión y Progreso
+PRIMERA B,25,Excursionistas,Argentino
+PRIMERA B,25,Grupo Universitario,ATENEO ESTRADA
+PRIMERA B,25,Loma Negra,SAN LORENZO (RAUCH)
+PRIMERA B,25,Oficina,San José
+PRIMERA B,26,Alumni,ATENEO ESTRADA
+PRIMERA B,26,Argentino,Unión y Progreso
+PRIMERA B,26,BOTAFOGO F.C.,Excursionistas
+PRIMERA B,26,DEPORTIVO RAUCH,Oficina
+PRIMERA B,26,Defensores del Cerro,SAN LORENZO (RAUCH)
+PRIMERA B,26,Grupo Universitario,San José
+INF A 10ª,1,Ferrocarril Sud,Gimnasia y Esgrima
+INF A 9ª,1,Ferrocarril Sud,Gimnasia y Esgrima
+INF A 8ª,1,Ferrocarril Sud,Gimnasia y Esgrima
+INF A 5ª,1,Ferrocarril Sud,Gimnasia y Esgrima
+INF A 7ª,1,Ferrocarril Sud,Gimnasia y Esgrima
+INF A 6ª,1,Ferrocarril Sud,Gimnasia y Esgrima
+INF A 11ª,1,Ferrocarril Sud,Gimnasia y Esgrima
+INF A 10ª,1,Juarense,Independiente
+INF A 9ª,1,Juarense,Independiente
+INF A 8ª,1,Juarense,Independiente
+INF A 5ª,1,Juarense,Independiente
+INF A 7ª,1,Juarense,Independiente
+INF A 6ª,1,Juarense,Independiente
+INF A 11ª,1,Juarense,Independiente
+INF A 10ª,1,Loma Negra Inferiores,Argentino Inferiores
+INF A 5ª,1,Loma Negra Inferiores,Argentino Inferiores
+INF A 6ª,1,Loma Negra Inferiores,Argentino Inferiores
+INF A 10ª,1,UNICEN,San José Inferiores
+INF A 9ª,1,UNICEN,San José Inferiores
+INF A 8ª,1,UNICEN,San José Inferiores
+INF A 5ª,1,UNICEN,San José Inferiores
+INF A 7ª,1,UNICEN,San José Inferiores
+INF A 6ª,1,UNICEN,San José Inferiores
+INF A 11ª,1,UNICEN,San José Inferiores
+INF A 10ª,2,Argentino Inferiores,Ferrocarril Sud
+INF A 9ª,2,Argentino Inferiores,Ferrocarril Sud
+INF A 8ª,2,Argentino Inferiores,Ferrocarril Sud
+INF A 5ª,2,Argentino Inferiores,Ferrocarril Sud
+INF A 6ª,2,Argentino Inferiores,Ferrocarril Sud
+INF A 11ª,2,Argentino Inferiores,Ferrocarril Sud
+INF A 10ª,2,Gimnasia y Esgrima,Santamarina
+INF A 9ª,2,Gimnasia y Esgrima,Santamarina
+INF A 8ª,2,Gimnasia y Esgrima,Santamarina
+INF A 5ª,2,Gimnasia y Esgrima,Santamarina
+INF A 7ª,2,Gimnasia y Esgrima,Santamarina
+INF A 6ª,2,Gimnasia y Esgrima,Santamarina
+INF A 11ª,2,Gimnasia y Esgrima,Santamarina
+INF A 10ª,2,Independiente,Juventud Unida Infantiles
+INF A 9ª,2,Independiente,Juventud Unida Infantiles
+INF A 11ª,2,Independiente,Juventud Unida Infantiles
+INF A 8ª,2,Juventud Unida,Juarense
+INF A 5ª,2,Juventud Unida,Juarense
+INF A 7ª,2,Juventud Unida,Juarense
+INF A 10ª,2,San José Inferiores,Loma Negra Inferiores
+INF A 5ª,2,San José Inferiores,Loma Negra Inferiores
+INF A 7ª,2,San José Inferiores,Loma Negra Inferiores
+INF A 6ª,2,San José Inferiores,Loma Negra Inferiores
+INF A 10ª,3,Argentino Inferiores,Loma Negra Inferiores
+INF A 5ª,3,Argentino Inferiores,Loma Negra Inferiores
+INF A 6ª,3,Argentino Inferiores,Loma Negra Inferiores
+INF A 8ª,3,Ferrocarril Sud,Juventud Unida
+INF A 5ª,3,Ferrocarril Sud,Juventud Unida
+INF A 7ª,3,Ferrocarril Sud,Juventud Unida
+INF A 10ª,3,Independiente,Gimnasia y Esgrima
+INF A 9ª,3,Independiente,Gimnasia y Esgrima
+INF A 8ª,3,Independiente,Gimnasia y Esgrima
+INF A 5ª,3,Independiente,Gimnasia y Esgrima
+INF A 7ª,3,Independiente,Gimnasia y Esgrima
+INF A 6ª,3,Independiente,Gimnasia y Esgrima
+INF A 11ª,3,Independiente,Gimnasia y Esgrima
+INF A 10ª,3,Juventud Unida Infantiles,Santamarina
+INF A 9ª,3,Juventud Unida Infantiles,Santamarina
+INF A 11ª,3,Juventud Unida Infantiles,Santamarina
+INF A 10ª,3,UNICEN,Juarense
+INF A 9ª,3,UNICEN,Juarense
+INF A 8ª,3,UNICEN,Juarense
+INF A 5ª,3,UNICEN,Juarense
+INF A 7ª,3,UNICEN,Juarense
+INF A 6ª,3,UNICEN,Juarense
+INF A 11ª,3,UNICEN,Juarense
+INF A 10ª,4,Ferrocarril Sud,Juarense
+INF A 9ª,4,Ferrocarril Sud,Juarense
+INF A 8ª,4,Ferrocarril Sud,Juarense
+INF A 5ª,4,Ferrocarril Sud,Juarense
+INF A 7ª,4,Ferrocarril Sud,Juarense
+INF A 6ª,4,Ferrocarril Sud,Juarense
+INF A 11ª,4,Ferrocarril Sud,Juarense
+INF A 10ª,4,Gimnasia y Esgrima,Independiente
+INF A 9ª,4,Gimnasia y Esgrima,Independiente
+INF A 8ª,4,Gimnasia y Esgrima,Independiente
+INF A 5ª,4,Gimnasia y Esgrima,Independiente
+INF A 7ª,4,Gimnasia y Esgrima,Independiente
+INF A 6ª,4,Gimnasia y Esgrima,Independiente
+INF A 11ª,4,Gimnasia y Esgrima,Independiente
+INF A 8ª,4,Juventud Unida,Argentino Inferiores
+INF A 5ª,4,Juventud Unida,Argentino Inferiores
+INF A 10ª,4,Juventud Unida Infantiles,Loma Negra Inferiores
+INF A 10ª,4,Santamarina,UNICEN
+INF A 9ª,4,Santamarina,UNICEN
+INF A 8ª,4,Santamarina,UNICEN
+INF A 5ª,4,Santamarina,UNICEN
+INF A 7ª,4,Santamarina,UNICEN
+INF A 6ª,4,Santamarina,UNICEN
+INF A 11ª,4,Santamarina,UNICEN
+INF A 10ª,5,Juarense,Argentino Inferiores
+INF A 9ª,5,Juarense,Argentino Inferiores
+INF A 8ª,5,Juarense,Argentino Inferiores
+INF A 5ª,5,Juarense,Argentino Inferiores
+INF A 6ª,5,Juarense,Argentino Inferiores
+INF A 11ª,5,Juarense,Argentino Inferiores
+INF A 8ª,5,Juventud Unida,UNICEN
+INF A 5ª,5,Juventud Unida,UNICEN
+INF A 7ª,5,Juventud Unida,UNICEN
+INF A 10ª,5,Juventud Unida Infantiles,Ferrocarril Sud
+INF A 9ª,5,Juventud Unida Infantiles,Ferrocarril Sud
+INF A 11ª,5,Juventud Unida Infantiles,Ferrocarril Sud
+INF A 10ª,5,Loma Negra Inferiores,Gimnasia y Esgrima
+INF A 5ª,5,Loma Negra Inferiores,Gimnasia y Esgrima
+INF A 7ª,5,Loma Negra Inferiores,Gimnasia y Esgrima
+INF A 6ª,5,Loma Negra Inferiores,Gimnasia y Esgrima
+INF A 10ª,5,San José Inferiores,Santamarina
+INF A 9ª,5,San José Inferiores,Santamarina
+INF A 8ª,5,San José Inferiores,Santamarina
+INF A 5ª,5,San José Inferiores,Santamarina
+INF A 7ª,5,San José Inferiores,Santamarina
+INF A 6ª,5,San José Inferiores,Santamarina
+INF A 11ª,5,San José Inferiores,Santamarina
+INF A 10ª,6,Argentino Inferiores,Independiente
+INF A 9ª,6,Argentino Inferiores,Independiente
+INF A 8ª,6,Argentino Inferiores,Independiente
+INF A 5ª,6,Argentino Inferiores,Independiente
+INF A 6ª,6,Argentino Inferiores,Independiente
+INF A 11ª,6,Argentino Inferiores,Independiente
+INF A 10ª,6,Ferrocarril Sud,San José Inferiores
+INF A 9ª,6,Ferrocarril Sud,San José Inferiores
+INF A 8ª,6,Ferrocarril Sud,San José Inferiores
+INF A 5ª,6,Ferrocarril Sud,San José Inferiores
+INF A 7ª,6,Ferrocarril Sud,San José Inferiores
+INF A 6ª,6,Ferrocarril Sud,San José Inferiores
+INF A 11ª,6,Ferrocarril Sud,San José Inferiores
+INF A 8ª,6,Juarense,Juventud Unida
+INF A 5ª,6,Juarense,Juventud Unida
+INF A 7ª,6,Juarense,Juventud Unida
+INF A 10ª,6,Juventud Unida Infantiles,UNICEN
+INF A 9ª,6,Juventud Unida Infantiles,UNICEN
+INF A 11ª,6,Juventud Unida Infantiles,UNICEN
+INF A 10ª,6,Santamarina,Gimnasia y Esgrima
+INF A 9ª,6,Santamarina,Gimnasia y Esgrima
+INF A 8ª,6,Santamarina,Gimnasia y Esgrima
+INF A 5ª,6,Santamarina,Gimnasia y Esgrima
+INF A 7ª,6,Santamarina,Gimnasia y Esgrima
+INF A 6ª,6,Santamarina,Gimnasia y Esgrima
+INF A 11ª,6,Santamarina,Gimnasia y Esgrima
+INF A 10ª,7,Argentino Inferiores,Juarense
+INF A 9ª,7,Argentino Inferiores,Juarense
+INF A 8ª,7,Argentino Inferiores,Juarense
+INF A 5ª,7,Argentino Inferiores,Juarense
+INF A 6ª,7,Argentino Inferiores,Juarense
+INF A 11ª,7,Argentino Inferiores,Juarense
+INF A 10ª,7,Gimnasia y Esgrima,Ferrocarril Sud
+INF A 9ª,7,Gimnasia y Esgrima,Ferrocarril Sud
+INF A 8ª,7,Gimnasia y Esgrima,Ferrocarril Sud
+INF A 5ª,7,Gimnasia y Esgrima,Ferrocarril Sud
+INF A 7ª,7,Gimnasia y Esgrima,Ferrocarril Sud
+INF A 6ª,7,Gimnasia y Esgrima,Ferrocarril Sud
+INF A 11ª,7,Gimnasia y Esgrima,Ferrocarril Sud
+INF A 10ª,7,Independiente,Santamarina
+INF A 9ª,7,Independiente,Santamarina
+INF A 8ª,7,Independiente,Santamarina
+INF A 5ª,7,Independiente,Santamarina
+INF A 7ª,7,Independiente,Santamarina
+INF A 6ª,7,Independiente,Santamarina
+INF A 11ª,7,Independiente,Santamarina
+INF A 10ª,7,Juventud Unida Infantiles,San José Inferiores
+INF A 9ª,7,Juventud Unida Infantiles,San José Inferiores
+INF A 11ª,7,Juventud Unida Infantiles,San José Inferiores
+INF A 10ª,7,Loma Negra Inferiores,UNICEN
+INF A 5ª,7,Loma Negra Inferiores,UNICEN
+INF A 7ª,7,Loma Negra Inferiores,UNICEN
+INF A 6ª,7,Loma Negra Inferiores,UNICEN
+INF A 10ª,8,Ferrocarril Sud,Loma Negra Inferiores
+INF A 5ª,8,Ferrocarril Sud,Loma Negra Inferiores
+INF A 7ª,8,Ferrocarril Sud,Loma Negra Inferiores
+INF A 6ª,8,Ferrocarril Sud,Loma Negra Inferiores
+INF A 10ª,8,Independiente,San José Inferiores
+INF A 9ª,8,Independiente,San José Inferiores
+INF A 8ª,8,Independiente,San José Inferiores
+INF A 5ª,8,Independiente,San José Inferiores
+INF A 7ª,8,Independiente,San José Inferiores
+INF A 6ª,8,Independiente,San José Inferiores
+INF A 11ª,8,Independiente,San José Inferiores
+INF A 10ª,8,Juarense,Santamarina
+INF A 9ª,8,Juarense,Santamarina
+INF A 8ª,8,Juarense,Santamarina
+INF A 5ª,8,Juarense,Santamarina
+INF A 7ª,8,Juarense,Santamarina
+INF A 6ª,8,Juarense,Santamarina
+INF A 11ª,8,Juarense,Santamarina
+INF A 10ª,8,Juventud Unida Infantiles,Argentino Inferiores
+INF A 9ª,8,Juventud Unida Infantiles,Argentino Inferiores
+INF A 11ª,8,Juventud Unida Infantiles,Argentino Inferiores
+INF A 10ª,8,UNICEN,Gimnasia y Esgrima
+INF A 9ª,8,UNICEN,Gimnasia y Esgrima
+INF A 8ª,8,UNICEN,Gimnasia y Esgrima
+INF A 5ª,8,UNICEN,Gimnasia y Esgrima
+INF A 7ª,8,UNICEN,Gimnasia y Esgrima
+INF A 6ª,8,UNICEN,Gimnasia y Esgrima
+INF A 11ª,8,UNICEN,Gimnasia y Esgrima
+INF A 10ª,9,Argentino Inferiores,San José Inferiores
+INF A 9ª,9,Argentino Inferiores,San José Inferiores
+INF A 8ª,9,Argentino Inferiores,San José Inferiores
+INF A 5ª,9,Argentino Inferiores,San José Inferiores
+INF A 6ª,9,Argentino Inferiores,San José Inferiores
+INF A 11ª,9,Argentino Inferiores,San José Inferiores
+INF A 10ª,9,Gimnasia y Esgrima,Juventud Unida Infantiles
+INF A 9ª,9,Gimnasia y Esgrima,Juventud Unida Infantiles
+INF A 11ª,9,Gimnasia y Esgrima,Juventud Unida Infantiles
+INF A 10ª,9,Independiente,Juarense
+INF A 9ª,9,Independiente,Juarense
+INF A 8ª,9,Independiente,Juarense
+INF A 5ª,9,Independiente,Juarense
+INF A 7ª,9,Independiente,Juarense
+INF A 6ª,9,Independiente,Juarense
+INF A 11ª,9,Independiente,Juarense
+INF A 8ª,9,Juventud Unida,Ferrocarril Sud
+INF A 5ª,9,Juventud Unida,Ferrocarril Sud
+INF A 7ª,9,Juventud Unida,Ferrocarril Sud
+INF A 10ª,9,UNICEN,Loma Negra Inferiores
+INF A 5ª,9,UNICEN,Loma Negra Inferiores
+INF A 7ª,9,UNICEN,Loma Negra Inferiores
+INF A 6ª,9,UNICEN,Loma Negra Inferiores
+INF A 10ª,10,Argentino Inferiores,Juventud Unida Infantiles
+INF A 9ª,10,Argentino Inferiores,Juventud Unida Infantiles
+INF A 11ª,10,Argentino Inferiores,Juventud Unida Infantiles
+INF A 10ª,10,Loma Negra Inferiores,Independiente
+INF A 5ª,10,Loma Negra Inferiores,Independiente
+INF A 7ª,10,Loma Negra Inferiores,Independiente
+INF A 6ª,10,Loma Negra Inferiores,Independiente
+INF A 10ª,10,San José Inferiores,Ferrocarril Sud
+INF A 9ª,10,San José Inferiores,Ferrocarril Sud
+INF A 8ª,10,San José Inferiores,Ferrocarril Sud
+INF A 5ª,10,San José Inferiores,Ferrocarril Sud
+INF A 7ª,10,San José Inferiores,Ferrocarril Sud
+INF A 6ª,10,San José Inferiores,Ferrocarril Sud
+INF A 11ª,10,San José Inferiores,Ferrocarril Sud
+INF A 10ª,10,Santamarina,Juarense
+INF A 9ª,10,Santamarina,Juarense
+INF A 8ª,10,Santamarina,Juarense
+INF A 5ª,10,Santamarina,Juarense
+INF A 7ª,10,Santamarina,Juarense
+INF A 6ª,10,Santamarina,Juarense
+INF A 11ª,10,Santamarina,Juarense
+INF A 8ª,10,UNICEN,Juventud Unida
+INF A 5ª,10,UNICEN,Juventud Unida
+INF A 7ª,10,UNICEN,Juventud Unida
+INF A 10ª,11,Ferrocarril Sud,Argentino Inferiores
+INF A 9ª,11,Ferrocarril Sud,Argentino Inferiores
+INF A 8ª,11,Ferrocarril Sud,Argentino Inferiores
+INF A 5ª,11,Ferrocarril Sud,Argentino Inferiores
+INF A 6ª,11,Ferrocarril Sud,Argentino Inferiores
+INF A 11ª,11,Ferrocarril Sud,Argentino Inferiores
+INF A 10ª,11,Juarense,Gimnasia y Esgrima
+INF A 9ª,11,Juarense,Gimnasia y Esgrima
+INF A 8ª,11,Juarense,Gimnasia y Esgrima
+INF A 5ª,11,Juarense,Gimnasia y Esgrima
+INF A 7ª,11,Juarense,Gimnasia y Esgrima
+INF A 6ª,11,Juarense,Gimnasia y Esgrima
+INF A 11ª,11,Juarense,Gimnasia y Esgrima
+INF A 5ª,11,Loma Negra Inferiores,Juventud Unida
+INF A 7ª,11,Loma Negra Inferiores,Juventud Unida
+INF A 10ª,11,San José Inferiores,UNICEN
+INF A 9ª,11,San José Inferiores,UNICEN
+INF A 8ª,11,San José Inferiores,UNICEN
+INF A 5ª,11,San José Inferiores,UNICEN
+INF A 7ª,11,San José Inferiores,UNICEN
+INF A 6ª,11,San José Inferiores,UNICEN
+INF A 11ª,11,San José Inferiores,UNICEN
+INF A 10ª,11,Santamarina,Independiente
+INF A 9ª,11,Santamarina,Independiente
+INF A 8ª,11,Santamarina,Independiente
+INF A 5ª,11,Santamarina,Independiente
+INF A 7ª,11,Santamarina,Independiente
+INF A 6ª,11,Santamarina,Independiente
+INF A 11ª,11,Santamarina,Independiente
+INF A 10ª,12,Ferrocarril Sud,Independiente
+INF A 9ª,12,Ferrocarril Sud,Independiente
+INF A 8ª,12,Ferrocarril Sud,Independiente
+INF A 5ª,12,Ferrocarril Sud,Independiente
+INF A 7ª,12,Ferrocarril Sud,Independiente
+INF A 6ª,12,Ferrocarril Sud,Independiente
+INF A 11ª,12,Ferrocarril Sud,Independiente
+INF A 10ª,12,Juarense,Loma Negra Inferiores
+INF A 5ª,12,Juarense,Loma Negra Inferiores
+INF A 7ª,12,Juarense,Loma Negra Inferiores
+INF A 6ª,12,Juarense,Loma Negra Inferiores
+INF A 10ª,12,San José Inferiores,Juventud Unida Infantiles
+INF A 9ª,12,San José Inferiores,Juventud Unida Infantiles
+INF A 11ª,12,San José Inferiores,Juventud Unida Infantiles
+INF A 8ª,12,Santamarina,Juventud Unida
+INF A 5ª,12,Santamarina,Juventud Unida
+INF A 7ª,12,Santamarina,Juventud Unida
+INF A 10ª,12,UNICEN,Argentino Inferiores
+INF A 9ª,12,UNICEN,Argentino Inferiores
+INF A 8ª,12,UNICEN,Argentino Inferiores
+INF A 5ª,12,UNICEN,Argentino Inferiores
+INF A 6ª,12,UNICEN,Argentino Inferiores
+INF A 11ª,12,UNICEN,Argentino Inferiores
+INF A 10ª,13,Argentino Inferiores,UNICEN
+INF A 9ª,13,Argentino Inferiores,UNICEN
+INF A 8ª,13,Argentino Inferiores,UNICEN
+INF A 5ª,13,Argentino Inferiores,UNICEN
+INF A 6ª,13,Argentino Inferiores,UNICEN
+INF A 11ª,13,Argentino Inferiores,UNICEN
+INF A 10ª,13,Gimnasia y Esgrima,Loma Negra Inferiores
+INF A 5ª,13,Gimnasia y Esgrima,Loma Negra Inferiores
+INF A 7ª,13,Gimnasia y Esgrima,Loma Negra Inferiores
+INF A 6ª,13,Gimnasia y Esgrima,Loma Negra Inferiores
+INF A 10ª,13,Independiente,Ferrocarril Sud
+INF A 9ª,13,Independiente,Ferrocarril Sud
+INF A 8ª,13,Independiente,Ferrocarril Sud
+INF A 5ª,13,Independiente,Ferrocarril Sud
+INF A 7ª,13,Independiente,Ferrocarril Sud
+INF A 6ª,13,Independiente,Ferrocarril Sud
+INF A 11ª,13,Independiente,Ferrocarril Sud
+INF A 10ª,13,Santamarina,San José Inferiores
+INF A 9ª,13,Santamarina,San José Inferiores
+INF A 8ª,13,Santamarina,San José Inferiores
+INF A 5ª,13,Santamarina,San José Inferiores
+INF A 7ª,13,Santamarina,San José Inferiores
+INF A 6ª,13,Santamarina,San José Inferiores
+INF A 11ª,13,Santamarina,San José Inferiores
+INF A 10ª,14,Ferrocarril Sud,Juventud Unida Infantiles
+INF A 9ª,14,Ferrocarril Sud,Juventud Unida Infantiles
+INF A 11ª,14,Ferrocarril Sud,Juventud Unida Infantiles
+INF A 10ª,14,Juarense,San José Inferiores
+INF A 9ª,14,Juarense,San José Inferiores
+INF A 8ª,14,Juarense,San José Inferiores
+INF A 5ª,14,Juarense,San José Inferiores
+INF A 7ª,14,Juarense,San José Inferiores
+INF A 6ª,14,Juarense,San José Inferiores
+INF A 11ª,14,Juarense,San José Inferiores
+INF A 8ª,14,Juventud Unida,Gimnasia y Esgrima
+INF A 5ª,14,Juventud Unida,Gimnasia y Esgrima
+INF A 7ª,14,Juventud Unida,Gimnasia y Esgrima
+INF A 10ª,14,Santamarina,Loma Negra Inferiores
+INF A 5ª,14,Santamarina,Loma Negra Inferiores
+INF A 7ª,14,Santamarina,Loma Negra Inferiores
+INF A 6ª,14,Santamarina,Loma Negra Inferiores
+INF A 10ª,14,UNICEN,Independiente
+INF A 9ª,14,UNICEN,Independiente
+INF A 8ª,14,UNICEN,Independiente
+INF A 5ª,14,UNICEN,Independiente
+INF A 7ª,14,UNICEN,Independiente
+INF A 6ª,14,UNICEN,Independiente
+INF A 11ª,14,UNICEN,Independiente
+INF A 10ª,15,Ferrocarril Sud,Santamarina
+INF A 9ª,15,Ferrocarril Sud,Santamarina
+INF A 8ª,15,Ferrocarril Sud,Santamarina
+INF A 5ª,15,Ferrocarril Sud,Santamarina
+INF A 7ª,15,Ferrocarril Sud,Santamarina
+INF A 6ª,15,Ferrocarril Sud,Santamarina
+INF A 11ª,15,Ferrocarril Sud,Santamarina
+INF A 10ª,15,Gimnasia y Esgrima,Argentino Inferiores
+INF A 9ª,15,Gimnasia y Esgrima,Argentino Inferiores
+INF A 8ª,15,Gimnasia y Esgrima,Argentino Inferiores
+INF A 5ª,15,Gimnasia y Esgrima,Argentino Inferiores
+INF A 6ª,15,Gimnasia y Esgrima,Argentino Inferiores
+INF A 11ª,15,Gimnasia y Esgrima,Argentino Inferiores
+INF A 10ª,15,Juarense,Juventud Unida Infantiles
+INF A 9ª,15,Juarense,Juventud Unida Infantiles
+INF A 11ª,15,Juarense,Juventud Unida Infantiles
+INF A 5ª,15,Juventud Unida,Loma Negra Inferiores
+INF A 7ª,15,Juventud Unida,Loma Negra Inferiores
+INF A 10ª,15,San José Inferiores,Independiente
+INF A 9ª,15,San José Inferiores,Independiente
+INF A 8ª,15,San José Inferiores,Independiente
+INF A 5ª,15,San José Inferiores,Independiente
+INF A 7ª,15,San José Inferiores,Independiente
+INF A 6ª,15,San José Inferiores,Independiente
+INF A 11ª,15,San José Inferiores,Independiente
+INF A 10ª,16,Gimnasia y Esgrima,San José Inferiores
+INF A 9ª,16,Gimnasia y Esgrima,San José Inferiores
+INF A 8ª,16,Gimnasia y Esgrima,San José Inferiores
+INF A 5ª,16,Gimnasia y Esgrima,San José Inferiores
+INF A 7ª,16,Gimnasia y Esgrima,San José Inferiores
+INF A 6ª,16,Gimnasia y Esgrima,San José Inferiores
+INF A 11ª,16,Gimnasia y Esgrima,San José Inferiores
+INF A 10ª,16,Independiente,Argentino Inferiores
+INF A 9ª,16,Independiente,Argentino Inferiores
+INF A 8ª,16,Independiente,Argentino Inferiores
+INF A 5ª,16,Independiente,Argentino Inferiores
+INF A 6ª,16,Independiente,Argentino Inferiores
+INF A 11ª,16,Independiente,Argentino Inferiores
+INF A 8ª,16,Juventud Unida,Santamarina
+INF A 5ª,16,Juventud Unida,Santamarina
+INF A 7ª,16,Juventud Unida,Santamarina
+INF A 10ª,16,Loma Negra Inferiores,Ferrocarril Sud
+INF A 5ª,16,Loma Negra Inferiores,Ferrocarril Sud
+INF A 7ª,16,Loma Negra Inferiores,Ferrocarril Sud
+INF A 6ª,16,Loma Negra Inferiores,Ferrocarril Sud
+INF A 10ª,16,UNICEN,Juventud Unida Infantiles
+INF A 9ª,16,UNICEN,Juventud Unida Infantiles
+INF A 11ª,16,UNICEN,Juventud Unida Infantiles
+INF A 10ª,17,Gimnasia y Esgrima,UNICEN
+INF A 9ª,17,Gimnasia y Esgrima,UNICEN
+INF A 8ª,17,Gimnasia y Esgrima,UNICEN
+INF A 5ª,17,Gimnasia y Esgrima,UNICEN
+INF A 7ª,17,Gimnasia y Esgrima,UNICEN
+INF A 6ª,17,Gimnasia y Esgrima,UNICEN
+INF A 11ª,17,Gimnasia y Esgrima,UNICEN
+INF A 8ª,17,Juventud Unida,Independiente
+INF A 5ª,17,Juventud Unida,Independiente
+INF A 7ª,17,Juventud Unida,Independiente
+INF A 10ª,17,Loma Negra Inferiores,Juventud Unida Infantiles
+INF A 10ª,17,San José Inferiores,Juarense
+INF A 9ª,17,San José Inferiores,Juarense
+INF A 8ª,17,San José Inferiores,Juarense
+INF A 5ª,17,San José Inferiores,Juarense
+INF A 7ª,17,San José Inferiores,Juarense
+INF A 6ª,17,San José Inferiores,Juarense
+INF A 11ª,17,San José Inferiores,Juarense
+INF A 10ª,17,Santamarina,Argentino Inferiores
+INF A 9ª,17,Santamarina,Argentino Inferiores
+INF A 8ª,17,Santamarina,Argentino Inferiores
+INF A 5ª,17,Santamarina,Argentino Inferiores
+INF A 6ª,17,Santamarina,Argentino Inferiores
+INF A 11ª,17,Santamarina,Argentino Inferiores
+INF A 8ª,18,Argentino Inferiores,Juventud Unida
+INF A 5ª,18,Argentino Inferiores,Juventud Unida
+INF A 10ª,18,Independiente,UNICEN
+INF A 9ª,18,Independiente,UNICEN
+INF A 8ª,18,Independiente,UNICEN
+INF A 5ª,18,Independiente,UNICEN
+INF A 7ª,18,Independiente,UNICEN
+INF A 6ª,18,Independiente,UNICEN
+INF A 11ª,18,Independiente,UNICEN
+INF A 10ª,18,Loma Negra Inferiores,Juarense
+INF A 5ª,18,Loma Negra Inferiores,Juarense
+INF A 7ª,18,Loma Negra Inferiores,Juarense
+INF A 6ª,18,Loma Negra Inferiores,Juarense
+INF A 10ª,18,San José Inferiores,Gimnasia y Esgrima
+INF A 9ª,18,San José Inferiores,Gimnasia y Esgrima
+INF A 8ª,18,San José Inferiores,Gimnasia y Esgrima
+INF A 5ª,18,San José Inferiores,Gimnasia y Esgrima
+INF A 7ª,18,San José Inferiores,Gimnasia y Esgrima
+INF A 6ª,18,San José Inferiores,Gimnasia y Esgrima
+INF A 11ª,18,San José Inferiores,Gimnasia y Esgrima
+INF A 10ª,18,Santamarina,Ferrocarril Sud
+INF A 9ª,18,Santamarina,Ferrocarril Sud
+INF A 8ª,18,Santamarina,Ferrocarril Sud
+INF A 5ª,18,Santamarina,Ferrocarril Sud
+INF A 7ª,18,Santamarina,Ferrocarril Sud
+INF A 6ª,18,Santamarina,Ferrocarril Sud
+INF A 11ª,18,Santamarina,Ferrocarril Sud
+INF A 10ª,19,Independiente,Loma Negra Inferiores
+INF A 5ª,19,Independiente,Loma Negra Inferiores
+INF A 7ª,19,Independiente,Loma Negra Inferiores
+INF A 6ª,19,Independiente,Loma Negra Inferiores
+INF A 10ª,19,Juarense,Ferrocarril Sud
+INF A 9ª,19,Juarense,Ferrocarril Sud
+INF A 8ª,19,Juarense,Ferrocarril Sud
+INF A 5ª,19,Juarense,Ferrocarril Sud
+INF A 7ª,19,Juarense,Ferrocarril Sud
+INF A 6ª,19,Juarense,Ferrocarril Sud
+INF A 11ª,19,Juarense,Ferrocarril Sud
+INF A 8ª,19,Juventud Unida,San José Inferiores
+INF A 5ª,19,Juventud Unida,San José Inferiores
+INF A 7ª,19,Juventud Unida,San José Inferiores
+INF A 10ª,19,Juventud Unida Infantiles,Gimnasia y Esgrima
+INF A 9ª,19,Juventud Unida Infantiles,Gimnasia y Esgrima
+INF A 11ª,19,Juventud Unida Infantiles,Gimnasia y Esgrima
+INF A 10ª,19,UNICEN,Santamarina
+INF A 9ª,19,UNICEN,Santamarina
+INF A 8ª,19,UNICEN,Santamarina
+INF A 5ª,19,UNICEN,Santamarina
+INF A 7ª,19,UNICEN,Santamarina
+INF A 6ª,19,UNICEN,Santamarina
+INF A 11ª,19,UNICEN,Santamarina
+INF A 10ª,20,Argentino Inferiores,Gimnasia y Esgrima
+INF A 9ª,20,Argentino Inferiores,Gimnasia y Esgrima
+INF A 8ª,20,Argentino Inferiores,Gimnasia y Esgrima
+INF A 5ª,20,Argentino Inferiores,Gimnasia y Esgrima
+INF A 6ª,20,Argentino Inferiores,Gimnasia y Esgrima
+INF A 11ª,20,Argentino Inferiores,Gimnasia y Esgrima
+INF A 10ª,20,Juarense,UNICEN
+INF A 9ª,20,Juarense,UNICEN
+INF A 8ª,20,Juarense,UNICEN
+INF A 5ª,20,Juarense,UNICEN
+INF A 7ª,20,Juarense,UNICEN
+INF A 6ª,20,Juarense,UNICEN
+INF A 11ª,20,Juarense,UNICEN
+INF A 10ª,20,Juventud Unida Infantiles,Independiente
+INF A 9ª,20,Juventud Unida Infantiles,Independiente
+INF A 11ª,20,Juventud Unida Infantiles,Independiente
+INF A 10ª,20,Loma Negra Inferiores,Santamarina
+INF A 5ª,20,Loma Negra Inferiores,Santamarina
+INF A 7ª,20,Loma Negra Inferiores,Santamarina
+INF A 6ª,20,Loma Negra Inferiores,Santamarina
+INF A 8ª,20,San José Inferiores,Juventud Unida
+INF A 5ª,20,San José Inferiores,Juventud Unida
+INF A 7ª,20,San José Inferiores,Juventud Unida
+INF A 10ª,21,Argentino Inferiores,Santamarina
+INF A 9ª,21,Argentino Inferiores,Santamarina
+INF A 8ª,21,Argentino Inferiores,Santamarina
+INF A 5ª,21,Argentino Inferiores,Santamarina
+INF A 6ª,21,Argentino Inferiores,Santamarina
+INF A 11ª,21,Argentino Inferiores,Santamarina
+INF A 8ª,21,Gimnasia y Esgrima,Juventud Unida
+INF A 5ª,21,Gimnasia y Esgrima,Juventud Unida
+INF A 7ª,21,Gimnasia y Esgrima,Juventud Unida
+INF A 10ª,21,Juventud Unida Infantiles,Juarense
+INF A 9ª,21,Juventud Unida Infantiles,Juarense
+INF A 11ª,21,Juventud Unida Infantiles,Juarense
+INF A 10ª,21,Loma Negra Inferiores,San José Inferiores
+INF A 5ª,21,Loma Negra Inferiores,San José Inferiores
+INF A 7ª,21,Loma Negra Inferiores,San José Inferiores
+INF A 6ª,21,Loma Negra Inferiores,San José Inferiores
+INF A 10ª,21,UNICEN,Ferrocarril Sud
+INF A 9ª,21,UNICEN,Ferrocarril Sud
+INF A 8ª,21,UNICEN,Ferrocarril Sud
+INF A 5ª,21,UNICEN,Ferrocarril Sud
+INF A 7ª,21,UNICEN,Ferrocarril Sud
+INF A 6ª,21,UNICEN,Ferrocarril Sud
+INF A 11ª,21,UNICEN,Ferrocarril Sud
+INF A 10ª,22,Ferrocarril Sud,UNICEN
+INF A 9ª,22,Ferrocarril Sud,UNICEN
+INF A 8ª,22,Ferrocarril Sud,UNICEN
+INF A 5ª,22,Ferrocarril Sud,UNICEN
+INF A 7ª,22,Ferrocarril Sud,UNICEN
+INF A 6ª,22,Ferrocarril Sud,UNICEN
+INF A 11ª,22,Ferrocarril Sud,UNICEN
+INF A 10ª,22,Gimnasia y Esgrima,Juarense
+INF A 9ª,22,Gimnasia y Esgrima,Juarense
+INF A 8ª,22,Gimnasia y Esgrima,Juarense
+INF A 5ª,22,Gimnasia y Esgrima,Juarense
+INF A 7ª,22,Gimnasia y Esgrima,Juarense
+INF A 6ª,22,Gimnasia y Esgrima,Juarense
+INF A 11ª,22,Gimnasia y Esgrima,Juarense
+INF A 8ª,22,Independiente,Juventud Unida
+INF A 5ª,22,Independiente,Juventud Unida
+INF A 7ª,22,Independiente,Juventud Unida
+INF A 10ª,22,San José Inferiores,Argentino Inferiores
+INF A 9ª,22,San José Inferiores,Argentino Inferiores
+INF A 8ª,22,San José Inferiores,Argentino Inferiores
+INF A 5ª,22,San José Inferiores,Argentino Inferiores
+INF A 6ª,22,San José Inferiores,Argentino Inferiores
+INF A 11ª,22,San José Inferiores,Argentino Inferiores
+INF A 10ª,22,Santamarina,Juventud Unida Infantiles
+INF A 9ª,22,Santamarina,Juventud Unida Infantiles
+INF A 11ª,22,Santamarina,Juventud Unida Infantiles
+INF B 10ª,1,Deportivo Tandil Inferiores,Unión y Progreso
+INF B 9ª,1,Deportivo Tandil Inferiores,Unión y Progreso
+INF B 8ª,1,Deportivo Tandil Inferiores,Unión y Progreso
+INF B 5ª,1,Deportivo Tandil Inferiores,Unión y Progreso
+INF B 7ª,1,Deportivo Tandil Inferiores,Unión y Progreso
+INF B 6ª,1,Deportivo Tandil Inferiores,Unión y Progreso
+INF B 11ª,1,Deportivo Tandil Inferiores,Unión y Progreso
+INF B 10ª,1,Excursionistas,Oficina
+INF B 9ª,1,Excursionistas,Oficina
+INF B 11ª,1,Excursionistas,Oficina
+INF B 10ª,1,Grupo Universitario,Alumni/Defensores del Cerro Inferiores
+INF B 9ª,1,Grupo Universitario,Alumni/Defensores del Cerro Inferiores
+INF B 5ª,1,Grupo Universitario,Alumni/Defensores del Cerro Inferiores
+INF B 11ª,1,Grupo Universitario,Alumni/Defensores del Cerro Inferiores
+INF B 10ª,1,Herederos,Ferro Azul
+INF B 9ª,1,Herederos,Ferro Azul
+INF B 8ª,1,Herederos,Ferro Azul
+INF B 6ª,1,Herederos,Ferro Azul
+INF B 11ª,1,Herederos,Ferro Azul
+INF B 9ª,1,Velense Inferiores,Independiente (rojo)
+INF B 5ª,1,Velense Inferiores,Independiente (rojo)
+INF B 7ª,1,Velense Inferiores,Independiente (rojo)
+INF B 6ª,1,Velense Inferiores,Independiente (rojo)
+INF B 11ª,1,Velense Inferiores,Independiente (rojo)
+INF B 10ª,2,Alumni/Defensores del Cerro Inferiores,Unión y Progreso
+INF B 9ª,2,Alumni/Defensores del Cerro Inferiores,Unión y Progreso
+INF B 5ª,2,Alumni/Defensores del Cerro Inferiores,Unión y Progreso
+INF B 11ª,2,Alumni/Defensores del Cerro Inferiores,Unión y Progreso
+INF B 10ª,2,Deportivo Tandil Inferiores,Excursionistas
+INF B 9ª,2,Deportivo Tandil Inferiores,Excursionistas
+INF B 8ª,2,Deportivo Tandil Inferiores,Excursionistas
+INF B 5ª,2,Deportivo Tandil Inferiores,Excursionistas
+INF B 7ª,2,Deportivo Tandil Inferiores,Excursionistas
+INF B 6ª,2,Deportivo Tandil Inferiores,Excursionistas
+INF B 11ª,2,Deportivo Tandil Inferiores,Excursionistas
+INF B 10ª,2,Ferro Azul,Independiente (rojo)
+INF B 9ª,2,Ferro Azul,Independiente (rojo)
+INF B 8ª,2,Ferro Azul,Independiente (rojo)
+INF B 5ª,2,Ferro Azul,Independiente (rojo)
+INF B 7ª,2,Ferro Azul,Independiente (rojo)
+INF B 6ª,2,Ferro Azul,Independiente (rojo)
+INF B 11ª,2,Ferro Azul,Independiente (rojo)
+INF B 10ª,2,Grupo Universitario,Herederos
+INF B 9ª,2,Grupo Universitario,Herederos
+INF B 8ª,2,Grupo Universitario,Herederos
+INF B 11ª,2,Grupo Universitario,Herederos
+INF B 9ª,2,Velense Inferiores,Oficina
+INF B 11ª,2,Velense Inferiores,Oficina
+INF B 10ª,3,Alumni/Defensores del Cerro Inferiores,Excursionistas
+INF B 9ª,3,Alumni/Defensores del Cerro Inferiores,Excursionistas
+INF B 5ª,3,Alumni/Defensores del Cerro Inferiores,Excursionistas
+INF B 11ª,3,Alumni/Defensores del Cerro Inferiores,Excursionistas
+INF B 10ª,3,Deportivo Tandil Inferiores,Grupo Universitario
+INF B 9ª,3,Deportivo Tandil Inferiores,Grupo Universitario
+INF B 8ª,3,Deportivo Tandil Inferiores,Grupo Universitario
+INF B 5ª,3,Deportivo Tandil Inferiores,Grupo Universitario
+INF B 7ª,3,Deportivo Tandil Inferiores,Grupo Universitario
+INF B 11ª,3,Deportivo Tandil Inferiores,Grupo Universitario
+INF B 9ª,3,Herederos,Velense Inferiores
+INF B 6ª,3,Herederos,Velense Inferiores
+INF B 11ª,3,Herederos,Velense Inferiores
+INF B 10ª,3,Independiente (rojo),Ferro Azul
+INF B 9ª,3,Independiente (rojo),Ferro Azul
+INF B 8ª,3,Independiente (rojo),Ferro Azul
+INF B 5ª,3,Independiente (rojo),Ferro Azul
+INF B 7ª,3,Independiente (rojo),Ferro Azul
+INF B 6ª,3,Independiente (rojo),Ferro Azul
+INF B 11ª,3,Independiente (rojo),Ferro Azul
+INF B 10ª,3,Unión y Progreso,Oficina
+INF B 9ª,3,Unión y Progreso,Oficina
+INF B 11ª,3,Unión y Progreso,Oficina
+INF B 10ª,4,Deportivo Tandil Inferiores,Herederos
+INF B 9ª,4,Deportivo Tandil Inferiores,Herederos
+INF B 8ª,4,Deportivo Tandil Inferiores,Herederos
+INF B 6ª,4,Deportivo Tandil Inferiores,Herederos
+INF B 11ª,4,Deportivo Tandil Inferiores,Herederos
+INF B 10ª,4,Excursionistas,Alumni/Defensores del Cerro Inferiores
+INF B 9ª,4,Excursionistas,Alumni/Defensores del Cerro Inferiores
+INF B 5ª,4,Excursionistas,Alumni/Defensores del Cerro Inferiores
+INF B 11ª,4,Excursionistas,Alumni/Defensores del Cerro Inferiores
+INF B 10ª,4,Ferro Azul,Unión y Progreso
+INF B 9ª,4,Ferro Azul,Unión y Progreso
+INF B 8ª,4,Ferro Azul,Unión y Progreso
+INF B 5ª,4,Ferro Azul,Unión y Progreso
+INF B 7ª,4,Ferro Azul,Unión y Progreso
+INF B 6ª,4,Ferro Azul,Unión y Progreso
+INF B 11ª,4,Ferro Azul,Unión y Progreso
+INF B 10ª,4,Oficina,Independiente (rojo)
+INF B 9ª,4,Oficina,Independiente (rojo)
+INF B 11ª,4,Oficina,Independiente (rojo)
+INF B 9ª,4,Velense Inferiores,Grupo Universitario
+INF B 5ª,4,Velense Inferiores,Grupo Universitario
+INF B 7ª,4,Velense Inferiores,Grupo Universitario
+INF B 11ª,4,Velense Inferiores,Grupo Universitario
+INF B 10ª,5,Deportivo Tandil Inferiores,Independiente (rojo)
+INF B 9ª,5,Deportivo Tandil Inferiores,Independiente (rojo)
+INF B 8ª,5,Deportivo Tandil Inferiores,Independiente (rojo)
+INF B 5ª,5,Deportivo Tandil Inferiores,Independiente (rojo)
+INF B 7ª,5,Deportivo Tandil Inferiores,Independiente (rojo)
+INF B 6ª,5,Deportivo Tandil Inferiores,Independiente (rojo)
+INF B 11ª,5,Deportivo Tandil Inferiores,Independiente (rojo)
+INF B 10ª,5,Grupo Universitario,Excursionistas
+INF B 9ª,5,Grupo Universitario,Excursionistas
+INF B 8ª,5,Grupo Universitario,Excursionistas
+INF B 5ª,5,Grupo Universitario,Excursionistas
+INF B 7ª,5,Grupo Universitario,Excursionistas
+INF B 11ª,5,Grupo Universitario,Excursionistas
+INF B 10ª,5,Oficina,Alumni/Defensores del Cerro Inferiores
+INF B 9ª,5,Oficina,Alumni/Defensores del Cerro Inferiores
+INF B 11ª,5,Oficina,Alumni/Defensores del Cerro Inferiores
+INF B 10ª,5,Unión y Progreso,Ferro Azul
+INF B 9ª,5,Unión y Progreso,Ferro Azul
+INF B 8ª,5,Unión y Progreso,Ferro Azul
+INF B 5ª,5,Unión y Progreso,Ferro Azul
+INF B 7ª,5,Unión y Progreso,Ferro Azul
+INF B 6ª,5,Unión y Progreso,Ferro Azul
+INF B 11ª,5,Unión y Progreso,Ferro Azul
+INF B 9ª,5,Velense Inferiores,Herederos
+INF B 6ª,5,Velense Inferiores,Herederos
+INF B 11ª,5,Velense Inferiores,Herederos
+INF B 9ª,6,Deportivo Tandil Inferiores,Velense Inferiores
+INF B 5ª,6,Deportivo Tandil Inferiores,Velense Inferiores
+INF B 7ª,6,Deportivo Tandil Inferiores,Velense Inferiores
+INF B 6ª,6,Deportivo Tandil Inferiores,Velense Inferiores
+INF B 11ª,6,Deportivo Tandil Inferiores,Velense Inferiores
+INF B 10ª,6,Ferro Azul,Excursionistas
+INF B 9ª,6,Ferro Azul,Excursionistas
+INF B 8ª,6,Ferro Azul,Excursionistas
+INF B 5ª,6,Ferro Azul,Excursionistas
+INF B 7ª,6,Ferro Azul,Excursionistas
+INF B 6ª,6,Ferro Azul,Excursionistas
+INF B 11ª,6,Ferro Azul,Excursionistas
+INF B 10ª,6,Herederos,Oficina
+INF B 9ª,6,Herederos,Oficina
+INF B 11ª,6,Herederos,Oficina
+INF B 10ª,6,Independiente (rojo),Grupo Universitario
+INF B 9ª,6,Independiente (rojo),Grupo Universitario
+INF B 8ª,6,Independiente (rojo),Grupo Universitario
+INF B 5ª,6,Independiente (rojo),Grupo Universitario
+INF B 7ª,6,Independiente (rojo),Grupo Universitario
+INF B 11ª,6,Independiente (rojo),Grupo Universitario
+INF B 10ª,6,Unión y Progreso,Alumni/Defensores del Cerro Inferiores
+INF B 9ª,6,Unión y Progreso,Alumni/Defensores del Cerro Inferiores
+INF B 5ª,6,Unión y Progreso,Alumni/Defensores del Cerro Inferiores
+INF B 11ª,6,Unión y Progreso,Alumni/Defensores del Cerro Inferiores
+INF B 10ª,7,Excursionistas,Grupo Universitario
+INF B 9ª,7,Excursionistas,Grupo Universitario
+INF B 8ª,7,Excursionistas,Grupo Universitario
+INF B 5ª,7,Excursionistas,Grupo Universitario
+INF B 7ª,7,Excursionistas,Grupo Universitario
+INF B 11ª,7,Excursionistas,Grupo Universitario
+INF B 10ª,7,Ferro Azul,Herederos
+INF B 9ª,7,Ferro Azul,Herederos
+INF B 8ª,7,Ferro Azul,Herederos
+INF B 6ª,7,Ferro Azul,Herederos
+INF B 11ª,7,Ferro Azul,Herederos
+INF B 10ª,7,Independiente (rojo),Unión y Progreso
+INF B 9ª,7,Independiente (rojo),Unión y Progreso
+INF B 8ª,7,Independiente (rojo),Unión y Progreso
+INF B 5ª,7,Independiente (rojo),Unión y Progreso
+INF B 7ª,7,Independiente (rojo),Unión y Progreso
+INF B 6ª,7,Independiente (rojo),Unión y Progreso
+INF B 11ª,7,Independiente (rojo),Unión y Progreso
+INF B 10ª,7,Oficina,Deportivo Tandil Inferiores
+INF B 9ª,7,Oficina,Deportivo Tandil Inferiores
+INF B 11ª,7,Oficina,Deportivo Tandil Inferiores
+INF B 9ª,7,Velense Inferiores,Alumni/Defensores del Cerro Inferiores
+INF B 5ª,7,Velense Inferiores,Alumni/Defensores del Cerro Inferiores
+INF B 11ª,7,Velense Inferiores,Alumni/Defensores del Cerro Inferiores
+INF B 10ª,8,Deportivo Tandil Inferiores,Alumni/Defensores del Cerro Inferiores
+INF B 9ª,8,Deportivo Tandil Inferiores,Alumni/Defensores del Cerro Inferiores
+INF B 5ª,8,Deportivo Tandil Inferiores,Alumni/Defensores del Cerro Inferiores
+INF B 11ª,8,Deportivo Tandil Inferiores,Alumni/Defensores del Cerro Inferiores
+INF B 10ª,8,Excursionistas,Herederos
+INF B 9ª,8,Excursionistas,Herederos
+INF B 8ª,8,Excursionistas,Herederos
+INF B 6ª,8,Excursionistas,Herederos
+INF B 11ª,8,Excursionistas,Herederos
+INF B 10ª,8,Grupo Universitario,Ferro Azul
+INF B 9ª,8,Grupo Universitario,Ferro Azul
+INF B 8ª,8,Grupo Universitario,Ferro Azul
+INF B 5ª,8,Grupo Universitario,Ferro Azul
+INF B 7ª,8,Grupo Universitario,Ferro Azul
+INF B 11ª,8,Grupo Universitario,Ferro Azul
+INF B 9ª,8,Oficina,Velense Inferiores
+INF B 11ª,8,Oficina,Velense Inferiores
+INF B 10ª,8,Unión y Progreso,Independiente (rojo)
+INF B 9ª,8,Unión y Progreso,Independiente (rojo)
+INF B 8ª,8,Unión y Progreso,Independiente (rojo)
+INF B 5ª,8,Unión y Progreso,Independiente (rojo)
+INF B 7ª,8,Unión y Progreso,Independiente (rojo)
+INF B 6ª,8,Unión y Progreso,Independiente (rojo)
+INF B 11ª,8,Unión y Progreso,Independiente (rojo)
+INF B 10ª,9,Deportivo Tandil Inferiores,Ferro Azul
+INF B 9ª,9,Deportivo Tandil Inferiores,Ferro Azul
+INF B 8ª,9,Deportivo Tandil Inferiores,Ferro Azul
+INF B 5ª,9,Deportivo Tandil Inferiores,Ferro Azul
+INF B 7ª,9,Deportivo Tandil Inferiores,Ferro Azul
+INF B 6ª,9,Deportivo Tandil Inferiores,Ferro Azul
+INF B 11ª,9,Deportivo Tandil Inferiores,Ferro Azul
+INF B 10ª,9,Grupo Universitario,Oficina
+INF B 9ª,9,Grupo Universitario,Oficina
+INF B 11ª,9,Grupo Universitario,Oficina
+INF B 10ª,9,Herederos,Unión y Progreso
+INF B 9ª,9,Herederos,Unión y Progreso
+INF B 8ª,9,Herederos,Unión y Progreso
+INF B 6ª,9,Herederos,Unión y Progreso
+INF B 11ª,9,Herederos,Unión y Progreso
+INF B 10ª,9,Independiente (rojo),Alumni/Defensores del Cerro Inferiores
+INF B 9ª,9,Independiente (rojo),Alumni/Defensores del Cerro Inferiores
+INF B 5ª,9,Independiente (rojo),Alumni/Defensores del Cerro Inferiores
+INF B 11ª,9,Independiente (rojo),Alumni/Defensores del Cerro Inferiores
+INF B 9ª,9,Velense Inferiores,Excursionistas
+INF B 5ª,9,Velense Inferiores,Excursionistas
+INF B 7ª,9,Velense Inferiores,Excursionistas
+INF B 6ª,9,Velense Inferiores,Excursionistas
+INF B 11ª,9,Velense Inferiores,Excursionistas
+INF B 9ª,10,Alumni/Defensores del Cerro Inferiores,Velense Inferiores
+INF B 5ª,10,Alumni/Defensores del Cerro Inferiores,Velense Inferiores
+INF B 11ª,10,Alumni/Defensores del Cerro Inferiores,Velense Inferiores
+INF B 10ª,10,Deportivo Tandil Inferiores,Oficina
+INF B 9ª,10,Deportivo Tandil Inferiores,Oficina
+INF B 11ª,10,Deportivo Tandil Inferiores,Oficina
+INF B 10ª,10,Excursionistas,Ferro Azul
+INF B 9ª,10,Excursionistas,Ferro Azul
+INF B 8ª,10,Excursionistas,Ferro Azul
+INF B 5ª,10,Excursionistas,Ferro Azul
+INF B 7ª,10,Excursionistas,Ferro Azul
+INF B 6ª,10,Excursionistas,Ferro Azul
+INF B 11ª,10,Excursionistas,Ferro Azul
+INF B 10ª,10,Grupo Universitario,Independiente (rojo)
+INF B 9ª,10,Grupo Universitario,Independiente (rojo)
+INF B 8ª,10,Grupo Universitario,Independiente (rojo)
+INF B 5ª,10,Grupo Universitario,Independiente (rojo)
+INF B 7ª,10,Grupo Universitario,Independiente (rojo)
+INF B 11ª,10,Grupo Universitario,Independiente (rojo)
+INF B 10ª,10,Unión y Progreso,Herederos
+INF B 9ª,10,Unión y Progreso,Herederos
+INF B 8ª,10,Unión y Progreso,Herederos
+INF B 6ª,10,Unión y Progreso,Herederos
+INF B 11ª,10,Unión y Progreso,Herederos
+INF B 10ª,11,Alumni/Defensores del Cerro Inferiores,Oficina
+INF B 9ª,11,Alumni/Defensores del Cerro Inferiores,Oficina
+INF B 11ª,11,Alumni/Defensores del Cerro Inferiores,Oficina
+INF B 10ª,11,Grupo Universitario,Deportivo Tandil Inferiores
+INF B 9ª,11,Grupo Universitario,Deportivo Tandil Inferiores
+INF B 8ª,11,Grupo Universitario,Deportivo Tandil Inferiores
+INF B 5ª,11,Grupo Universitario,Deportivo Tandil Inferiores
+INF B 7ª,11,Grupo Universitario,Deportivo Tandil Inferiores
+INF B 11ª,11,Grupo Universitario,Deportivo Tandil Inferiores
+INF B 10ª,11,Herederos,Independiente (rojo)
+INF B 9ª,11,Herederos,Independiente (rojo)
+INF B 8ª,11,Herederos,Independiente (rojo)
+INF B 6ª,11,Herederos,Independiente (rojo)
+INF B 11ª,11,Herederos,Independiente (rojo)
+INF B 10ª,11,Unión y Progreso,Excursionistas
+INF B 9ª,11,Unión y Progreso,Excursionistas
+INF B 8ª,11,Unión y Progreso,Excursionistas
+INF B 5ª,11,Unión y Progreso,Excursionistas
+INF B 7ª,11,Unión y Progreso,Excursionistas
+INF B 6ª,11,Unión y Progreso,Excursionistas
+INF B 11ª,11,Unión y Progreso,Excursionistas
+INF B 9ª,11,Velense Inferiores,Ferro Azul
+INF B 5ª,11,Velense Inferiores,Ferro Azul
+INF B 7ª,11,Velense Inferiores,Ferro Azul
+INF B 6ª,11,Velense Inferiores,Ferro Azul
+INF B 11ª,11,Velense Inferiores,Ferro Azul
+INF B 10ª,12,Alumni/Defensores del Cerro Inferiores,Independiente (rojo)
+INF B 9ª,12,Alumni/Defensores del Cerro Inferiores,Independiente (rojo)
+INF B 5ª,12,Alumni/Defensores del Cerro Inferiores,Independiente (rojo)
+INF B 11ª,12,Alumni/Defensores del Cerro Inferiores,Independiente (rojo)
+INF B 10ª,12,Excursionistas,Deportivo Tandil Inferiores
+INF B 9ª,12,Excursionistas,Deportivo Tandil Inferiores
+INF B 8ª,12,Excursionistas,Deportivo Tandil Inferiores
+INF B 5ª,12,Excursionistas,Deportivo Tandil Inferiores
+INF B 7ª,12,Excursionistas,Deportivo Tandil Inferiores
+INF B 6ª,12,Excursionistas,Deportivo Tandil Inferiores
+INF B 11ª,12,Excursionistas,Deportivo Tandil Inferiores
+INF B 9ª,12,Ferro Azul,Velense Inferiores
+INF B 5ª,12,Ferro Azul,Velense Inferiores
+INF B 7ª,12,Ferro Azul,Velense Inferiores
+INF B 6ª,12,Ferro Azul,Velense Inferiores
+INF B 11ª,12,Ferro Azul,Velense Inferiores
+INF B 10ª,12,Grupo Universitario,Unión y Progreso
+INF B 9ª,12,Grupo Universitario,Unión y Progreso
+INF B 8ª,12,Grupo Universitario,Unión y Progreso
+INF B 5ª,12,Grupo Universitario,Unión y Progreso
+INF B 7ª,12,Grupo Universitario,Unión y Progreso
+INF B 11ª,12,Grupo Universitario,Unión y Progreso
+INF B 10ª,12,Oficina,Herederos
+INF B 9ª,12,Oficina,Herederos
+INF B 11ª,12,Oficina,Herederos
+INF B 10ª,13,Alumni/Defensores del Cerro Inferiores,Ferro Azul
+INF B 9ª,13,Alumni/Defensores del Cerro Inferiores,Ferro Azul
+INF B 5ª,13,Alumni/Defensores del Cerro Inferiores,Ferro Azul
+INF B 11ª,13,Alumni/Defensores del Cerro Inferiores,Ferro Azul
+INF B 10ª,13,Excursionistas,Unión y Progreso
+INF B 9ª,13,Excursionistas,Unión y Progreso
+INF B 8ª,13,Excursionistas,Unión y Progreso
+INF B 5ª,13,Excursionistas,Unión y Progreso
+INF B 7ª,13,Excursionistas,Unión y Progreso
+INF B 6ª,13,Excursionistas,Unión y Progreso
+INF B 11ª,13,Excursionistas,Unión y Progreso
+INF B 9ª,13,Grupo Universitario,Velense Inferiores
+INF B 5ª,13,Grupo Universitario,Velense Inferiores
+INF B 7ª,13,Grupo Universitario,Velense Inferiores
+INF B 11ª,13,Grupo Universitario,Velense Inferiores
+INF B 10ª,13,Herederos,Deportivo Tandil Inferiores
+INF B 9ª,13,Herederos,Deportivo Tandil Inferiores
+INF B 8ª,13,Herederos,Deportivo Tandil Inferiores
+INF B 6ª,13,Herederos,Deportivo Tandil Inferiores
+INF B 11ª,13,Herederos,Deportivo Tandil Inferiores
+INF B 10ª,13,Independiente (rojo),Oficina
+INF B 9ª,13,Independiente (rojo),Oficina
+INF B 11ª,13,Independiente (rojo),Oficina
+INF B 10ª,14,Ferro Azul,Alumni/Defensores del Cerro Inferiores
+INF B 9ª,14,Ferro Azul,Alumni/Defensores del Cerro Inferiores
+INF B 5ª,14,Ferro Azul,Alumni/Defensores del Cerro Inferiores
+INF B 11ª,14,Ferro Azul,Alumni/Defensores del Cerro Inferiores
+INF B 10ª,14,Herederos,Grupo Universitario
+INF B 9ª,14,Herederos,Grupo Universitario
+INF B 8ª,14,Herederos,Grupo Universitario
+INF B 11ª,14,Herederos,Grupo Universitario
+INF B 10ª,14,Independiente (rojo),Excursionistas
+INF B 9ª,14,Independiente (rojo),Excursionistas
+INF B 8ª,14,Independiente (rojo),Excursionistas
+INF B 5ª,14,Independiente (rojo),Excursionistas
+INF B 7ª,14,Independiente (rojo),Excursionistas
+INF B 6ª,14,Independiente (rojo),Excursionistas
+INF B 11ª,14,Independiente (rojo),Excursionistas
+INF B 10ª,14,Oficina,Unión y Progreso
+INF B 9ª,14,Oficina,Unión y Progreso
+INF B 11ª,14,Oficina,Unión y Progreso
+INF B 9ª,14,Velense Inferiores,Deportivo Tandil Inferiores
+INF B 5ª,14,Velense Inferiores,Deportivo Tandil Inferiores
+INF B 7ª,14,Velense Inferiores,Deportivo Tandil Inferiores
+INF B 6ª,14,Velense Inferiores,Deportivo Tandil Inferiores
+INF B 11ª,14,Velense Inferiores,Deportivo Tandil Inferiores
+INF B 10ª,15,Alumni/Defensores del Cerro Inferiores,Deportivo Tandil Inferiores
+INF B 9ª,15,Alumni/Defensores del Cerro Inferiores,Deportivo Tandil Inferiores
+INF B 5ª,15,Alumni/Defensores del Cerro Inferiores,Deportivo Tandil Inferiores
+INF B 11ª,15,Alumni/Defensores del Cerro Inferiores,Deportivo Tandil Inferiores
+INF B 9ª,15,Excursionistas,Velense Inferiores
+INF B 5ª,15,Excursionistas,Velense Inferiores
+INF B 7ª,15,Excursionistas,Velense Inferiores
+INF B 6ª,15,Excursionistas,Velense Inferiores
+INF B 11ª,15,Excursionistas,Velense Inferiores
+INF B 10ª,15,Independiente (rojo),Herederos
+INF B 9ª,15,Independiente (rojo),Herederos
+INF B 8ª,15,Independiente (rojo),Herederos
+INF B 6ª,15,Independiente (rojo),Herederos
+INF B 11ª,15,Independiente (rojo),Herederos
+INF B 10ª,15,Oficina,Ferro Azul
+INF B 9ª,15,Oficina,Ferro Azul
+INF B 11ª,15,Oficina,Ferro Azul
+INF B 10ª,15,Unión y Progreso,Grupo Universitario
+INF B 9ª,15,Unión y Progreso,Grupo Universitario
+INF B 8ª,15,Unión y Progreso,Grupo Universitario
+INF B 5ª,15,Unión y Progreso,Grupo Universitario
+INF B 7ª,15,Unión y Progreso,Grupo Universitario
+INF B 11ª,15,Unión y Progreso,Grupo Universitario
+INF B 10ª,16,Alumni/Defensores del Cerro Inferiores,Grupo Universitario
+INF B 9ª,16,Alumni/Defensores del Cerro Inferiores,Grupo Universitario
+INF B 5ª,16,Alumni/Defensores del Cerro Inferiores,Grupo Universitario
+INF B 11ª,16,Alumni/Defensores del Cerro Inferiores,Grupo Universitario
+INF B 10ª,16,Ferro Azul,Oficina
+INF B 9ª,16,Ferro Azul,Oficina
+INF B 11ª,16,Ferro Azul,Oficina
+INF B 10ª,16,Herederos,Excursionistas
+INF B 9ª,16,Herederos,Excursionistas
+INF B 8ª,16,Herederos,Excursionistas
+INF B 6ª,16,Herederos,Excursionistas
+INF B 11ª,16,Herederos,Excursionistas
+INF B 10ª,16,Independiente (rojo),Deportivo Tandil Inferiores
+INF B 9ª,16,Independiente (rojo),Deportivo Tandil Inferiores
+INF B 8ª,16,Independiente (rojo),Deportivo Tandil Inferiores
+INF B 5ª,16,Independiente (rojo),Deportivo Tandil Inferiores
+INF B 7ª,16,Independiente (rojo),Deportivo Tandil Inferiores
+INF B 6ª,16,Independiente (rojo),Deportivo Tandil Inferiores
+INF B 11ª,16,Independiente (rojo),Deportivo Tandil Inferiores
+INF B 9ª,16,Unión y Progreso,Velense Inferiores
+INF B 5ª,16,Unión y Progreso,Velense Inferiores
+INF B 7ª,16,Unión y Progreso,Velense Inferiores
+INF B 6ª,16,Unión y Progreso,Velense Inferiores
+INF B 11ª,16,Unión y Progreso,Velense Inferiores
+INF B 10ª,17,Ferro Azul,Grupo Universitario
+INF B 9ª,17,Ferro Azul,Grupo Universitario
+INF B 8ª,17,Ferro Azul,Grupo Universitario
+INF B 5ª,17,Ferro Azul,Grupo Universitario
+INF B 7ª,17,Ferro Azul,Grupo Universitario
+INF B 11ª,17,Ferro Azul,Grupo Universitario
+INF B 10ª,17,Herederos,Alumni/Defensores del Cerro Inferiores
+INF B 9ª,17,Herederos,Alumni/Defensores del Cerro Inferiores
+INF B 11ª,17,Herederos,Alumni/Defensores del Cerro Inferiores
+INF B 9ª,17,Independiente (rojo),Velense Inferiores
+INF B 5ª,17,Independiente (rojo),Velense Inferiores
+INF B 7ª,17,Independiente (rojo),Velense Inferiores
+INF B 6ª,17,Independiente (rojo),Velense Inferiores
+INF B 11ª,17,Independiente (rojo),Velense Inferiores
+INF B 10ª,17,Oficina,Excursionistas
+INF B 9ª,17,Oficina,Excursionistas
+INF B 11ª,17,Oficina,Excursionistas
+INF B 10ª,17,Unión y Progreso,Deportivo Tandil Inferiores
+INF B 9ª,17,Unión y Progreso,Deportivo Tandil Inferiores
+INF B 8ª,17,Unión y Progreso,Deportivo Tandil Inferiores
+INF B 5ª,17,Unión y Progreso,Deportivo Tandil Inferiores
+INF B 7ª,17,Unión y Progreso,Deportivo Tandil Inferiores
+INF B 6ª,17,Unión y Progreso,Deportivo Tandil Inferiores
+INF B 11ª,17,Unión y Progreso,Deportivo Tandil Inferiores
+INF B 10ª,18,Alumni/Defensores del Cerro Inferiores,Herederos
+INF B 9ª,18,Alumni/Defensores del Cerro Inferiores,Herederos
+INF B 11ª,18,Alumni/Defensores del Cerro Inferiores,Herederos
+INF B 10ª,18,Excursionistas,Independiente (rojo)
+INF B 9ª,18,Excursionistas,Independiente (rojo)
+INF B 8ª,18,Excursionistas,Independiente (rojo)
+INF B 5ª,18,Excursionistas,Independiente (rojo)
+INF B 7ª,18,Excursionistas,Independiente (rojo)
+INF B 6ª,18,Excursionistas,Independiente (rojo)
+INF B 11ª,18,Excursionistas,Independiente (rojo)
+INF B 10ª,18,Ferro Azul,Deportivo Tandil Inferiores
+INF B 9ª,18,Ferro Azul,Deportivo Tandil Inferiores
+INF B 8ª,18,Ferro Azul,Deportivo Tandil Inferiores
+INF B 5ª,18,Ferro Azul,Deportivo Tandil Inferiores
+INF B 7ª,18,Ferro Azul,Deportivo Tandil Inferiores
+INF B 6ª,18,Ferro Azul,Deportivo Tandil Inferiores
+INF B 11ª,18,Ferro Azul,Deportivo Tandil Inferiores
+INF B 10ª,18,Oficina,Grupo Universitario
+INF B 9ª,18,Oficina,Grupo Universitario
+INF B 11ª,18,Oficina,Grupo Universitario
+INF B 9ª,18,Velense Inferiores,Unión y Progreso
+INF B 5ª,18,Velense Inferiores,Unión y Progreso
+INF B 7ª,18,Velense Inferiores,Unión y Progreso
+INF B 6ª,18,Velense Inferiores,Unión y Progreso
+INF B 11ª,18,Velense Inferiores,Unión y Progreso
+INF C 10ª,1,ATENEO ESTRADA/Deportivo Rauch Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 5ª,1,ATENEO ESTRADA/Deportivo Rauch Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 7ª,1,ATENEO ESTRADA/Deportivo Rauch Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 6ª,1,ATENEO ESTRADA/Deportivo Rauch Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 10ª,1,SAN LORENZO (RAUCH) Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 9ª,1,SAN LORENZO (RAUCH) Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 8ª,1,SAN LORENZO (RAUCH) Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 5ª,1,SAN LORENZO (RAUCH) Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 7ª,1,SAN LORENZO (RAUCH) Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 6ª,1,SAN LORENZO (RAUCH) Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 11ª,1,SAN LORENZO (RAUCH) Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 10ª,2,DEFENSORES DE AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 9ª,2,DEFENSORES DE AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 8ª,2,DEFENSORES DE AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 5ª,2,DEFENSORES DE AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 7ª,2,DEFENSORES DE AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 6ª,2,DEFENSORES DE AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 11ª,2,DEFENSORES DE AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 10ª,3,ATLETICO AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 9ª,3,ATLETICO AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 8ª,3,ATLETICO AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 5ª,3,ATLETICO AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 7ª,3,ATLETICO AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 6ª,3,ATLETICO AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 11ª,3,ATLETICO AYACUCHO Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 10ª,3,BOTAFOGO F.C. Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 9ª,3,BOTAFOGO F.C. Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 5ª,3,BOTAFOGO F.C. Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 7ª,3,BOTAFOGO F.C. Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 6ª,3,BOTAFOGO F.C. Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 11ª,3,BOTAFOGO F.C. Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 10ª,3,DEFENSORES DE AYACUCHO Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 8ª,3,DEFENSORES DE AYACUCHO Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 5ª,3,DEFENSORES DE AYACUCHO Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 7ª,3,DEFENSORES DE AYACUCHO Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 6ª,3,DEFENSORES DE AYACUCHO Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 10ª,4,BOTAFOGO F.C. Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 9ª,4,BOTAFOGO F.C. Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 5ª,4,BOTAFOGO F.C. Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 7ª,4,BOTAFOGO F.C. Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 6ª,4,BOTAFOGO F.C. Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 11ª,4,BOTAFOGO F.C. Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 10ª,4,SAN LORENZO (RAUCH) Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 9ª,4,SAN LORENZO (RAUCH) Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 5ª,4,SAN LORENZO (RAUCH) Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 7ª,4,SAN LORENZO (RAUCH) Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 6ª,4,SAN LORENZO (RAUCH) Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 11ª,4,SAN LORENZO (RAUCH) Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 10ª,5,BOTAFOGO F.C. Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 9ª,5,BOTAFOGO F.C. Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 5ª,5,BOTAFOGO F.C. Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 7ª,5,BOTAFOGO F.C. Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 6ª,5,BOTAFOGO F.C. Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 11ª,5,BOTAFOGO F.C. Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 10ª,6,ATLETICO AYACUCHO Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 9ª,6,ATLETICO AYACUCHO Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 8ª,6,ATLETICO AYACUCHO Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 5ª,6,ATLETICO AYACUCHO Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 7ª,6,ATLETICO AYACUCHO Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 6ª,6,ATLETICO AYACUCHO Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 11ª,6,ATLETICO AYACUCHO Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 10ª,6,SAN LORENZO (RAUCH) Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 8ª,6,SAN LORENZO (RAUCH) Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 5ª,6,SAN LORENZO (RAUCH) Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 7ª,6,SAN LORENZO (RAUCH) Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 6ª,6,SAN LORENZO (RAUCH) Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 10ª,7,DEFENSORES DE AYACUCHO Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 9ª,7,DEFENSORES DE AYACUCHO Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 8ª,7,DEFENSORES DE AYACUCHO Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 5ª,7,DEFENSORES DE AYACUCHO Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 7ª,7,DEFENSORES DE AYACUCHO Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 6ª,7,DEFENSORES DE AYACUCHO Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 11ª,7,DEFENSORES DE AYACUCHO Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 10ª,8,BOTAFOGO F.C. Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 5ª,8,BOTAFOGO F.C. Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 7ª,8,BOTAFOGO F.C. Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 6ª,8,BOTAFOGO F.C. Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 10ª,9,DEFENSORES DE AYACUCHO Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 9ª,9,DEFENSORES DE AYACUCHO Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 5ª,9,DEFENSORES DE AYACUCHO Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 7ª,9,DEFENSORES DE AYACUCHO Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 6ª,9,DEFENSORES DE AYACUCHO Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 11ª,9,DEFENSORES DE AYACUCHO Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 10ª,10,ATENEO ESTRADA/Deportivo Rauch Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 9ª,10,ATENEO ESTRADA/Deportivo Rauch Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 5ª,10,ATENEO ESTRADA/Deportivo Rauch Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 7ª,10,ATENEO ESTRADA/Deportivo Rauch Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 6ª,10,ATENEO ESTRADA/Deportivo Rauch Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 11ª,10,ATENEO ESTRADA/Deportivo Rauch Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 10ª,12,SARMIENTO (AYACUCHO) Inferiores,BOTAFOGO F.C. Inferiores
+INF C 5ª,12,SARMIENTO (AYACUCHO) Inferiores,BOTAFOGO F.C. Inferiores
+INF C 7ª,12,SARMIENTO (AYACUCHO) Inferiores,BOTAFOGO F.C. Inferiores
+INF C 6ª,12,SARMIENTO (AYACUCHO) Inferiores,BOTAFOGO F.C. Inferiores
+INF C 10ª,13,BOTAFOGO F.C. Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 9ª,13,BOTAFOGO F.C. Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 5ª,13,BOTAFOGO F.C. Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 7ª,13,BOTAFOGO F.C. Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 6ª,13,BOTAFOGO F.C. Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 11ª,13,BOTAFOGO F.C. Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 10ª,13,SARMIENTO (AYACUCHO) Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 8ª,13,SARMIENTO (AYACUCHO) Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 5ª,13,SARMIENTO (AYACUCHO) Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 7ª,13,SARMIENTO (AYACUCHO) Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 6ª,13,SARMIENTO (AYACUCHO) Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 10ª,14,ATLETICO AYACUCHO Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 8ª,14,ATLETICO AYACUCHO Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 5ª,14,ATLETICO AYACUCHO Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 7ª,14,ATLETICO AYACUCHO Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 6ª,14,ATLETICO AYACUCHO Inferiores,SARMIENTO (AYACUCHO) Inferiores
+INF C 10ª,15,SAN LORENZO (RAUCH) Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 9ª,15,SAN LORENZO (RAUCH) Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 8ª,15,SAN LORENZO (RAUCH) Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 5ª,15,SAN LORENZO (RAUCH) Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 7ª,15,SAN LORENZO (RAUCH) Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 6ª,15,SAN LORENZO (RAUCH) Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 11ª,15,SAN LORENZO (RAUCH) Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 10ª,16,ATLETICO AYACUCHO Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 9ª,16,ATLETICO AYACUCHO Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 5ª,16,ATLETICO AYACUCHO Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 7ª,16,ATLETICO AYACUCHO Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 6ª,16,ATLETICO AYACUCHO Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 11ª,16,ATLETICO AYACUCHO Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 10ª,16,DEFENSORES DE AYACUCHO Inferiores,BOTAFOGO F.C. Inferiores
+INF C 9ª,16,DEFENSORES DE AYACUCHO Inferiores,BOTAFOGO F.C. Inferiores
+INF C 5ª,16,DEFENSORES DE AYACUCHO Inferiores,BOTAFOGO F.C. Inferiores
+INF C 7ª,16,DEFENSORES DE AYACUCHO Inferiores,BOTAFOGO F.C. Inferiores
+INF C 6ª,16,DEFENSORES DE AYACUCHO Inferiores,BOTAFOGO F.C. Inferiores
+INF C 11ª,16,DEFENSORES DE AYACUCHO Inferiores,BOTAFOGO F.C. Inferiores
+INF C 10ª,17,ATENEO ESTRADA/Deportivo Rauch Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 9ª,17,ATENEO ESTRADA/Deportivo Rauch Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 5ª,17,ATENEO ESTRADA/Deportivo Rauch Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 7ª,17,ATENEO ESTRADA/Deportivo Rauch Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 6ª,17,ATENEO ESTRADA/Deportivo Rauch Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 11ª,17,ATENEO ESTRADA/Deportivo Rauch Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 10ª,17,ATLETICO AYACUCHO Inferiores,BOTAFOGO F.C. Inferiores
+INF C 9ª,17,ATLETICO AYACUCHO Inferiores,BOTAFOGO F.C. Inferiores
+INF C 5ª,17,ATLETICO AYACUCHO Inferiores,BOTAFOGO F.C. Inferiores
+INF C 7ª,17,ATLETICO AYACUCHO Inferiores,BOTAFOGO F.C. Inferiores
+INF C 6ª,17,ATLETICO AYACUCHO Inferiores,BOTAFOGO F.C. Inferiores
+INF C 11ª,17,ATLETICO AYACUCHO Inferiores,BOTAFOGO F.C. Inferiores
+INF C 10ª,18,SAN LORENZO (RAUCH) Inferiores,BOTAFOGO F.C. Inferiores
+INF C 9ª,18,SAN LORENZO (RAUCH) Inferiores,BOTAFOGO F.C. Inferiores
+INF C 5ª,18,SAN LORENZO (RAUCH) Inferiores,BOTAFOGO F.C. Inferiores
+INF C 7ª,18,SAN LORENZO (RAUCH) Inferiores,BOTAFOGO F.C. Inferiores
+INF C 6ª,18,SAN LORENZO (RAUCH) Inferiores,BOTAFOGO F.C. Inferiores
+INF C 11ª,18,SAN LORENZO (RAUCH) Inferiores,BOTAFOGO F.C. Inferiores
+INF C 10ª,18,SARMIENTO (AYACUCHO) Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 5ª,18,SARMIENTO (AYACUCHO) Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 7ª,18,SARMIENTO (AYACUCHO) Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 6ª,18,SARMIENTO (AYACUCHO) Inferiores,ATENEO ESTRADA/Deportivo Rauch Inferiores
+INF C 10ª,19,ATENEO ESTRADA/Deportivo Rauch Inferiores,BOTAFOGO F.C. Inferiores
+INF C 9ª,19,ATENEO ESTRADA/Deportivo Rauch Inferiores,BOTAFOGO F.C. Inferiores
+INF C 5ª,19,ATENEO ESTRADA/Deportivo Rauch Inferiores,BOTAFOGO F.C. Inferiores
+INF C 7ª,19,ATENEO ESTRADA/Deportivo Rauch Inferiores,BOTAFOGO F.C. Inferiores
+INF C 6ª,19,ATENEO ESTRADA/Deportivo Rauch Inferiores,BOTAFOGO F.C. Inferiores
+INF C 11ª,19,ATENEO ESTRADA/Deportivo Rauch Inferiores,BOTAFOGO F.C. Inferiores
+INF C 10ª,19,SARMIENTO (AYACUCHO) Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 8ª,19,SARMIENTO (AYACUCHO) Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 5ª,19,SARMIENTO (AYACUCHO) Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 7ª,19,SARMIENTO (AYACUCHO) Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 6ª,19,SARMIENTO (AYACUCHO) Inferiores,DEFENSORES DE AYACUCHO Inferiores
+INF C 10ª,20,ATENEO ESTRADA/Deportivo Rauch Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 9ª,20,ATENEO ESTRADA/Deportivo Rauch Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 5ª,20,ATENEO ESTRADA/Deportivo Rauch Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 7ª,20,ATENEO ESTRADA/Deportivo Rauch Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 6ª,20,ATENEO ESTRADA/Deportivo Rauch Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 11ª,20,ATENEO ESTRADA/Deportivo Rauch Inferiores,ATLETICO AYACUCHO Inferiores
+INF C 10ª,20,SARMIENTO (AYACUCHO) Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 8ª,20,SARMIENTO (AYACUCHO) Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 5ª,20,SARMIENTO (AYACUCHO) Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 7ª,20,SARMIENTO (AYACUCHO) Inferiores,SAN LORENZO (RAUCH) Inferiores
+INF C 6ª,20,SARMIENTO (AYACUCHO) Inferiores,SAN LORENZO (RAUCH) Inferiores
+FEMENINO FEM PRIMERA,1,ATLETICO AYACUCHO Femenino,Santamarina Femenino
+FEMENINO FEM SUB-14,1,ATLETICO AYACUCHO Femenino,Santamarina Femenino
+FEMENINO FEM SUB-16,1,ATLETICO AYACUCHO Femenino,Santamarina Femenino
+FEMENINO FEM SUB-12,1,El Potrero,Juventud Unida Fem (Negro)
+FEMENINO FEM SUB-14,1,El Potrero,Juventud Unida Fem (Negro)
+FEMENINO FEM PRIMERA,1,Ferrocarril Sud Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-12,1,Ferrocarril Sud Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-14,1,Ferrocarril Sud Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-16,1,Ferrocarril Sud Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM PRIMERA,1,Juarense Femenino,Loma Negra Femenino
+FEMENINO FEM PRIMERA,1,Juventud Unida Fem (Blanco),Independiente Femenino
+FEMENINO FEM SUB-12,1,Juventud Unida Fem (Blanco),Independiente Femenino
+FEMENINO FEM SUB-14,1,Juventud Unida Fem (Blanco),Independiente Femenino
+FEMENINO FEM SUB-16,1,Juventud Unida Fem (Blanco),Independiente Femenino
+FEMENINO FEM SUB-16,2,ATLETICO AYACUCHO Femenino,SAN LORENZO (RAUCH) Femenino
+FEMENINO FEM PRIMERA,2,Independiente Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-12,2,Independiente Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-14,2,Independiente Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-16,2,Independiente Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-12,2,Juventud Unida Fem (Negro),Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-14,2,Juventud Unida Fem (Negro),Gimnasia y Esgrima Femenino
+FEMENINO FEM PRIMERA,2,Loma Negra Femenino,Excursionistas Femenino
+FEMENINO FEM PRIMERA,2,San José Femenino,Juarense Femenino
+FEMENINO FEM SUB-12,2,San José Femenino,Juarense Femenino
+FEMENINO FEM SUB-14,2,San José Femenino,Juarense Femenino
+FEMENINO FEM SUB-16,2,San José Femenino,Juarense Femenino
+FEMENINO FEM PRIMERA,2,Santamarina Femenino,El Potrero
+FEMENINO FEM SUB-12,2,Santamarina Femenino,El Potrero
+FEMENINO FEM SUB-14,2,Santamarina Femenino,El Potrero
+FEMENINO FEM SUB-16,2,Santamarina Femenino,El Potrero
+FEMENINO FEM PRIMERA,3,ATLETICO AYACUCHO Femenino,Loma Negra Femenino
+FEMENINO FEM PRIMERA,3,El Potrero,Independiente Femenino
+FEMENINO FEM SUB-12,3,El Potrero,Independiente Femenino
+FEMENINO FEM SUB-14,3,El Potrero,Independiente Femenino
+FEMENINO FEM SUB-16,3,El Potrero,Independiente Femenino
+FEMENINO FEM PRIMERA,3,Gimnasia y Esgrima Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-12,3,Gimnasia y Esgrima Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-14,3,Gimnasia y Esgrima Femenino,Excursionistas Femenino
+FEMENINO FEM PRIMERA,3,Juventud Unida Fem (Blanco),Juarense Femenino
+FEMENINO FEM SUB-12,3,Juventud Unida Fem (Blanco),Juarense Femenino
+FEMENINO FEM SUB-14,3,Juventud Unida Fem (Blanco),Juarense Femenino
+FEMENINO FEM SUB-16,3,Juventud Unida Fem (Blanco),Juarense Femenino
+FEMENINO FEM SUB-16,3,SAN LORENZO (RAUCH) Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM PRIMERA,3,Santamarina Femenino,San José Femenino
+FEMENINO FEM SUB-12,3,Santamarina Femenino,San José Femenino
+FEMENINO FEM SUB-14,3,Santamarina Femenino,San José Femenino
+FEMENINO FEM SUB-16,3,Santamarina Femenino,San José Femenino
+FEMENINO FEM PRIMERA,4,Excursionistas Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-12,4,Excursionistas Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-14,4,Excursionistas Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM PRIMERA,4,Juarense Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-12,4,Juarense Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-14,4,Juarense Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-16,4,Juarense Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM PRIMERA,4,Juventud Unida Fem (Blanco),El Potrero
+FEMENINO FEM SUB-12,4,Juventud Unida Fem (Blanco),El Potrero
+FEMENINO FEM SUB-14,4,Juventud Unida Fem (Blanco),El Potrero
+FEMENINO FEM SUB-16,4,Juventud Unida Fem (Blanco),El Potrero
+FEMENINO FEM PRIMERA,4,Loma Negra Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM PRIMERA,4,San José Femenino,Santamarina Femenino
+FEMENINO FEM SUB-12,4,San José Femenino,Santamarina Femenino
+FEMENINO FEM SUB-14,4,San José Femenino,Santamarina Femenino
+FEMENINO FEM SUB-16,4,San José Femenino,Santamarina Femenino
+FEMENINO FEM PRIMERA,5,ATLETICO AYACUCHO Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-14,5,ATLETICO AYACUCHO Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-16,5,ATLETICO AYACUCHO Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM PRIMERA,5,Ferrocarril Sud Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-12,5,Ferrocarril Sud Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-14,5,Ferrocarril Sud Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-16,5,Ferrocarril Sud Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM PRIMERA,5,Independiente Femenino,Loma Negra Femenino
+FEMENINO FEM PRIMERA,5,Juarense Femenino,El Potrero
+FEMENINO FEM SUB-12,5,Juarense Femenino,El Potrero
+FEMENINO FEM SUB-14,5,Juarense Femenino,El Potrero
+FEMENINO FEM SUB-16,5,Juarense Femenino,El Potrero
+FEMENINO FEM PRIMERA,5,San José Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-12,5,San José Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-14,5,San José Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-12,5,Santamarina Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM SUB-14,5,Santamarina Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM PRIMERA,6,Excursionistas Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-12,6,Excursionistas Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-14,6,Excursionistas Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-12,6,Juventud Unida Fem (Negro),Ferrocarril Sud Femenino
+FEMENINO FEM SUB-14,6,Juventud Unida Fem (Negro),Ferrocarril Sud Femenino
+FEMENINO FEM PRIMERA,6,Loma Negra Femenino,Juarense Femenino
+FEMENINO FEM SUB-16,6,SAN LORENZO (RAUCH) Femenino,Independiente Femenino
+FEMENINO FEM PRIMERA,6,San José Femenino,El Potrero
+FEMENINO FEM SUB-12,6,San José Femenino,El Potrero
+FEMENINO FEM SUB-14,6,San José Femenino,El Potrero
+FEMENINO FEM SUB-16,6,San José Femenino,El Potrero
+FEMENINO FEM PRIMERA,6,Santamarina Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-14,6,Santamarina Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-16,6,Santamarina Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM PRIMERA,7,Ferrocarril Sud Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-12,7,Ferrocarril Sud Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-14,7,Ferrocarril Sud Femenino,Excursionistas Femenino
+FEMENINO FEM PRIMERA,7,Gimnasia y Esgrima Femenino,Santamarina Femenino
+FEMENINO FEM SUB-12,7,Gimnasia y Esgrima Femenino,Santamarina Femenino
+FEMENINO FEM SUB-14,7,Gimnasia y Esgrima Femenino,Santamarina Femenino
+FEMENINO FEM SUB-16,7,Gimnasia y Esgrima Femenino,Santamarina Femenino
+FEMENINO FEM SUB-12,7,Independiente Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM SUB-14,7,Independiente Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM PRIMERA,7,Juarense Femenino,San José Femenino
+FEMENINO FEM SUB-12,7,Juarense Femenino,San José Femenino
+FEMENINO FEM SUB-14,7,Juarense Femenino,San José Femenino
+FEMENINO FEM SUB-16,7,Juarense Femenino,San José Femenino
+FEMENINO FEM SUB-16,7,Juventud Unida Fem (Blanco),SAN LORENZO (RAUCH) Femenino
+FEMENINO FEM PRIMERA,7,Loma Negra Femenino,El Potrero
+FEMENINO FEM PRIMERA,8,Excursionistas Femenino,Juarense Femenino
+FEMENINO FEM SUB-12,8,Excursionistas Femenino,Juarense Femenino
+FEMENINO FEM SUB-14,8,Excursionistas Femenino,Juarense Femenino
+FEMENINO FEM PRIMERA,8,Ferrocarril Sud Femenino,Santamarina Femenino
+FEMENINO FEM SUB-12,8,Ferrocarril Sud Femenino,Santamarina Femenino
+FEMENINO FEM SUB-14,8,Ferrocarril Sud Femenino,Santamarina Femenino
+FEMENINO FEM SUB-16,8,Ferrocarril Sud Femenino,Santamarina Femenino
+FEMENINO FEM PRIMERA,8,Gimnasia y Esgrima Femenino,San José Femenino
+FEMENINO FEM SUB-12,8,Gimnasia y Esgrima Femenino,San José Femenino
+FEMENINO FEM SUB-14,8,Gimnasia y Esgrima Femenino,San José Femenino
+FEMENINO FEM SUB-16,8,Gimnasia y Esgrima Femenino,San José Femenino
+FEMENINO FEM PRIMERA,8,Independiente Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-14,8,Independiente Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-16,8,Independiente Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-12,8,Juventud Unida Fem (Negro),Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-14,8,Juventud Unida Fem (Negro),Juventud Unida Fem (Blanco)
+FEMENINO FEM PRIMERA,9,El Potrero,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-14,9,El Potrero,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-16,9,El Potrero,ATLETICO AYACUCHO Femenino
+FEMENINO FEM PRIMERA,9,Gimnasia y Esgrima Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-12,9,Gimnasia y Esgrima Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-14,9,Gimnasia y Esgrima Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-16,9,Gimnasia y Esgrima Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM PRIMERA,9,Independiente Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-12,9,Independiente Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-14,9,Independiente Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-16,9,Juarense Femenino,SAN LORENZO (RAUCH) Femenino
+FEMENINO FEM SUB-12,9,San José Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM SUB-14,9,San José Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM PRIMERA,9,Santamarina Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-12,9,Santamarina Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-14,9,Santamarina Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-16,9,Santamarina Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM PRIMERA,10,El Potrero,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-12,10,El Potrero,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-14,10,El Potrero,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-16,10,El Potrero,Gimnasia y Esgrima Femenino
+FEMENINO FEM PRIMERA,10,Excursionistas Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-14,10,Excursionistas Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-12,10,Juarense Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM SUB-14,10,Juarense Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM PRIMERA,10,Loma Negra Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM PRIMERA,10,San José Femenino,Independiente Femenino
+FEMENINO FEM SUB-12,10,San José Femenino,Independiente Femenino
+FEMENINO FEM SUB-14,10,San José Femenino,Independiente Femenino
+FEMENINO FEM SUB-16,10,San José Femenino,Independiente Femenino
+FEMENINO FEM PRIMERA,10,Santamarina Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-12,10,Santamarina Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-14,10,Santamarina Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-16,10,Santamarina Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM PRIMERA,11,Ferrocarril Sud Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-14,11,Ferrocarril Sud Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-16,11,Ferrocarril Sud Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-12,11,Gimnasia y Esgrima Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM SUB-14,11,Gimnasia y Esgrima Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM PRIMERA,11,Independiente Femenino,El Potrero
+FEMENINO FEM SUB-12,11,Independiente Femenino,El Potrero
+FEMENINO FEM SUB-14,11,Independiente Femenino,El Potrero
+FEMENINO FEM SUB-16,11,Independiente Femenino,El Potrero
+FEMENINO FEM PRIMERA,11,Juarense Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-12,11,Juarense Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-14,11,Juarense Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-16,11,Juarense Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM PRIMERA,11,San José Femenino,Loma Negra Femenino
+FEMENINO FEM SUB-16,11,Santamarina Femenino,SAN LORENZO (RAUCH) Femenino
+FEMENINO FEM PRIMERA,12,Excursionistas Femenino,El Potrero
+FEMENINO FEM SUB-12,12,Excursionistas Femenino,El Potrero
+FEMENINO FEM SUB-14,12,Excursionistas Femenino,El Potrero
+FEMENINO FEM SUB-12,12,Ferrocarril Sud Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM SUB-14,12,Ferrocarril Sud Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM PRIMERA,12,Gimnasia y Esgrima Femenino,Independiente Femenino
+FEMENINO FEM SUB-12,12,Gimnasia y Esgrima Femenino,Independiente Femenino
+FEMENINO FEM SUB-14,12,Gimnasia y Esgrima Femenino,Independiente Femenino
+FEMENINO FEM SUB-16,12,Gimnasia y Esgrima Femenino,Independiente Femenino
+FEMENINO FEM PRIMERA,12,Juarense Femenino,Santamarina Femenino
+FEMENINO FEM SUB-12,12,Juarense Femenino,Santamarina Femenino
+FEMENINO FEM SUB-14,12,Juarense Femenino,Santamarina Femenino
+FEMENINO FEM SUB-16,12,Juarense Femenino,Santamarina Femenino
+FEMENINO FEM PRIMERA,12,Juventud Unida Fem (Blanco),San José Femenino
+FEMENINO FEM SUB-12,12,Juventud Unida Fem (Blanco),San José Femenino
+FEMENINO FEM SUB-14,12,Juventud Unida Fem (Blanco),San José Femenino
+FEMENINO FEM SUB-16,12,Juventud Unida Fem (Blanco),San José Femenino
+FEMENINO FEM SUB-16,12,SAN LORENZO (RAUCH) Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM PRIMERA,13,ATLETICO AYACUCHO Femenino,Independiente Femenino
+FEMENINO FEM SUB-14,13,ATLETICO AYACUCHO Femenino,Independiente Femenino
+FEMENINO FEM SUB-16,13,ATLETICO AYACUCHO Femenino,Independiente Femenino
+FEMENINO FEM PRIMERA,13,El Potrero,Loma Negra Femenino
+FEMENINO FEM SUB-12,13,Excursionistas Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM SUB-14,13,Excursionistas Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM PRIMERA,13,Ferrocarril Sud Femenino,San José Femenino
+FEMENINO FEM SUB-12,13,Ferrocarril Sud Femenino,San José Femenino
+FEMENINO FEM SUB-14,13,Ferrocarril Sud Femenino,San José Femenino
+FEMENINO FEM SUB-16,13,Ferrocarril Sud Femenino,San José Femenino
+FEMENINO FEM PRIMERA,13,Gimnasia y Esgrima Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-12,13,Gimnasia y Esgrima Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-14,13,Gimnasia y Esgrima Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-16,13,Gimnasia y Esgrima Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-16,13,SAN LORENZO (RAUCH) Femenino,Juarense Femenino
+FEMENINO FEM PRIMERA,14,El Potrero,Juarense Femenino
+FEMENINO FEM SUB-12,14,El Potrero,Juarense Femenino
+FEMENINO FEM SUB-14,14,El Potrero,Juarense Femenino
+FEMENINO FEM SUB-16,14,El Potrero,Juarense Femenino
+FEMENINO FEM PRIMERA,14,Excursionistas Femenino,Independiente Femenino
+FEMENINO FEM SUB-12,14,Excursionistas Femenino,Independiente Femenino
+FEMENINO FEM SUB-14,14,Excursionistas Femenino,Independiente Femenino
+FEMENINO FEM SUB-14,14,Juventud Unida Fem (Negro),ATLETICO AYACUCHO Femenino
+FEMENINO FEM PRIMERA,14,Loma Negra Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-16,14,SAN LORENZO (RAUCH) Femenino,San José Femenino
+FEMENINO FEM PRIMERA,14,Santamarina Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-12,14,Santamarina Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-14,14,Santamarina Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-16,14,Santamarina Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-14,15,ATLETICO AYACUCHO Femenino,Juventud Unida Fem (Negro)
+FEMENINO FEM PRIMERA,15,El Potrero,Excursionistas Femenino
+FEMENINO FEM SUB-12,15,El Potrero,Excursionistas Femenino
+FEMENINO FEM SUB-14,15,El Potrero,Excursionistas Femenino
+FEMENINO FEM PRIMERA,15,Juventud Unida Fem (Blanco),Ferrocarril Sud Femenino
+FEMENINO FEM SUB-12,15,Juventud Unida Fem (Blanco),Ferrocarril Sud Femenino
+FEMENINO FEM SUB-14,15,Juventud Unida Fem (Blanco),Ferrocarril Sud Femenino
+FEMENINO FEM SUB-16,15,Juventud Unida Fem (Blanco),Ferrocarril Sud Femenino
+FEMENINO FEM PRIMERA,15,Loma Negra Femenino,Independiente Femenino
+FEMENINO FEM SUB-16,15,SAN LORENZO (RAUCH) Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM PRIMERA,15,Santamarina Femenino,Juarense Femenino
+FEMENINO FEM SUB-12,15,Santamarina Femenino,Juarense Femenino
+FEMENINO FEM SUB-14,15,Santamarina Femenino,Juarense Femenino
+FEMENINO FEM SUB-16,15,Santamarina Femenino,Juarense Femenino
+FEMENINO FEM PRIMERA,16,ATLETICO AYACUCHO Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-14,16,ATLETICO AYACUCHO Femenino,Excursionistas Femenino
+FEMENINO FEM PRIMERA,16,Ferrocarril Sud Femenino,Independiente Femenino
+FEMENINO FEM SUB-12,16,Ferrocarril Sud Femenino,Independiente Femenino
+FEMENINO FEM SUB-14,16,Ferrocarril Sud Femenino,Independiente Femenino
+FEMENINO FEM SUB-16,16,Ferrocarril Sud Femenino,Independiente Femenino
+FEMENINO FEM PRIMERA,16,Juventud Unida Fem (Blanco),Loma Negra Femenino
+FEMENINO FEM SUB-12,16,Juventud Unida Fem (Negro),Santamarina Femenino
+FEMENINO FEM SUB-14,16,Juventud Unida Fem (Negro),Santamarina Femenino
+FEMENINO FEM SUB-16,16,SAN LORENZO (RAUCH) Femenino,El Potrero
+FEMENINO FEM PRIMERA,16,San José Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-12,16,San José Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-14,16,San José Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-16,16,San José Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM PRIMERA,17,El Potrero,San José Femenino
+FEMENINO FEM SUB-12,17,El Potrero,San José Femenino
+FEMENINO FEM SUB-14,17,El Potrero,San José Femenino
+FEMENINO FEM SUB-16,17,El Potrero,San José Femenino
+FEMENINO FEM PRIMERA,17,Juarense Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-12,17,Juarense Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-14,17,Juarense Femenino,Excursionistas Femenino
+FEMENINO FEM PRIMERA,17,Juventud Unida Fem (Blanco),ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-14,17,Juventud Unida Fem (Blanco),ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-16,17,Juventud Unida Fem (Blanco),ATLETICO AYACUCHO Femenino
+FEMENINO FEM PRIMERA,17,Loma Negra Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM PRIMERA,17,Santamarina Femenino,Independiente Femenino
+FEMENINO FEM SUB-12,17,Santamarina Femenino,Independiente Femenino
+FEMENINO FEM SUB-14,17,Santamarina Femenino,Independiente Femenino
+FEMENINO FEM SUB-16,17,Santamarina Femenino,Independiente Femenino
+FEMENINO FEM PRIMERA,18,ATLETICO AYACUCHO Femenino,Juarense Femenino
+FEMENINO FEM SUB-14,18,ATLETICO AYACUCHO Femenino,Juarense Femenino
+FEMENINO FEM SUB-16,18,ATLETICO AYACUCHO Femenino,Juarense Femenino
+FEMENINO FEM PRIMERA,18,Excursionistas Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-12,18,Excursionistas Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-14,18,Excursionistas Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM PRIMERA,18,Ferrocarril Sud Femenino,Loma Negra Femenino
+FEMENINO FEM PRIMERA,18,Independiente Femenino,San José Femenino
+FEMENINO FEM SUB-12,18,Independiente Femenino,San José Femenino
+FEMENINO FEM SUB-14,18,Independiente Femenino,San José Femenino
+FEMENINO FEM SUB-16,18,Independiente Femenino,San José Femenino
+FEMENINO FEM SUB-12,18,Juventud Unida Fem (Blanco),Juventud Unida Fem (Negro)
+FEMENINO FEM SUB-14,18,Juventud Unida Fem (Blanco),Juventud Unida Fem (Negro)
+FEMENINO FEM SUB-16,18,SAN LORENZO (RAUCH) Femenino,Santamarina Femenino
+FEMENINO FEM SUB-16,19,Ferrocarril Sud Femenino,SAN LORENZO (RAUCH) Femenino
+FEMENINO FEM PRIMERA,19,Gimnasia y Esgrima Femenino,Loma Negra Femenino
+FEMENINO FEM PRIMERA,19,Juarense Femenino,Independiente Femenino
+FEMENINO FEM SUB-12,19,Juarense Femenino,Independiente Femenino
+FEMENINO FEM SUB-14,19,Juarense Femenino,Independiente Femenino
+FEMENINO FEM SUB-16,19,Juarense Femenino,Independiente Femenino
+FEMENINO FEM PRIMERA,19,Juventud Unida Fem (Blanco),Santamarina Femenino
+FEMENINO FEM SUB-12,19,Juventud Unida Fem (Blanco),Santamarina Femenino
+FEMENINO FEM SUB-14,19,Juventud Unida Fem (Blanco),Santamarina Femenino
+FEMENINO FEM SUB-16,19,Juventud Unida Fem (Blanco),Santamarina Femenino
+FEMENINO FEM SUB-12,19,Juventud Unida Fem (Negro),El Potrero
+FEMENINO FEM SUB-14,19,Juventud Unida Fem (Negro),El Potrero
+FEMENINO FEM PRIMERA,19,San José Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-14,19,San José Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-16,19,San José Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM PRIMERA,20,El Potrero,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-12,20,El Potrero,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-14,20,El Potrero,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-16,20,El Potrero,Juventud Unida Fem (Blanco)
+FEMENINO FEM PRIMERA,20,Excursionistas Femenino,Santamarina Femenino
+FEMENINO FEM SUB-12,20,Excursionistas Femenino,Santamarina Femenino
+FEMENINO FEM SUB-14,20,Excursionistas Femenino,Santamarina Femenino
+FEMENINO FEM PRIMERA,20,Ferrocarril Sud Femenino,Juarense Femenino
+FEMENINO FEM SUB-12,20,Ferrocarril Sud Femenino,Juarense Femenino
+FEMENINO FEM SUB-14,20,Ferrocarril Sud Femenino,Juarense Femenino
+FEMENINO FEM SUB-16,20,Ferrocarril Sud Femenino,Juarense Femenino
+FEMENINO FEM PRIMERA,20,Gimnasia y Esgrima Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-14,20,Gimnasia y Esgrima Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-16,20,Gimnasia y Esgrima Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-16,20,Independiente Femenino,SAN LORENZO (RAUCH) Femenino
+FEMENINO FEM PRIMERA,20,Loma Negra Femenino,San José Femenino
+FEMENINO FEM PRIMERA,21,Ferrocarril Sud Femenino,El Potrero
+FEMENINO FEM SUB-12,21,Ferrocarril Sud Femenino,El Potrero
+FEMENINO FEM SUB-14,21,Ferrocarril Sud Femenino,El Potrero
+FEMENINO FEM SUB-16,21,Ferrocarril Sud Femenino,El Potrero
+FEMENINO FEM PRIMERA,21,Independiente Femenino,Santamarina Femenino
+FEMENINO FEM SUB-12,21,Independiente Femenino,Santamarina Femenino
+FEMENINO FEM SUB-14,21,Independiente Femenino,Santamarina Femenino
+FEMENINO FEM SUB-16,21,Independiente Femenino,Santamarina Femenino
+FEMENINO FEM PRIMERA,21,Juarense Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-14,21,Juarense Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM SUB-16,21,Juarense Femenino,ATLETICO AYACUCHO Femenino
+FEMENINO FEM PRIMERA,21,San José Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-12,21,San José Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-14,21,San José Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-16,21,San José Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM PRIMERA,22,ATLETICO AYACUCHO Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-14,22,ATLETICO AYACUCHO Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-16,22,ATLETICO AYACUCHO Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM PRIMERA,22,Excursionistas Femenino,San José Femenino
+FEMENINO FEM SUB-12,22,Excursionistas Femenino,San José Femenino
+FEMENINO FEM SUB-14,22,Excursionistas Femenino,San José Femenino
+FEMENINO FEM PRIMERA,22,Gimnasia y Esgrima Femenino,El Potrero
+FEMENINO FEM SUB-12,22,Gimnasia y Esgrima Femenino,El Potrero
+FEMENINO FEM SUB-14,22,Gimnasia y Esgrima Femenino,El Potrero
+FEMENINO FEM SUB-16,22,Gimnasia y Esgrima Femenino,El Potrero
+FEMENINO FEM SUB-12,22,Juventud Unida Fem (Negro),Independiente Femenino
+FEMENINO FEM SUB-14,22,Juventud Unida Fem (Negro),Independiente Femenino
+FEMENINO FEM PRIMERA,22,Loma Negra Femenino,Santamarina Femenino
+FEMENINO FEM SUB-16,22,SAN LORENZO (RAUCH) Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM PRIMERA,23,ATLETICO AYACUCHO Femenino,El Potrero
+FEMENINO FEM SUB-14,23,ATLETICO AYACUCHO Femenino,El Potrero
+FEMENINO FEM SUB-16,23,ATLETICO AYACUCHO Femenino,El Potrero
+FEMENINO FEM PRIMERA,23,Independiente Femenino,Juarense Femenino
+FEMENINO FEM SUB-12,23,Independiente Femenino,Juarense Femenino
+FEMENINO FEM SUB-14,23,Independiente Femenino,Juarense Femenino
+FEMENINO FEM SUB-16,23,Independiente Femenino,Juarense Femenino
+FEMENINO FEM PRIMERA,23,Juventud Unida Fem (Blanco),Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-12,23,Juventud Unida Fem (Blanco),Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-14,23,Juventud Unida Fem (Blanco),Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-16,23,Juventud Unida Fem (Blanco),Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-12,23,Juventud Unida Fem (Negro),San José Femenino
+FEMENINO FEM SUB-14,23,Juventud Unida Fem (Negro),San José Femenino
+FEMENINO FEM PRIMERA,23,Santamarina Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-12,23,Santamarina Femenino,Excursionistas Femenino
+FEMENINO FEM SUB-14,23,Santamarina Femenino,Excursionistas Femenino
+FEMENINO FEM PRIMERA,24,ATLETICO AYACUCHO Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-14,24,ATLETICO AYACUCHO Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-16,24,ATLETICO AYACUCHO Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM PRIMERA,24,El Potrero,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-12,24,El Potrero,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-14,24,El Potrero,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-16,24,El Potrero,Ferrocarril Sud Femenino
+FEMENINO FEM PRIMERA,24,Gimnasia y Esgrima Femenino,Juarense Femenino
+FEMENINO FEM SUB-12,24,Gimnasia y Esgrima Femenino,Juarense Femenino
+FEMENINO FEM SUB-14,24,Gimnasia y Esgrima Femenino,Juarense Femenino
+FEMENINO FEM SUB-16,24,Gimnasia y Esgrima Femenino,Juarense Femenino
+FEMENINO FEM SUB-12,24,Juventud Unida Fem (Negro),Excursionistas Femenino
+FEMENINO FEM SUB-14,24,Juventud Unida Fem (Negro),Excursionistas Femenino
+FEMENINO FEM SUB-16,24,San José Femenino,SAN LORENZO (RAUCH) Femenino
+FEMENINO FEM PRIMERA,24,Santamarina Femenino,Loma Negra Femenino
+FEMENINO FEM PRIMERA,25,ATLETICO AYACUCHO Femenino,San José Femenino
+FEMENINO FEM SUB-14,25,ATLETICO AYACUCHO Femenino,San José Femenino
+FEMENINO FEM SUB-16,25,ATLETICO AYACUCHO Femenino,San José Femenino
+FEMENINO FEM SUB-16,25,El Potrero,SAN LORENZO (RAUCH) Femenino
+FEMENINO FEM PRIMERA,25,Independiente Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-12,25,Independiente Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-14,25,Independiente Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM SUB-16,25,Independiente Femenino,Gimnasia y Esgrima Femenino
+FEMENINO FEM PRIMERA,25,Juarense Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-12,25,Juarense Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-14,25,Juarense Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-16,25,Juarense Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM PRIMERA,25,Juventud Unida Fem (Blanco),Excursionistas Femenino
+FEMENINO FEM SUB-12,25,Juventud Unida Fem (Blanco),Excursionistas Femenino
+FEMENINO FEM SUB-14,25,Juventud Unida Fem (Blanco),Excursionistas Femenino
+FEMENINO FEM PRIMERA,26,El Potrero,Santamarina Femenino
+FEMENINO FEM SUB-12,26,El Potrero,Santamarina Femenino
+FEMENINO FEM SUB-14,26,El Potrero,Santamarina Femenino
+FEMENINO FEM SUB-16,26,El Potrero,Santamarina Femenino
+FEMENINO FEM PRIMERA,26,Excursionistas Femenino,Loma Negra Femenino
+FEMENINO FEM SUB-16,26,Gimnasia y Esgrima Femenino,SAN LORENZO (RAUCH) Femenino
+FEMENINO FEM PRIMERA,26,Independiente Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-12,26,Independiente Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-14,26,Independiente Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-16,26,Independiente Femenino,Juventud Unida Fem (Blanco)
+FEMENINO FEM SUB-12,26,Juventud Unida Fem (Negro),Juarense Femenino
+FEMENINO FEM SUB-14,26,Juventud Unida Fem (Negro),Juarense Femenino
+FEMENINO FEM PRIMERA,26,San José Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-12,26,San José Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-14,26,San José Femenino,Ferrocarril Sud Femenino
+FEMENINO FEM SUB-16,26,San José Femenino,Ferrocarril Sud Femenino

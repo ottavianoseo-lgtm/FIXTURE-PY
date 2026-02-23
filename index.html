@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixture 2026 | Visualizador Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="container">
+        <header>
+            <div class="logo-section">
+                <h1>Fixture <span>2026</span></h1>
+                <p>Generación de Encuentros Optimizada</p>
+            </div>
+            
+            <div class="controls glass">
+                <div class="filter-group">
+                    <label for="filter-competencia">Competencia</label>
+                    <select id="filter-competencia">
+                        <option value="ALL">Todas las Competencias</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filter-fecha">Fecha</label>
+                    <select id="filter-fecha">
+                        <option value="ALL">Todas las Fechas</option>
+                    </select>
+                </div>
+
+                <div class="stats glass">
+                    <span id="match-count">0</span> Partidos
+                </div>
+            </div>
+        </header>
+
+        <section id="fixture-grid" class="fixture-grid">
+            <!-- Matches will be rendered here -->
+            <div class="loader">Cargando encuentros...</div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
