@@ -1,5 +1,5 @@
 """
-fixture_generator.py  ·  v5.0 DEFINITIVA
+fixture_generator.py  ·  v6.0 DEFINITIVA — REGLAS FEMENINO CORREGIDAS
 ==========================================
 
 CAUSA RAÍZ DE LA INFEASIBILIDAD (RESUELTO)
@@ -312,8 +312,8 @@ cross_to_global_comp("PRIMERA_A", "Independiente", "Independiente Femenino")
 # ── Independiente Rojo - INF_B ────────────────────────────────────────────────
 # Cruce con Independiente azul (comparten estadio, INF_B vs PRIMERA_A)
 cross_bilateral_comp("INF_B", "Independiente (rojo)", "PRIMERA_A", "Independiente")
-# EXCEPCIÓN: Rojo co-local con Independiente Femenino
-co_local_comp("INF_B", "Independiente (rojo)", "Independiente Femenino")
+# Rojo CRUZA con Femenino (cuando Rojo local -> Femenino visitante)
+cross_bilateral_comp("INF_B", "Independiente (rojo)", "FEMENINO", "Independiente Femenino")
 
 # ── BOTAFOGO - PRIMERA_B ─────────────────────────────────────────────────────
 co_local_comp("PRIMERA_B", "BOTAFOGO F.C.", "BOTAFOGO F.C. Inferiores")
@@ -325,8 +325,8 @@ cross_to_global_comp("PRIMERA_A", "Ferrocarril Sud", "Ferrocarril Sud Femenino")
 # ── Ferro Azul - INF_B ────────────────────────────────────────────────────────
 # Cruce con Ferrocarril Sud (comparten estadio)
 cross_bilateral_comp("INF_B", "Ferro Azul", "PRIMERA_A", "Ferrocarril Sud")
-# EXCEPCIÓN: Ferro Azul co-local con Ferro Sud Femenino
-co_local_comp("INF_B", "Ferro Azul", "Ferrocarril Sud Femenino")
+# Ferro Azul CRUZA con Femenino (cuando Azul local -> Femenino visitante)
+cross_bilateral_comp("INF_B", "Ferro Azul", "FEMENINO", "Ferrocarril Sud Femenino")
 
 # ── Defensores de Ayacucho - PRIMERA_A ───────────────────────────────────────
 co_local_comp("PRIMERA_A", "DEFENSORES DE AYACUCHO", "DEFENSORES DE AYACUCHO Inferiores")
@@ -346,7 +346,7 @@ cross_to_global_comp("PRIMERA_B", "San José", "Excursionistas Femenino")
 
 # ── Excursionistas - PRIMERA_B + INF_B ───────────────────────────────────────
 # Co-local desde PRIMERA_B con femenino
-co_local_comp("PRIMERA_B", "Excursionistas", "Excursionistas Femenino")
+cross_to_global_comp("PRIMERA_B", "Excursionistas", "Excursionistas Femenino")
 # cross con San José ya aplicado
 
 # ── Alumni - PRIMERA_B ────────────────────────────────────────────────────────
@@ -429,7 +429,7 @@ cross_to_global_comp("PRIMERA_B", "Unión y Progreso", "Juventud Unida Fem (Negr
 
 # ── San Lorenzo Rauch - PRIMERA_B ────────────────────────────────────────────
 co_local_comp("PRIMERA_B", "SAN LORENZO (RAUCH)", "SAN LORENZO (RAUCH) Inferiores")
-co_local_comp("PRIMERA_B", "SAN LORENZO (RAUCH)", "SAN LORENZO (RAUCH) Femenino")
+co_local_comp("PRIMERA_B", "SAN LORENZO (RAUCH)", "SAN LORENZO (RAUCH) Femenino")  # sub16 solo, no hay conflicto de cancha
 
 # ══════════════════════════════════════════════════════════════════════════════
 # 8. SEGURIDAD POLICIAL: AYACUCHO ≤ 2 LOCALES SIMULTÁNEOS
