@@ -526,20 +526,37 @@
       "jerarquia": 0
     },
     {
-      "nombre": "Alumni/Defensores del Cerro Inferiores",
+      "nombre": "Alumni Inferiores",
       "divisionMayor": "B",
       "clubPadre": "Alumni",
+      "categorias": {
+        "quinta": false,
+        "sexta": false,
+        "septima": false,
+        "octava": false,
+        "novena": false,
+        "decima": true,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Ferroviarios",
+      "jerarquia": 0
+    },
+    {
+      "nombre": "Defensores del Cerro Inferiores",
+      "divisionMayor": "B",
+      "clubPadre": "Defensores del Cerro",
       "categorias": {
         "quinta": true,
         "sexta": false,
         "septima": false,
         "octava": false,
         "novena": true,
-        "decima": true,
-        "undecima": true
+        "decima": false,
+        "undecima": false
       },
       "estadioPropio": true,
-      "estadioLocal": "Ferroviarios",
+      "estadioLocal": "Figueroa",
       "jerarquia": 0
     },
     {
@@ -632,6 +649,23 @@
       "jerarquia": 0
     },
     {
+      "nombre": "DEPORTIVO RAUCH Inferiores",
+      "divisionMayor": "C",
+      "clubPadre": "DEPORTIVO RAUCH",
+      "categorias": {
+        "quinta": true,
+        "sexta": false,
+        "septima": true,
+        "octava": false,
+        "novena": true,
+        "decima": false,
+        "undecima": true
+      },
+      "estadioPropio": true,
+      "estadioLocal": "Municipal rauch",
+      "jerarquia": 0
+    },
+    {
       "nombre": "ATENEO ESTRADA",
       "localidad": "Ayacucho",
       "divisionMayor": "B",
@@ -644,15 +678,15 @@
       "jerarquia": 0
     },
     {
-      "nombre": "ATENEO ESTRADA/Deportivo Rauch Inferiores",
+      "nombre": "ATENEO ESTRADA Inferiores",
       "divisionMayor": "C",
       "clubPadre": "ATENEO ESTRADA",
       "categorias": {
-        "quinta": true,
+        "quinta": false,
         "sexta": true,
-        "septima": true,
+        "septima": false,
         "octava": false,
-        "novena": true,
+        "novena": false,
         "decima": true,
         "undecima": true
       },
